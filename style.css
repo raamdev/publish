@@ -1078,3 +1078,12 @@ table th {
 		margin-top: 40px;
 	}
 }
+
+/**
+ * Styles added by Raam Dev
+ */
+
+ol.pinglist { list-style: none; }
+.comment-meta a:before {
+	content: "";
+}

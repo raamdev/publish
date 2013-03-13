@@ -131,9 +131,8 @@ add_action( 'publish_credits', 'publish_footer_credits' );
  */
 function publish_get_footer_credits( $credits = '' ) {
 	return sprintf(
-		'%1$s %2$s',
-		'<a href="' . esc_url( __( 'http://wordpress.org/', 'publish' ) ) . '" rel="generator">' . __( 'Proudly powered by WordPress', 'publish' ) . '</a>',
-		sprintf( __( 'Theme: %1$s by %2$s.', 'publish' ), 'Publish', '<a href="http://kovshenin.com/" rel="designer">Konstantin Kovshenin</a>' )
+		'%1$s',
+		sprintf( __( '%1$s %2$s by %3$s', 'publish' ), 'Publish theme', '<a href="https://github.com/raamdev/publish/tree/raamdev">forked</a>', '<a href="http://raamdev.com/" rel="designer">Raam Dev</a>' )
 	);
 }
 add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
@@ -167,3 +166,19 @@ add_filter( 'the_title', 'publish_post_format_title', 10, 2 );
  * Implement the Custom Header feature
  */
 require( get_template_directory() . '/inc/custom-header.php' );
+
+/**
+ * Customize the output of pings in the comments section (used by comments.php)
+ */
+function publish_theme_pings($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+    
+     <div id="comment-<?php comment_ID(); ?>">     
+
+	<div class="commentbody">
+<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?> <span style="font-size: 12px; color: #AAAAAA;"> <?php printf(__('%1$s '), get_comment_date("Y-m-d"),  get_comment_time("H:i:s")) ?> <?php edit_comment_link(__('(Edit)'),'  ','') ?></span>
+     </div>
+
+     </div>
+<?php }

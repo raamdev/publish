@@ -48,7 +48,7 @@ if ( post_password_required() )
 				 * define publish_comment() and that will be used instead.
 				 * See publish_comment() in inc/template-tags.php for more.
 				 */
-				wp_list_comments( array( 'callback' => 'publish_comment' ) );
+				wp_list_comments( array( 'type' => 'comment', 'callback' => 'publish_comment' ) );
 			?>
 		</ol><!-- .commentlist -->
 
@@ -70,5 +70,19 @@ if ( post_password_required() )
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
+	
+	<!-- START PING/TRACKBACKS LIST -->
+
+	<?php if ( have_comments() ) : ?>
+	<?php if ( count($wp_query->comments_by_type['pings'])) { ?>
+	<br />
+	<h2 class="comments-title"><?php// echo count($wp_query->comments_by_type['pings']); ?>Readers who shared <em><?php the_title(); ?></em></h2>
+	        <ol class="pinglist">
+	                <?php wp_list_comments('type=pings&callback=publish_theme_pings'); ?>
+	        </ol>
+	<?php } ?>
+	<?php endif; ?>
+
+	<!-- END PING/TRACKBACKS LIST -->
 
 </div><!-- #comments .comments-area -->
