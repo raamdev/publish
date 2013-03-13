@@ -168,17 +168,6 @@ add_filter( 'the_title', 'publish_post_format_title', 10, 2 );
 require( get_template_directory() . '/inc/custom-header.php' );
 
 /**
- * Customize the output of pings in the comments section (used by comments.php)
+ * Include Raam's Custom Functions
  */
-function publish_theme_pings($comment, $args, $depth) {
-   $GLOBALS['comment'] = $comment; ?>
-   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-    
-     <div id="comment-<?php comment_ID(); ?>">     
-
-	<div class="commentbody">
-<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?> <span style="font-size: 12px; color: #AAAAAA;"> <?php printf(__('%1$s '), get_comment_date("Y-m-d"),  get_comment_time("H:i:s")) ?> <?php edit_comment_link(__('(Edit)'),'  ','') ?></span>
-     </div>
-
-     </div>
-<?php }
+require( get_template_directory() . '/functions-raam.php' );
