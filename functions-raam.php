@@ -118,7 +118,7 @@ function raamdev_post_meta() {
 		if ( ! publish_categorized_blog() ) {
 			// This blog only has 1 category so we just need to worry about tags in the meta text
 			if ( '' != $tag_list ) {
-				$meta_text = __( 'This entry was tagged %2$s.', 'publish' );
+				$meta_text = __( '<span class="meta-data">This entry was tagged %2$s.</span<', 'publish' );
 			} else {
 				$meta_text = __( '', 'publish' );
 			}
@@ -126,9 +126,9 @@ function raamdev_post_meta() {
 		} else {
 			// But this blog has loads of categories so we should probably display them here
 			if ( '' != $tag_list) {
-				$meta_text = __( 'Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s. Tagged %2$s.', 'publish' );
+				$meta_text = __( '<span class="meta-data">Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s. Tagged %2$s.</span>', 'publish' );
 			} else {
-				$meta_text = __( 'Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.', 'publish' );
+				$meta_text = __( '<span class="meta-data">Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.</span>', 'publish' );
 			}
 
 		} // end check for categories on this blog
