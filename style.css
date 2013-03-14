@@ -1087,3 +1087,8 @@ ol.pinglist { list-style: none; }
 .comment-meta a:before {
 	content: "";
 }
+
+.format-aside { font-size: 200%; }
+
+.single .format-aside h1.entry-title { display: none; }
+.blog .format-aside .entry-meta .meta-data { display: none; }
