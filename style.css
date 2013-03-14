@@ -1092,3 +1092,4 @@ ol.pinglist { list-style: none; }
 
 .single .format-aside h1.entry-title { display: none; }
 .blog .format-aside .entry-meta .meta-data { display: none; }
+.blog .format-aside .entry-meta { float: right; }
