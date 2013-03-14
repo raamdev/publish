@@ -82,29 +82,68 @@ function create_post_type_journalk09r4tyf58u35() {
 	),) );
 }
 
-if ( ! function_exists( 'publish_posted_on' ) ) :
+if ( ! function_exists( 'get_ncl_location' ) ) :
 /**
- * Prints HTML with meta information for the current post-date/time and author.
- *
- * @since Publish 1.0
+ * Returns location information supplied by Nomad Current Location plugin
  */
-function publish_posted_on() {
+function get_ncl_location( $prefix = "" ) {
+	
 	$location = get_post_meta( get_the_ID(), 'ncl_current_location', true );
 	
 		if(trim($location) != "") 
 			{ 
-				$location_html = " from <span class=\"mapThis\" place=\"$location\" zoom=\"2\">$location</span>"; 
+				return $location_html = $prefix . '<span class="mapThis" place="' . $location . '" zoom="2">' . $location . '</span>'; 
 			}
 			else {
-				$location_html = "";
+				return $location_html = '';
 			}
+}
+endif;
+
+if ( ! function_exists( 'raamdev_post_meta' ) ) :
+/**
+ * Returns post meta
+ */
+function raamdev_post_meta() {
 	
-	printf( __( 'Published <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a></span><span class="ncl-location">%5$s</span>', 'publish' ) . '.',
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		$location_html
-	);
+		// Get location information using Nomad Current Location plugin
+		$location_html = get_ncl_location( $prefix = " from ");
+	
+		/* translators: used between list items, there is a space after the comma */
+		$category_list = get_the_category_list( __( ', ', 'publish' ) );
+
+		/* translators: used between list items, there is a space after the comma */
+		$tag_list = get_the_tag_list( '', __( ', ', 'publish' ) );
+
+		if ( ! publish_categorized_blog() ) {
+			// This blog only has 1 category so we just need to worry about tags in the meta text
+			if ( '' != $tag_list ) {
+				$meta_text = __( 'This entry was tagged %2$s.', 'publish' );
+			} else {
+				$meta_text = __( '', 'publish' );
+			}
+
+		} else {
+			// But this blog has loads of categories so we should probably display them here
+			if ( '' != $tag_list) {
+				$meta_text = __( 'Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s. Tagged %2$s.', 'publish' );
+			} else {
+				$meta_text = __( 'Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.', 'publish' );
+			}
+
+		} // end check for categories on this blog
+
+		printf(
+			$meta_text,
+			$category_list,
+			$tag_list,
+			get_permalink(),
+			the_title_attribute( 'echo=0' ),
+			esc_url( get_permalink() ),
+			esc_attr( get_the_time() ),
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() ),
+			$location_html
+		);
 }
 endif;
