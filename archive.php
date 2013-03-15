@@ -67,13 +67,6 @@ get_header(); ?>
 						}
 					?>
 				</header><!-- .page-header -->
-					<div id="tag-box">
-						<h3>Tags:</h3>
-					<?php 
-					  if( function_exists("stc_widget") )
-					    stc_widget();
-					?> 
-					</div>
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
