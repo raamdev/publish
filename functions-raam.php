@@ -266,3 +266,46 @@ function the_raamdev_journal_not_released_comments_message() {
 						</div>
 <?php }
 endif;
+
+if ( ! function_exists( 'rd_get_recent_posts' ) ) :
+/**
+ * Returns recent posts for given category and excludes given post formats
+ */
+function rd_get_recent_posts( $number_posts = '10', $category = '', $exclude_formats = array() ) {
+
+	// Make sure category exists
+	if ( !get_cat_ID( $category ) ) { return false; }
+
+	// Make sure post formats exist and build array of formats to exclude
+	if( !empty( $exclude_formats ) ) :
+		$i=0;
+		$tax_query = array();
+		foreach ( $exclude_formats as $format ) {
+
+			$term = term_exists('post-format-' . $format, 'post_format');
+			if ($term === 0 || $term === null) { return false; }
+
+			$tax_query[$i] = array(
+				'taxonomy' => 'post_format',
+				'field' => 'slug',
+				'terms' => 'post-format-' . $format,
+				'operator' => 'NOT IN'
+				);
+
+			$i++;
+		}
+	endif;
+
+	?>
+	<ul>
+	<?php
+		$args = array( 'numberposts' => $number_posts, 'category' => get_cat_ID($category), 'post_status' => 'publish', 'tax_query' => $tax_query );
+		$recent_posts = wp_get_recent_posts( $args );
+		foreach( $recent_posts as $recent ){
+			echo '<li><a href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a> </li> ';
+		}
+	?>
+	</ul>
+<?php
+}
+endif;
