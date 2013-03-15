@@ -25,40 +25,47 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<!-- <h2 class="comments-title">
-			<?php
-			printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'publish' ),
-					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
-			?>
-		</h2> -->
+		<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
+			<!-- <h2 class="comments-title">
+				<?php
+				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'publish' ),
+						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+				?>
+			</h2> -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
-			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
-		</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
-		<?php endif; // check for comment navigation ?>
+			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+			<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
+				<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
+			</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
+			<?php endif; // check for comment navigation ?>
 
-		<ol class="commentlist">
-			<?php
-				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use publish_comment() to format the comments.
-				 * If you want to overload this in a child theme then you can
-				 * define publish_comment() and that will be used instead.
-				 * See publish_comment() in inc/template-tags.php for more.
-				 */
-				wp_list_comments( array( 'type' => 'comment', 'callback' => 'publish_comment' ) );
-			?>
-		</ol><!-- .commentlist -->
+			<ol class="commentlist">
+				<?php
+					/* Loop through and list the comments. Tell wp_list_comments()
+					 * to use publish_comment() to format the comments.
+					 * If you want to overload this in a child theme then you can
+					 * define publish_comment() and that will be used instead.
+					 * See publish_comment() in inc/template-tags.php for more.
+					 */
+					wp_list_comments( array( 'type' => 'comment', 'callback' => 'publish_comment' ) );
+				?>
+			</ol><!-- .commentlist -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
-			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
-		</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
-		<?php endif; // check for comment navigation ?>
+			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+			<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
+				<h1 class="assistive-text"><?php _e( 'Comment navigation', 'publish' ); ?></h1>
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'publish' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'publish' ) ); ?></div>
+			</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
+			<?php endif; // check for comment navigation ?>
+			
+		<?php else : ?>
+			
+			<?php the_raamdev_journal_not_released_comments_message(); ?>
+			
+		<?php endif; // !in_category('journal') ?>
 
 	<?php endif; // have_comments() ?>
 
@@ -69,7 +76,11 @@ if ( post_password_required() )
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'publish' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
+		
+		<?php comment_form(); ?>
+		
+	<?php endif; // !in_category('journal') ?>
 	
 	<!-- START PING/TRACKBACKS LIST -->
 
