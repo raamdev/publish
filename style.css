@@ -1102,3 +1102,27 @@ ol.pinglist { list-style: none; }
 .archive .format-aside .entry-meta, 
 .search .format-aside .entry-meta 
 	{ float: right; }
+
+/****************************************
+ * Styles for displaying Current Location information below Site Description in header
+ * Requires Nomad Current Location plugin.
+ */
+.site-description-location a { color: #999; }
+.site-description-location {
+	margin: -10px 0 20px 0;
+	color: #999;
+	font-weight: 300;
+	font-size: 12px;
+}
+/* iPads (landscape) ----------- */
+@media only screen and (max-width : 900px) {
+/* Styles */
+
+	.site-description-location {
+		clear: none;
+		margin-left: 70px;
+	}
+
+}
+/* End styles for Current Location information
+ **************************************/

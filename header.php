@@ -33,6 +33,9 @@
 		<hgroup>
 			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<?php if ( function_exists('ncl_show_location') ) : ?>
+				<h2 class="site-description-location">Last seen <?php echo do_shortcode("[ncl-current-location display='date']"); ?> ago in <span class="mapThis" place="<?php echo do_shortcode("[ncl-current-location wikify='false']"); ?>" zoom="2"><?php echo do_shortcode("[ncl-current-location wikify='false']"); ?></span>.</h2>
+			<?php endif; ?>
 		</hgroup>
 
 		<nav role="navigation" class="site-navigation main-navigation">
