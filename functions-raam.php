@@ -147,3 +147,43 @@ function raamdev_post_meta() {
 		);
 }
 endif;
+
+
+if ( ! function_exists( 'raamdev_post_header_meta' ) ) :
+/**
+ * Returns post header metadata
+ */
+function raamdev_post_header_meta() {
+?>
+<!-- START POST HEADER METADATA -->
+
+<div>
+<div class="entry-meta">
+
+<?php $audio = get_post_meta( get_the_ID(), 'audio_reading_url', true ); ?>
+<?php if (trim($audio) != "") { ?>
+
+<?php if ('journal' == get_post_type()) { ?>
+	<?php $release_after=365 * 86400; // days * seconds per day
+	$post_age = date('U') - get_post_time('U');
+	if ($post_age > $release_after || current_user_can("access_s2member_level1")) { ?>	
+
+	<div id="audio-player"><a class="wpaudio" href="<?php echo $audio; ?>">Listen to Raam Dev reading this entry</a></div>
+
+	<?php } else { // else they don't have permission to view this ?>
+
+	<div id="audio-player"><img class="wpaudio-play" src="http://raamdev.com/wordpress/wp-content/plugins/wpaudio-mp3-player/wpaudio-play.png" style="margin: 0px 5px 0px 0px; width: 14px; height: 13px; background-color: rgb(204, 204, 204); vertical-align: baseline; border: 0px; padding: 0px; background-position: initial initial; background-repeat: initial initial; "><a href="http://raamdev.com/wordpress/wp-login.php" style="border-bottom: 1px solid #eee !important;">Login</a> to listen to Raam Dev reading this entry</div>
+
+	<?php } // ends permissions check ?>
+<?php } else { // else it's not a journal entry, so just give access ?>
+	<div id="audio-player"><a class="wpaudio" href="<?php echo $audio; ?>">Listen to Raam Dev reading this entry</a></div>
+<?php } // ends check if journal ?>	
+<?php } // ends check if audio file URL exists ?>
+
+</div>
+</div>
+
+<!-- END POST HEADER METADATA -->
+
+<?php }
+endif;
