@@ -1091,5 +1091,14 @@ ol.pinglist { list-style: none; }
 .format-aside { font-size: 200%; }
 
 .single .format-aside h1.entry-title { display: none; }
-.blog .format-aside .entry-meta .meta-data { display: none; }
-.blog .format-aside .entry-meta { float: right; }
+.search .format-aside .entry-header { display: none; }
+
+.blog .format-aside .entry-meta .meta-data, 
+.archive .format-aside .entry-meta .meta-data, 
+.search .format-aside .entry-meta .meta-data 
+	{ display: none; }
+	
+.blog .format-aside .entry-meta, 
+.archive .format-aside .entry-meta, 
+.search .format-aside .entry-meta 
+	{ float: right; }
