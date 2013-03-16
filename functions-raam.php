@@ -297,7 +297,7 @@ if ( ! function_exists( 'raamdev_pageslide_subscribe_form' ) ) :
 function raamdev_pageslide_subscribe_form() {
 
 		?>
-	<!-- BEGIN PAGESLIDE CODE -->
+	<!-- BEGIN PAGESLIDE SUBSCRIBE FORM CODE -->
 	
 	<div id="signup" style="display:none">
 	<div class="wrapper"><div class="cell">
@@ -346,11 +346,10 @@ function raamdev_pageslide_subscribe_form() {
 	    $(".signup").pageslide({ direction: "left", modal: true });
 	</script>
 
-	<!-- END PAGESLIDE CODE -->
+	<!-- END PAGESLIDE SUBSCRIBE FORM CODE -->
 	
 <?php }
 endif;
-
 
 // Filter wp_nav_menu() to add additional links and other output
 function new_nav_menu_items($items) {
