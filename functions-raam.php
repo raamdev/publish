@@ -288,3 +288,79 @@ function rd_get_recent_posts( $number_posts = '10', $category = '', $exclude_for
 <?php
 }
 endif;
+
+
+if ( ! function_exists( 'raamdev_pageslide_subscribe_form' ) ) :
+/**
+ * Returns pageslide subscribe form
+ */
+function raamdev_pageslide_subscribe_form() {
+
+		?>
+	<!-- BEGIN PAGESLIDE CODE -->
+	
+	<div id="signup" style="display:none">
+	<div class="wrapper"><div class="cell">
+	<section>
+	<p><strong>Subscribe</strong> to receive new thoughts and essays as they're published.</p>
+	<form action="http://raamdev.us1.list-manage.com/subscribe/post?u=5daf0f6609de2506882857a28&id=dc1b1538af" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+		<?php if ( is_single() && !in_category('journal') ) : ?>
+			<?php $reflections = ""; $technology = ""; $writing = ""; ?>
+			<?php if( in_category('20') ) { $reflections = "checked"; } ?>
+			<?php if( in_category('5') ) { $technology = "checked"; } ?>
+			<?php if( in_category('859') ) { $writing = "checked"; } ?>
+		<?php else : ?>
+			<?php $reflections = "checked"; $technology = "checked"; $writing = "checked"; ?>
+		<?php endif; ?>
+		
+		<div style="display:none;"> <input type="hidden" name="MERGE3" value="<?php echo 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>" id="MERGE3"> </div>
+		<div style="display:none;"> <input type="hidden" name="group[1873]" value="32" id="group[1873]"> </div>
+		<div class="mc-field-group">
+			<label for="mce-group[1129]">How often would you like to receive new updates? </label>
+			<select name="group[1129]" class="REQ_CSS" id="mce-group[1129]" tabindex="502">
+			<option value="1" selected="selected">Immediately</option>
+		<option value="2">Weekly</option>
+		<option value="4">Monthly</option>
+			</select>
+		<div class="subscribe-home-essay-topics">
+		Essay topics:
+		<input type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label for="group_64" style="font-style: italic;">Personal Reflections</label>
+		<input type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label for="group_128" style="font-style: italic;">Technology</label>
+		<input type="checkbox" id="group_256" name="group[1989][256]" value="1" <?php echo $writing; ?>>&nbsp;<label for="group_256" style="font-style: italic;">Writing</label><br>
+		</div>
+		</div>
+	<input type="text" placeholder="Enter Your First Name..." id="mce-FNAME" name="FNAME">	
+	<input type="text" placeholder="Enter Your Email..." id="mce-EMAIL" name="EMAIL">
+	<input type="submit" value="Subscribe" tabindex="503" >
+	</form>
+	<small><a href="javascript:$.pageslide.close()">« Back</a></small>
+	</section>
+	</div></div>
+	</div>
+
+
+	<script src="<?php echo get_template_directory_uri(); ?>/inc/jquery-pageslide/lib/jquery-1.7.1.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/inc/jquery-pageslide/jquery.pageslide.min.js"></script>
+	<script>    
+	    /* Slide to the left, and make it model (you'll have to call $.pageslide.close() to close) */
+	    $(".signup").pageslide({ direction: "left", modal: true });
+	</script>
+
+	<!-- END PAGESLIDE CODE -->
+	
+<?php }
+endif;
+
+
+// Filter wp_nav_menu() to add additional links and other output
+function new_nav_menu_items($items) {
+	
+	if ( !is_user_logged_in() ) {
+		$subscribe_link = '<li class="menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
+		$items = $items . $subscribe_link;
+		$loginlink = '<li class="menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
+		$items = $items . $loginlink;
+	}
+    return $items;
+}
+add_filter( 'wp_nav_menu_items', 'new_nav_menu_items' );

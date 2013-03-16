@@ -20,5 +20,7 @@
 
 <?php wp_footer(); ?>
 
+<?php raamdev_pageslide_subscribe_form(); ?>
+
 </body>
 </html>
