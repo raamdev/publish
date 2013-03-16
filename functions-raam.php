@@ -200,6 +200,7 @@ function is_raamdev_journal_viewable() {
 }
 endif;
 
+
 if ( ! function_exists( 'the_raamdev_journal_released_message' ) ) :
 /**
  * Returns message about journal release
@@ -214,6 +215,7 @@ function the_raamdev_journal_released_message() {
 	endif;
 }
 endif;
+
 
 if ( ! function_exists( 'the_raamdev_journal_not_released_message' ) ) :
 /**
@@ -234,6 +236,7 @@ function the_raamdev_journal_not_released_message() {
 	<?php }
 endif;
 
+
 if ( ! function_exists( 'the_raamdev_journal_not_released_comments_message' ) ) :
 /**
  * Returns message about journal not released yet
@@ -245,6 +248,7 @@ function the_raamdev_journal_not_released_comments_message() {
 						</div>
 <?php }
 endif;
+
 
 if ( ! function_exists( 'rd_get_recent_posts' ) ) :
 /**
@@ -351,8 +355,12 @@ function raamdev_pageslide_subscribe_form() {
 <?php }
 endif;
 
-// Filter wp_nav_menu() to add additional links and other output
-function new_nav_menu_items($items) {
+
+if ( ! function_exists( 'rd_new_nav_menu_items' ) ) :
+/**
+ * Filter wp_nav_menu() to add additional custom links
+ */
+function rd_new_nav_menu_items($items) {
 	
 	if ( !is_user_logged_in() ) {
 		$subscribe_link = '<li class="menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
@@ -362,4 +370,154 @@ function new_nav_menu_items($items) {
 	}
     return $items;
 }
-add_filter( 'wp_nav_menu_items', 'new_nav_menu_items' );
+add_filter( 'wp_nav_menu_items', 'rd_new_nav_menu_items' );
+endif;
+
+
+if ( ! function_exists( 'rd_rss_filter_post_formats' ) ) :
+/**
+ * Filter post formats from RSS feed
+ */
+add_action( 'pre_get_posts', 'rd_rss_filter_post_formats' );
+function rd_rss_filter_post_formats( &$wp_query )
+{
+    if ( $wp_query->is_feed() ) {
+			if( isset($wp_query->query_vars['rss-post-format-aside']) ) { // Only return Asides
+        $post_format_tax_query = array(
+            'taxonomy' => 'post_format',
+            'field' => 'slug',
+            'terms' => 'post-format-aside',
+            'operator' => 'IN'
+        );
+        $tax_query = $wp_query->get( 'tax_query' );
+        if ( is_array( $tax_query ) ) {
+            $tax_query = $tax_query + $post_format_tax_query;
+        } else {
+            $tax_query = array( $post_format_tax_query );
+        }
+        $wp_query->set( 'tax_query', $tax_query );
+    }
+		else if( isset($wp_query->query_vars['rss-post-format-image']) ) { // Only return Images
+			
+        $post_format_tax_query = array(
+            'taxonomy' => 'post_format',
+            'field' => 'slug',
+            'terms' => 'post-format-image',
+            'operator' => 'IN'
+        );
+        $tax_query = $wp_query->get( 'tax_query' );
+        if ( is_array( $tax_query ) ) {
+            $tax_query = $tax_query + $post_format_tax_query;
+        } else {
+            $tax_query = array( $post_format_tax_query );
+        }
+        $wp_query->set( 'tax_query', $tax_query );
+
+    }
+		else if ( isset($wp_query->query_vars['rss-post-format-standard']) ) { // 
+		
+      $post_format_tax_query = array(
+          'taxonomy' => 'post_format',
+          'field' => 'slug',
+          'terms' => array('post-format-aside', 'post-format-image'),
+          'operator' => 'NOT IN'
+      );
+      $tax_query = $wp_query->get( 'tax_query' );
+      if ( is_array( $tax_query ) ) {
+          $tax_query = $tax_query + $post_format_tax_query;
+      } else {
+          $tax_query = array( $post_format_tax_query );
+      }
+      $wp_query->set( 'tax_query', $tax_query );			
+
+		} // if( isset($wp_query->query_vars['rss-post-format-aside']) 
+	} // if ( $wp_query->is_feed() )
+} // function rd_rss_filter_post_formats()
+endif;
+
+
+if ( ! function_exists( 'rd_rss_filter_journal' ) ) :
+/**
+ * Filter journal entries from RSS feeds, except when using secret URL
+ */
+add_action( 'pre_get_posts', 'rd_rss_filter_journal' );
+function rd_rss_filter_journal( &$wp_query ) {
+    if ( $wp_query->is_feed() && !isset($wp_query->query_vars['rss-journal-kjadj831fsdj'])) {
+      $wp_query->set( 'category__not_in', '924' );
+		} else if ( $wp_query->is_feed() && isset($wp_query->query_vars['rss-journal-kjadj831fsdj']) ) {
+			$wp_query->set( 'category__in', '924' );
+		}
+}
+endif;
+
+
+if ( ! function_exists( 'rd_add_query_vars' ) ) :
+/**
+ * Query vars used for filtering RSS feeds
+ */
+function rd_add_query_vars($aVars) {
+	$aVars[] = "rss-post-format-aside";
+	$aVars[] = "rss-post-format-image";
+	$aVars[] = "rss-post-format-standard";
+	$aVars[] = "rss-journal-kjadj831fsdj";
+	return $aVars;
+}
+add_filter('query_vars', 'rd_add_query_vars');
+endif;
+
+
+if ( ! function_exists( 'rd_rss_change_title' ) ) :
+/**
+ * Changes the RSS feed title to rename specific post formats
+ */
+function rd_rss_change_title() {
+		$title = get_wp_title_rss();
+	if ( strpos( $title, "Aside") ) {
+		$new_title = str_replace("Aside", "Thoughts", $title);
+		echo $new_title;
+	} else { 
+		echo get_wp_title_rss(); 
+	} 
+}
+endif;
+add_filter('wp_title_rss', 'rd_rss_change_title', 1);
+
+
+if ( ! function_exists( 'rd_journal_365_filter_where' ) ) :
+/**
+ * Create a filtering function for showing journal entries older than 365 days
+ */
+function rd_journal_365_filter_where( $where = '' ) {
+	// posts older than 365 days
+	$where .= " AND post_date < '" . date('Y-m-d', strtotime('-365 days')) . "'";
+	return $where;
+}
+endif;
+
+
+if ( ! function_exists( 'rd_get_public_journals' ) ) :
+/**
+ * List public journals (older than 365 days)
+ */
+function rd_get_public_journals( $number_posts = '10' ) {
+	add_filter( 'posts_where', 'rd_journal_365_filter_where' );
+		?>
+		<ul>
+		<?php
+			$args = array( 'posts_per_page' => $number_posts, 'category_name' => 'Personal Reflections', 'post_status' => 'publish' );
+			//$recent_posts = wp_get_recent_posts( $args );
+			$recent_posts = new WP_Query( $args );
+			if ( $recent_posts->have_posts() ) :
+				while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
+					echo '<li><a href="' . get_permalink() . '" title="Look '. get_the_title() .'" >' . get_the_title().'</a> </li> ';
+				endwhile;
+			else :
+				echo wpautop( 'Sorry, no posts were found' );
+			endif;
+		?>
+		</ul>
+	<?php
+	wp_reset_postdata();
+	remove_filter( 'posts_where', 'rd_journal_365_filter_where' );
+}
+endif;
