@@ -259,15 +259,13 @@ function rd_get_recent_posts( $number_posts = '10', $category = '', $exclude_for
 	// Make sure category exists
 	if ( !get_cat_ID( $category ) ) { return false; }
 
-	// Make sure post formats exist and build array of formats to exclude
+	// Build array of format exclution queries
 	if( !empty( $exclude_formats ) ) :
 		$i=0;
 		$tax_query = array();
+		
 		foreach ( $exclude_formats as $format ) {
-
-			$term = term_exists('post-format-' . $format, 'post_format');
-			if ($term === 0 || $term === null) { return false; }
-
+			
 			$tax_query[$i] = array(
 				'taxonomy' => 'post_format',
 				'field' => 'slug',
