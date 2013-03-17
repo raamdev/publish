@@ -441,9 +441,9 @@ if ( ! function_exists( 'rd_rss_filter_journal' ) ) :
 add_action( 'pre_get_posts', 'rd_rss_filter_journal' );
 function rd_rss_filter_journal( &$wp_query ) {
     if ( $wp_query->is_feed() && !isset($wp_query->query_vars['rss-journal-kjadj831fsdj'])) {
-      $wp_query->set( 'category__not_in', '924' );
+      $wp_query->set( 'category__not_in', '921' );
 		} else if ( $wp_query->is_feed() && isset($wp_query->query_vars['rss-journal-kjadj831fsdj']) ) {
-			$wp_query->set( 'category__in', '924' );
+			$wp_query->set( 'category__in', '921' );
 		}
 }
 endif;
