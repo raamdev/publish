@@ -24,7 +24,7 @@ add_action( 'init', 'create_post_type_thoughts' );
 add_action( 'init', 'create_post_type_journal' );
 
 function create_post_type_thoughts() {	
-	register_post_type('thoughts', array(	'label' => 'Thoughts','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields',),'taxonomies' => array('post_tag',),'labels' => array (
+	register_post_type('thoughts', array(	'label' => 'Thoughts','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields','post-formats',),'taxonomies' => array('post_tag',),'labels' => array (
 	  'name' => 'Thoughts',
 	  'singular_name' => 'Thought',
 	  'menu_name' => 'Thoughts',
@@ -43,7 +43,7 @@ function create_post_type_thoughts() {
 }
 
 function create_post_type_journal() {
-	register_post_type('journal', array(	'label' => 'Journal','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields',),'taxonomies' => array('post_tag',),'labels' => array (
+	register_post_type('journal', array(	'label' => 'Journal','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields','post-formats',),'taxonomies' => array('post_tag',),'labels' => array (
 	  'name' => 'Journal',
 	  'singular_name' => 'Journal Entry',
 	  'menu_name' => 'Journal',
