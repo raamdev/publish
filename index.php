@@ -27,7 +27,16 @@ get_header(); ?>
 						 * If you want to overload this in a child theme then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						get_template_part( 'content', get_post_format() );
+						
+						// Exclude journals from the home page
+						if ( is_home() && !in_category( 'journal') ) :
+							get_template_part( 'content', get_post_format() );
+						endif;
+						
+						// Include journals on home page if user has access to them
+						if ( is_home() && in_category( 'journal') && current_user_can("access_s2member_level1") ) :
+							get_template_part( 'content', get_post_format() );
+						endif;
 					?>
 
 				<?php endwhile; ?>
