@@ -338,7 +338,7 @@ function raamdev_pageslide_subscribe_form() {
 	<hr>
 	<small>RSS Feeds:&nbsp;<a href="a">All Topics</a> · <a href="a">Personal Reflections</a> · <a href="a">Writing & Publishing</a> · <a href="a">Technology</a></small>
 	<br/><br/>
-	<small><a href="javascript:$.pageslide.close()">« Back</a></small>
+	<a href="javascript:$.pageslide.close()">« Back</a>
 	</section>
 	</div></div>
 	</div>
