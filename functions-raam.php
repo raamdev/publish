@@ -333,7 +333,7 @@ function raamdev_pageslide_subscribe_form() {
 		</div>
 	<input type="text" placeholder="First Name..." id="mce-FNAME" name="FNAME">
 	<input type="text" placeholder="Email Address..." id="mce-EMAIL" name="EMAIL">
-	<input type="submit" value="Subscribe" tabindex="503" >
+	<input type="submit" value="Subscribe »" tabindex="503" >
 	</form>
 	<hr>
 	<small>RSS Feeds:&nbsp;<a href="a">All Topics</a> · <a href="a">Personal Reflections</a> · <a href="a">Writing & Publishing</a> · <a href="a">Technology</a></small>
