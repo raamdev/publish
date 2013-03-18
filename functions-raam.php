@@ -363,8 +363,14 @@ function rd_new_nav_menu_items($items) {
 	if ( !is_user_logged_in() ) {
 		$subscribe_link = '<li class="menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
 		$items = $items . $subscribe_link;
-		$loginlink = '<li class="menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
+		$loginlink = '<li>&nbsp;</li><li class="menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
 		$items = $items . $loginlink;
+	}
+	if ( is_user_logged_in() ) {
+		$my_account_link = '<li>&nbsp;</li><li class="menu-item"><a href="/account/">My Account</a></li>';
+		$items = $items . $my_account_link;
+		$logout_link = '<li class="menu-item"><a href="' . wp_logout_url() . '">Logout</a></li>';
+		$items = $items . $logout_link;
 	}
     return $items;
 }
