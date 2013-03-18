@@ -1152,15 +1152,15 @@ padding: 0;
 }
 #signup form {
 margin: 15px 0;
-margin-top:40px;
+margin-top:30px;
 }
 #signup input {
 padding: 11px 10px 9px 10px;
 background: rgba(255,255,255,1);
 border-radius: 3px;
 }
-#mce-FNAME {width:25%;}
-#mce-EMAIL {width:35%;}
+#mce-FNAME {width:15%;}
+#mce-EMAIL {width:30%;}
 #signup input[type=submit] {
 background: rgba(73, 124, 255, 1);
 width: auto;
@@ -1207,10 +1207,10 @@ padding: 0;
 }
 
 .subscribe-home-essay-topics {
-	margin-top:10px;
-	margin-bottom:15px;
+	margin-top:5px;
+	margin-bottom:10px;
 }
-.mc-field-group { margin-left: 2px;}
+.mc-field-group { margin-left: 2px; font-size: 13px;}
 
 /* End styles for displaying pageslide subscribe form
  **************************************/

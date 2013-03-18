@@ -325,16 +325,19 @@ function raamdev_pageslide_subscribe_form() {
 		<option value="4">Monthly</option>
 			</select>
 		<div class="subscribe-home-essay-topics">
-		Essay topics:
-		<input type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label style="font-style: italic;">Personal Reflections</label>
-		<input type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label style="font-style: italic;">Technology</label>
+		Essay topics:&nbsp;&nbsp;
+		<input type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label style="font-style: italic;">Personal Reflections</label>&nbsp;&nbsp;
+		<input type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label style="font-style: italic;">Technology</label>&nbsp;&nbsp;
 		<input type="checkbox" id="group_256" name="group[1989][256]" value="1" <?php echo $writing; ?>>&nbsp;<label style="font-style: italic;">Writing</label><br>
 		</div>
 		</div>
-	<input type="text" placeholder="Enter Your First Name..." id="mce-FNAME" name="FNAME">	
-	<input type="text" placeholder="Enter Your Email..." id="mce-EMAIL" name="EMAIL">
+	<input type="text" placeholder="First Name..." id="mce-FNAME" name="FNAME">
+	<input type="text" placeholder="Email Address..." id="mce-EMAIL" name="EMAIL">
 	<input type="submit" value="Subscribe" tabindex="503" >
 	</form>
+	<hr>
+	<small>RSS Feeds:&nbsp;<a href="a">All Topics</a> · <a href="a">Personal Reflections</a> · <a href="a">Writing & Publishing</a> · <a href="a">Technology</a></small>
+	<br/><br/>
 	<small><a href="javascript:$.pageslide.close()">« Back</a></small>
 	</section>
 	</div></div>
