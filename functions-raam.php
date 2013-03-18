@@ -528,3 +528,72 @@ function rd_get_public_journals( $number_posts = '10' ) {
 	remove_filter( 'posts_where', 'rd_journal_365_filter_where' );
 }
 endif;
+
+
+/**
+ * Redirect the registration form to a specific page after submission
+ */
+function __my_registration_redirect()
+{
+    return home_url( '/please-confirm-subscription' );
+}
+add_filter( 'registration_redirect', '__my_registration_redirect' );
+
+
+if ( ! function_exists( 'rd_my_login_css' ) ) :
+/**
+ * Add custom styles for login form (brings entire form up to accommodate for custom header logo)
+ */
+function rd_my_login_css() {
+  echo '<style type="text/css">#login { padding: 15px 0 0; margin: auto; } .login h1 a { padding-bottom: 0px; }</style>';
+}
+add_action('login_head', 'rd_my_login_css');
+endif;
+
+
+if ( ! function_exists( 'rd_sc_static_html' ) ) :
+/**
+ * Shortcode for including Static HTML Files in posts
+ */
+function rd_sc_static_html ($atts) {
+
+	// Extract Shortcode Parameters/Attributes
+    extract( shortcode_atts( array(
+    'subdir' => NULL,
+    'file' => NULL
+    ), $atts ) );
+
+    // Set file path
+    $path_base = ABSPATH."wp-content/static-files/";
+    $path_file = ($subdir == NULL) ? $path_base.$file : $path_base.$subdir."/".$file;
+
+    // Load file or, if absent. throw error
+    if (file_exists($path_file)) {
+        $file_content = file_get_contents($path_file);
+        return $file_content;
+    }
+    else {
+        trigger_error("'$path_file' file not found", E_USER_WARNING);
+        return "FILE NOT FOUND: ".$path_file."
+SUBDIR = ".$subdir."
+FILE = ".$file."
+
+";
+    }
+}
+add_shortcode('static_html', 'rd_sc_static_html');
+endif;
+
+
+if ( ! function_exists( 'rd_custom_mime_media_types' ) ) :
+/**
+ * Allow Custom MIME Types to be uploaded via WordPress Media Library
+ */
+function rd_custom_mime_media_types( $mimes ) {
+    $mimes = array_merge($mimes, array(
+        'epub|mobi' => 'application/octet-stream'
+    ));
+    return $mimes;
+}
+add_filter('upload_mimes', 'rd_custom_mime_media_types');
+endif;
