@@ -336,7 +336,13 @@ function raamdev_pageslide_subscribe_form() {
 	<input type="submit" value="Subscribe »" tabindex="503" >
 	</form>
 	<hr>
-	<small>RSS Feeds:&nbsp;<a href="a">All Topics</a> · <a href="a">Personal Reflections</a> · <a href="a">Writing & Publishing</a> · <a href="a">Technology</a></small>
+	<small>
+		RSS Feeds:&nbsp;
+		<a href="http://feeds.feedburner.com/RaamDevAllTopics">All Topics</a> · 
+		<a href="http://feeds.feedburner.com/RaamDevsWeblog">Personal Reflections</a> · 
+		<a href="http://feeds.feedburner.com/RaamDevWriting">Writing & Publishing</a> · 
+		<a href="http://feeds.feedburner.com/RaamDevTechnology">Technology</a>
+	</small>
 	<br/><br/>
 	<a href="javascript:$.pageslide.close()">« Back</a>
 	</section>
