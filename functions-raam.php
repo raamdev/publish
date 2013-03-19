@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customize the output of pings in the comments section (used by comments.php)
  */
@@ -14,52 +15,6 @@ function publish_theme_pings($comment, $args, $depth) {
 
      </div>
 <?php }
-
-
-
-/*
- * Create Custom Post Types
- */
-add_action( 'init', 'create_post_type_thoughts' );
-add_action( 'init', 'create_post_type_journal' );
-
-function create_post_type_thoughts() {	
-	register_post_type('thoughts', array(	'label' => 'Thoughts','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields','post-formats',),'taxonomies' => array('post_tag',),'labels' => array (
-	  'name' => 'Thoughts',
-	  'singular_name' => 'Thought',
-	  'menu_name' => 'Thoughts',
-	  'add_new' => 'Add Thought',
-	  'add_new_item' => 'Add New Thought',
-	  'edit' => 'Edit',
-	  'edit_item' => 'Edit Thought',
-	  'new_item' => 'New Thought',
-	  'view' => 'View Thought',
-	  'view_item' => 'View Thought',
-	  'search_items' => 'Search Thoughts',
-	  'not_found' => 'No Thoughts Found',
-	  'not_found_in_trash' => 'No Thoughts Found in Trash',
-	  'parent' => 'Parent Thought',
-	),) );	
-}
-
-function create_post_type_journal() {
-	register_post_type('journal', array(	'label' => 'Journal','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'has_archive' => true,'supports' => array('title','editor','trackbacks','comments','revisions','custom-fields','post-formats',),'taxonomies' => array('post_tag','category',),'labels' => array (
-	  'name' => 'Journal',
-	  'singular_name' => 'Journal Entry',
-	  'menu_name' => 'Journal',
-	  'add_new' => 'Add Journal',
-	  'add_new_item' => 'Add New Journal',
-	  'edit' => 'Edit',
-	  'edit_item' => 'Edit Journal',
-	  'new_item' => 'New Journal',
-	  'view' => 'View Journal',
-	  'view_item' => 'View Journal',
-	  'search_items' => 'Search Journal',
-	  'not_found' => 'No Journal Entries Found',
-	  'not_found_in_trash' => 'No Journal Entries Found in Trash',
-	  'parent' => 'Parent Journal Entry',
-	),) );
-}
 
 if ( ! function_exists( 'get_ncl_location' ) ) :
 /**
