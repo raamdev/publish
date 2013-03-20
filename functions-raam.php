@@ -67,6 +67,10 @@ function raamdev_post_meta() {
 
 		} // end check for categories on this blog
 
+		// Add Authorship information to improve SEO
+		$author_info = '<span class="byline"> Created by <span class="author vcard"><a class="url fn n" href="'. get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" title="'. sprintf( __( 'View all posts by %s', 'publish' ), get_the_author() ) .'" rel="author">' . get_the_author() . '</a></span> <span><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span>';
+		$meta_text = $meta_text . $author_info;
+
 		printf(
 			$meta_text,
 			$category_list,

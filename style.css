@@ -1084,6 +1084,9 @@ table th {
  */
 
 body { color: black; }
+
+.byline { display: none !important; }
+
 ol.pinglist { list-style: none; }
 .comment-meta a:before {
 	content: "";
