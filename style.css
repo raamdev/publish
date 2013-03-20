@@ -1227,5 +1227,58 @@ padding: 0;
 /* End styles for displaying pageslide subscribe form
  **************************************/
 
-div.sharedaddy h3, #content div.sharedaddy h3, #main div.sharedaddy h3, #primary div.sharedaddy h3 { font-weight: normal !important; }
-div.sharedaddy div.sd-block { padding-top: 30px !important; }
+/****************************************
+ * CSS styles for sharing buttons
+ */
+
+div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; }
+
+div.rd-sharing-buttons .twitter,
+div.rd-sharing-buttons .facebook,
+div.rd-sharing-buttons .googleplus { margin-right: 35px; float: left; }
+
+div.rd-sharing-buttons .facebook { padding: 0px; width: 95px; overflow: hidden; }
+
+/* Email sharing button, requires  */
+div.rd-sharing-buttons .email { margin-top: -3px; float: left; }
+div.rd-sharing-buttons .email a.sd-button {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	background: -webkit-linear-gradient(top, #f7f7f7 0%,#efefef 100%);
+	border-radius: 3px;
+	border: 1px solid #ddd !important;
+	box-shadow: inset 0 1px 0 #fff;
+	color: #000 !important;
+	text-decoration: none;
+	line-height: 1;
+	font-size: 12px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	padding-top: 2px;
+	padding-left: 2px;
+}
+
+div.rd-sharing-buttons .email a,
+div.rd-sharing-buttons .email a:link,
+div.rd-sharing-buttons .email a:visited {
+	font-style: normal;
+}
+div.rd-sharing-buttons .email a.sd-button {
+	color: #000 !important;
+}
+
+div.rd-sharing-buttons .email a.sd-button > span {
+	background-image: url('inc/images/email.png');
+	padding: 1px 5px 1px 23px !important;
+	background-position; 2px center;
+	background-repeat: no-repeat;
+}
+div.rd-sharing-buttons .email a.sd-button > span {
+	padding: 0px 25px;
+	display: block;
+	opacity: .8;
+	line-height: 1.3em;
+	text-shadow: none;
+}
+/**********************************/

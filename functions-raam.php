@@ -123,21 +123,32 @@ function raamdev_post_header_meta() {
 endif;
 
 
-function sharing_buttons() {
+if ( ! function_exists( 'rd_sharing_buttons' ) ) :
+/**
+ * Returns post header metadata
+ */
+function rd_sharing_buttons() {
 ?>
-
-<!-- START POST SHARING -->
-
-<div style="width: 400px; margin: 0 auto;">
-			<div style="float: right; margin-left: 0.75em;"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php the_title(); ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
-<div style="float: right; margin-right: 120px;"><g:plusone size="medium" annotation="none"></g:plusone></div>
-<div align="left" style="padding: 0px; width: 95px; overflow: hidden;"><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=129928197106327" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe></div>
+<!-- START SHARING BUTTONS -->
+<div class="rd-sharing-buttons">
+	<!-- Google Plus One Button -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	<!-- Google Plus One Button -->
+	<div class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php get_the_title(); ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+	<div align="left" class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=129928197106327" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe></div>
+	<div class="googleplus"><g:plusone size="medium" annotation="none"></g:plusone></div>
+	<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
+	<?php if( function_exists('wp_email') ) : ?>
+		<div class="email">
+			<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
+		</div>
+	<?php endif; ?>
 </div>
 
-<!-- END POST SHARING -->
+<!-- END SHARING BUTTONS -->
 
 <?php }
-
+endif;
 
 if ( ! function_exists( 'is_raamdev_journal_viewable' ) ) :
 /**
