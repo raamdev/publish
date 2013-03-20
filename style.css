@@ -1079,10 +1079,11 @@ table th {
 	}
 }
 
-/**
+/******************************************************************************
  * Styles added by Raam Dev
  */
 
+body { color: black; }
 ol.pinglist { list-style: none; }
 .comment-meta a:before {
 	content: "";
@@ -1231,7 +1232,7 @@ padding: 0;
  * CSS styles for sharing buttons
  */
 
-div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; }
+div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; opacity: .5; }
 
 div.rd-sharing-buttons .twitter,
 div.rd-sharing-buttons .facebook,
