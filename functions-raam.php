@@ -125,7 +125,7 @@ endif;
 
 if ( ! function_exists( 'rd_sharing_buttons' ) ) :
 /**
- * Returns post header metadata
+ * Displays sharing buttons
  */
 function rd_sharing_buttons() {
 ?>
