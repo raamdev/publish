@@ -128,13 +128,19 @@ if ( ! function_exists( 'rd_sharing_buttons' ) ) :
  * Displays sharing buttons
  */
 function rd_sharing_buttons() {
+
+	// the_title_attribute() returns title with "Aside: " prepended.
+	// This removes that so tweets only include the title.
+	$dirty_title = the_title_attribute('echo=0');
+	$clean_title = str_replace('Aside: ', '', $dirty_title);
+
 ?>
 <!-- START SHARING BUTTONS -->
 <div class="rd-sharing-buttons">
 	<!-- Google Plus One Button -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 	<!-- Google Plus One Button -->
-	<div class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php get_the_title(); ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+	<div class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
 	<div align="left" class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=129928197106327" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe></div>
 	<div class="googleplus"><g:plusone size="medium" annotation="none"></g:plusone></div>
 	<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
