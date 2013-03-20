@@ -1124,6 +1124,10 @@ ol.pinglist { list-style: none; }
 @media only screen and (max-width : 900px) {
 /* Styles */
 
+	.site { padding: 1em; }
+	.format-aside p { font-size: 150%; line-height: 30px; }
+	body { font-size: 16px; }
+
 	.site-description-location {
 		clear: none;
 		margin-left: 70px;
