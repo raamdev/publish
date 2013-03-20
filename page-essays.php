@@ -13,7 +13,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', 'page' ); ?>
 					
 					<?php if ( function_exists('wp_tag_cloud') ) : ?>
-						<h2>Most Commonly Used Tags</h2>
+						<h2>Commonly Used Tags</h2>
 						<?php wp_tag_cloud('smallest=10&largest=22'); ?>
 					<?php endif; ?>
 
