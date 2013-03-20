@@ -1088,7 +1088,7 @@ ol.pinglist { list-style: none; }
 	content: "";
 }
 
-.format-aside { 
+.format-aside p {
 	font-size: 200%;
 	line-height: 40px;
 }
