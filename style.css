@@ -1286,3 +1286,55 @@ div.rd-sharing-buttons .email a.sd-button > span {
 	text-shadow: none;
 }
 /**********************************/
+
+
+/************ CONTACT ICONS ***************/
+
+.say-hello {
+	margin: 0 auto;
+	margin-bottom: 250px;
+}
+
+.say-hello-twitter {
+	float: left;
+	width: 187px;
+	text-align: center;
+	margin-top: 55px;
+	max-width:80px;
+	margin-right: 60px;
+}
+.say-hello-twitter-img {
+	margin-bottom: 18px;
+}
+.say-hello-googleplus {
+	float: left;
+	width: 187px;
+	text-align: center;
+	margin-top: 55px;
+	max-width:50px;
+	margin-right: 60px;
+}
+.say-hello-googleplus-img {
+	margin-bottom: 0px;
+}
+.say-hello-facebook {
+	float: left;
+	width: 187px;
+	text-align: center;
+	margin-top: 54px;
+	max-width:55px;
+	margin-right: 40px;
+}
+.say-hello-facebook-img {
+	margin-bottom: 0px;
+}
+.say-hello-email {
+	float: left;
+	width: 187px;
+	text-align: center;
+	margin-top: 50px;
+	max-width: 125px;
+}
+.say-hello-email-img {
+	margin-bottom: 18px;
+}
