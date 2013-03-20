@@ -13,7 +13,7 @@
 			<?php // Show tag cloud on category and tag archives pages ?>
 			<?php if ( is_category() || is_tag() ) { ?>
 				<div id="tag-box">
-					<h3>Category Tags:</h3>
+					<h3>Tags:</h3>
 				<?php 
 				  if( function_exists("stc_widget") )
 				    stc_widget();
