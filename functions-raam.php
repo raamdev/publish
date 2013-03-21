@@ -579,3 +579,13 @@ function rd_custom_mime_media_types( $mimes ) {
 }
 add_filter('upload_mimes', 'rd_custom_mime_media_types');
 endif;
+
+/**
+ * Remove specific Post Format's from the post title
+ */
+function rd_suppress_post_format_title($title, $id) {
+	$clean_title = str_replace('Aside: ', '', $title);
+	return $clean_title;
+
+}
+add_filter('the_title', 'rd_suppress_post_format_title', 10, 2);
