@@ -24,9 +24,8 @@ if ( post_password_required() )
 
 	<?php // You can start editing here -- including this comment! ?>
 	
-	<div class="leave-a-reply"><a href="#respond">Comment Form ↓</a></div>
-	
 	<?php if ( have_comments() ) : ?>
+			<div class="leave-a-reply"><a href="#respond">Comment Form ↓</a></div>
 		<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
 			<!-- <h2 class="comments-title">
 				<?php
