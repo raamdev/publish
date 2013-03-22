@@ -1099,6 +1099,10 @@ ol.pinglist { list-style: none; }
 
 #respond { padding: 30px; background: #eee; margin-bottom: 40px; padding-top: 5px; }
 
+/* Leave a Reply link at the top of the comment list */
+.leave-a-reply { float: right; margin-top: -30px; }
+.leave-a-reply a { text-decoration: none; }
+
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
 
