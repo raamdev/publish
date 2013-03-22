@@ -16,6 +16,7 @@ function publish_theme_pings($comment, $args, $depth) {
      </div>
 <?php }
 
+
 if ( ! function_exists( 'get_ncl_location' ) ) :
 /**
  * Returns location information supplied by Nomad Current Location plugin
@@ -68,7 +69,7 @@ function raamdev_post_meta() {
 		} // end check for categories on this blog
 
 		// Add Authorship information to improve SEO
-		$author_info = '<span class="byline"> Created by <span class="author vcard"><a class="url fn n" href="'. get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" title="'. sprintf( __( 'View all posts by %s', 'publish' ), get_the_author() ) .'" rel="author">' . get_the_author() . '</a></span> <span><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span>';
+		$author_info = '<span class="byline"> Created by <span class="author vcard"><a class="url fn n" href="'. get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" title="'. sprintf( __( 'View all posts by %s', 'publish' ), get_the_author() ) .'" rel="author">' . get_the_author() . '</a></span> <span><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
 		$meta_text = $meta_text . $author_info;
 
 		printf(
@@ -137,7 +138,7 @@ function rd_sharing_buttons() {
 	// This removes that so tweets only include the title.
 	$dirty_title = the_title_attribute('echo=0');
 	$clean_title = str_replace('Aside: ', '', $dirty_title);
-
+	
 ?>
 <!-- START SHARING BUTTONS -->
 <div class="rd-sharing-buttons">
@@ -159,6 +160,7 @@ function rd_sharing_buttons() {
 
 <?php }
 endif;
+
 
 if ( ! function_exists( 'is_raamdev_journal_viewable' ) ) :
 /**
@@ -586,6 +588,12 @@ endif;
 function rd_suppress_post_format_title($title, $id) {
 	$clean_title = str_replace('Aside: ', '', $title);
 	return $clean_title;
-
+	
 }
 add_filter('the_title', 'rd_suppress_post_format_title', 10, 2);
+
+function rd_custom_shortlink_filter() {
+	$permalink = get_permalink();
+	return $permalink;
+}
+add_filter('get_shortlink','rd_custom_shortlink_filter');
