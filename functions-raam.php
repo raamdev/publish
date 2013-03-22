@@ -200,18 +200,24 @@ if ( ! function_exists( 'the_raamdev_journal_not_released_message' ) ) :
  * Returns message about journal not released yet
  */
 function the_raamdev_journal_not_released_message() {
+	// Used to make the journal entry greyed out when it's unvailable
+	$post_id = get_the_ID(); 
+	?>
 
-		?>
-						<div id="journal-notice"><blockquote>
-										<p>This journal entry has not been released into the public domain and is currently only available through a subscription to the <a href="http://raamdev.com/about/journal/">Journal</a> or a <a href="/about/journal/#one_time_donation">one-time donation</a>.</p>
-	<?php if(is_user_logged_in()) { ?>
-	<p>Since you're already logged in, you can <a href="/account/modification/">upgrade now</a> to receive access to this entry.</p>
-	<?php } else { ?>
-	<p>If you have an active subscription to the Journal, please <a href="https://raamdev.com/wordpress/wp-login.php">login</a> to access this entry (you may need to <a href="https://raamdev.com/wordpress/wp-login.php?action=lostpassword">reset your password</a> first).</p>
-	<?php } ?>
-
-						</blockquote></div>
-	<?php }
+	<style type="text/css">
+	#post-<?php echo $post_id;?> { opacity: 0.5; }
+	</style>
+	<div id="journal-notice">
+		<blockquote>
+			<p>This journal entry has not been released into the public domain and is currently only available through a subscription to the <a href="http://raamdev.com/about/journal/">Journal</a> or a <a href="/about/journal/#one_time_donation">one-time donation</a>.</p>
+			<?php if(is_user_logged_in()) { ?>
+				<p>Since you're already logged in, you can <a href="/account/modification/">upgrade now</a> to receive access to this entry.</p>
+			<?php } else { ?>
+				<p>If you have an active subscription to the Journal, please <a href="https://raamdev.com/wordpress/wp-login.php">login</a> to access this entry (you may need to <a href="https://raamdev.com/wordpress/wp-login.php?action=lostpassword">reset your password</a> first).</p>
+			<?php } ?>
+		</blockquote>
+	</div>
+<?php }
 endif;
 
 
