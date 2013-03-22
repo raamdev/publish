@@ -1114,7 +1114,7 @@ ol.pinglist { list-style: none; }
 
 .format-standard .entry-content { font-size: 17px; line-height: 1.618em; }
 .entry-header h1 { font-size: 25px !important; }
-.entry-header h1, .entry-content h1 { font-weight: normal !important;  }
+.entry-header h1, .entry-content h1, .comments-area h2 { font-weight: normal !important;  }
 
 .blog .format-aside .entry-meta .meta-data, 
 .archive .format-aside .entry-meta .meta-data, 
