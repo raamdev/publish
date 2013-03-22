@@ -1212,7 +1212,7 @@ vertical-align: middle;
 position: relative;
 }
 
-section {
+#pageslide section {
 max-width: 650px;
 margin: 0 auto;
 padding: 30px 30px 60px 30px;
