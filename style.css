@@ -1114,7 +1114,13 @@ ol.pinglist { list-style: none; }
 .entry-header h1,
 .comments-area,
 .format-standard .entry-content,
-.comment-author .fn ,
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content h5,
+.site-content h6,
+.comment-author .fn,
 .comment-content { font-family: Georgia,Cambria,serif !important; }
 
 /* Clean up the comments section a bit  */
@@ -1124,7 +1130,14 @@ ol.pinglist { list-style: none; }
 
 .format-standard .entry-content { font-size: 17px; line-height: 1.618em; }
 .entry-header h1 { font-size: 25px !important; }
-.entry-header h1, .entry-content h1, .comments-area h2 { font-weight: normal !important;  }
+.entry-header h1,
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content h5,
+.site-content h6,
+.comments-area h2 { font-weight: normal !important;  }
 
 .blog .format-aside .entry-meta .meta-data, 
 .archive .format-aside .entry-meta .meta-data, 
