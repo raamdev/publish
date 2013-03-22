@@ -1103,6 +1103,7 @@ ol.pinglist { list-style: none; }
 
 /* Use a different font for some things */
 .entry-header h1,
+.comments-area,
 .format-standard .entry-content,
 .comment-author .fn ,
 .comment-content { font-family: Georgia,Cambria,serif !important; }
