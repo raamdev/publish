@@ -1088,6 +1088,7 @@ body { color: black; }
 .byline { display: none !important; }
 
 ol.pinglist { list-style: none; }
+
 .comment-meta a:before {
 	content: "";
 }
@@ -1103,6 +1104,8 @@ ol.pinglist { list-style: none; }
 /* Leave a Reply link at the top of the comment list */
 .leave-a-reply { float: right; margin-top: -30px; }
 .leave-a-reply a { text-decoration: none; }
+
+.entry-title a { color: black; }
 
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
