@@ -1098,6 +1098,8 @@ ol.pinglist { list-style: none; }
 	font-family: Georgia,Cambria,serif;
 }
 
+#respond { padding: 30px; background: #eee; margin-bottom: 40px; padding-top: 5px; }
+
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
 
