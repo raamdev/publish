@@ -916,7 +916,7 @@ h6 {
 	background-color: #ffffff;
 	margin: 60px auto;
 	padding: 0 40px;
-	width: 750px;
+	width: 850px;
 }
 
 .site-header {
@@ -1093,12 +1093,28 @@ ol.pinglist { list-style: none; }
 }
 
 .format-aside p {
-	font-size: 200%;
+	font-size: 25px;
 	line-height: 40px;
+	font-family: Georgia,Cambria,serif;
 }
 
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
+
+/* Use a different font for some things */
+.entry-header h1,
+.format-standard .entry-content,
+.comment-author .fn ,
+.comment-content { font-family: Georgia,Cambria,serif !important; }
+
+/* Clean up the comments section a bit  */
+.comment-meta { margin-bottom: 10px !important; }
+.comment-content { font-size: 1.1em; }
+.comment-author .fn, .comment-author .fn a { color: black; font-size: 110%; font-weight: normal; }
+
+.format-standard .entry-content { font-size: 17px; line-height: 1.618em; }
+.entry-header h1 { font-size: 25px !important; }
+.entry-header h1, .entry-content h1 { font-weight: normal !important;  }
 
 .blog .format-aside .entry-meta .meta-data, 
 .archive .format-aside .entry-meta .meta-data, 
@@ -1128,7 +1144,7 @@ ol.pinglist { list-style: none; }
 @media only screen and (max-width : 900px) {
 /* Styles */
 
-	.site { padding: 1em; }
+	.site { padding: 1em; max-width: 600px; }
 	.format-aside p { font-size: 150%; line-height: 30px; }
 	body { font-size: 16px; }
 
