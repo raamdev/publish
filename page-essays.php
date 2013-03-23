@@ -13,8 +13,10 @@ get_header(); ?>
 					<?php get_template_part( 'content', 'page' ); ?>
 					
 					<?php if ( function_exists('wp_tag_cloud') ) : ?>
+						<div class="commonly-used-tags">
 						<h2>Commonly Used Tags</h2>
 						<?php wp_tag_cloud('smallest=10&largest=22'); ?>
+						</div>
 					<?php endif; ?>
 
 					<?php comments_template( '', true ); ?>

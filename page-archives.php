@@ -32,8 +32,10 @@ get_header(); ?>
 				</ul>
 				
 				<?php if ( function_exists('wp_tag_cloud') ) : ?>
+					<div class="commonly-used-tags">
 					<h2>Commonly Used Tags</h2>
 					<?php wp_tag_cloud('smallest=10&largest=22'); ?>
+					</div>
 				<?php endif; ?>
 
 			</div><!-- #content .site-content -->

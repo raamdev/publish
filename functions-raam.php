@@ -598,8 +598,29 @@ function rd_suppress_post_format_title($title, $id) {
 }
 add_filter('the_title', 'rd_suppress_post_format_title', 10, 2);
 
+/**
+ * Return the full permalink instead of the shortlink
+ */
 function rd_custom_shortlink_filter() {
 	$permalink = get_permalink();
 	return $permalink;
 }
 add_filter('get_shortlink','rd_custom_shortlink_filter');
+
+/**
+ * Fix comment count so that it doesn't include pings/trackbacks
+ */
+add_filter('get_comments_number', 'comment_count', 0);
+function comment_count( $count ) {
+ if ( ! is_admin() ) {
+   global $id;
+
+   $comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
+
+   return count($comments_by_type['comment']);
+ } else {
+
+   return $count;
+
+ }
+}
