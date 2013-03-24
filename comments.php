@@ -88,13 +88,15 @@ if ( post_password_required() )
 	<?php if ( have_comments() ) : ?>
 	<?php if ( count($wp_query->comments_by_type['pings'])) { ?>
 	<br />
-	<h2 class="comments-title"><?php// echo count($wp_query->comments_by_type['pings']); ?>Readers who shared <em><?php the_title(); ?></em></h2>
-	        <ol class="pinglist">
+	<h3 class="comments-title"><?php// echo count($wp_query->comments_by_type['pings']); ?>Readers who shared <em><?php the_title(); ?></em></h3>
+	        <ul class="pinglist">
 	                <?php wp_list_comments('type=pings&callback=publish_theme_pings'); ?>
-	        </ol>
+	        </ul>
 	<?php } ?>
 	<?php endif; ?>
 
 	<!-- END PING/TRACKBACKS LIST -->
-
+	<!-- START Efficient Related Posts LIST -->
+	<?php if( function_exists('wp_related_posts') ) { do_action('erp-show-related-posts', array('title'=>'Related Thoughts, Essays, and Journals', 'num_to_display'=>12, 'no_rp_text'=>'No Related Posts Found')); } ?>
+	<!-- END Efficient Related Posts LIST -->
 </div><!-- #comments .comments-area -->
