@@ -96,7 +96,9 @@ if ( post_password_required() )
 	<?php endif; ?>
 
 	<!-- END PING/TRACKBACKS LIST -->
+	<?php if( is_single() ) : ?>
 	<!-- START Efficient Related Posts LIST -->
 	<?php if( function_exists('wp_related_posts') ) { do_action('erp-show-related-posts', array('title'=>'Related Thoughts, Essays, and Journals', 'num_to_display'=>12, 'no_rp_text'=>'No Related Posts Found')); } ?>
+	<?php endif; ?>
 	<!-- END Efficient Related Posts LIST -->
 </div><!-- #comments .comments-area -->
