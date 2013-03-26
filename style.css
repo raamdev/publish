@@ -1098,6 +1098,7 @@ body { color: black; }
 	font-size: 25px;
 	line-height: 40px;
 	font-family: Georgia,Cambria,serif;
+	font-style: italic;
 }
 
 .commonly-used-tags { font-family: Georgia,Cambria,serif !important; }
