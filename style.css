@@ -1184,6 +1184,12 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 		clear: none;
 		margin-left: 70px;
 	}
+}
+
+
+/* iPhones ----------- */
+@media only screen and (max-width : 480px) {
+/* Styles */
 
 	/* Pageslide styles for improved iPhone display */
 	#signup form { margin-top: 20px !important; }
