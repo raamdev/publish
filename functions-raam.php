@@ -146,7 +146,7 @@ function rd_sharing_buttons() {
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 	<!-- Google Plus One Button -->
 	<div class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
-	<div align="left" class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=129928197106327" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:130px; height:21px;" allowTransparency="true"></iframe></div>
+	<div class="facebook"><a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
 	<div class="googleplus"><g:plusone size="medium" annotation="none"></g:plusone></div>
 	<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 	<?php if( function_exists('wp_email') ) : ?>

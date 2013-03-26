@@ -1289,7 +1289,7 @@ div.rd-sharing-buttons .twitter,
 div.rd-sharing-buttons .facebook,
 div.rd-sharing-buttons .googleplus { margin-right: 35px; float: left; }
 
-div.rd-sharing-buttons .facebook { padding: 0px; width: 95px; overflow: hidden; }
+div.rd-sharing-buttons .facebook { margin-top: 1px; }
 
 /* Email sharing button, requires  */
 div.rd-sharing-buttons .email { margin-top: -3px; float: left; }
