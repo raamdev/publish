@@ -145,12 +145,12 @@ function rd_sharing_buttons() {
 	<!-- Google Plus One Button -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 	<!-- Google Plus One Button -->
-	<div class="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
-	<div class="facebook"><a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
-	<div class="googleplus"><g:plusone size="medium" annotation="none"></g:plusone></div>
+	<div id="twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+	<div id="facebook"><a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
+	<div id="googleplus"><g:plus action="share" width="57" size="medium" annotation="none"></g:plusone></div>
 	<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 	<?php if( function_exists('wp_email') ) : ?>
-		<div class="email">
+		<div id="email">
 			<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
 		</div>
 	<?php endif; ?>

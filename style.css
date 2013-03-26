@@ -1283,17 +1283,20 @@ padding: 0;
  * CSS styles for sharing buttons
  */
 
-div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; opacity: .5; }
+div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; }
 
-div.rd-sharing-buttons .twitter,
-div.rd-sharing-buttons .facebook,
-div.rd-sharing-buttons .googleplus { margin-right: 35px; float: left; }
+div.rd-sharing-buttons #twitter,
+div.rd-sharing-buttons #facebook,
+div.rd-sharing-buttons #googleplus { margin-right: 35px; float: left; }
 
-div.rd-sharing-buttons .facebook { margin-top: 1px; }
+#twitter, #facebook, #googleplus, #email { opacity: .5; }
+#twitter:hover, #facebook:hover, #googleplus:hover, #email:hover { opacity: 1; }
+
+div.rd-sharing-buttons #facebook { margin-top: 1px; }
 
 /* Email sharing button, requires  */
-div.rd-sharing-buttons .email { margin-top: -3px; float: left; }
-div.rd-sharing-buttons .email a.sd-button {
+div.rd-sharing-buttons #email { margin-top: -3px; float: left; }
+div.rd-sharing-buttons #email a.sd-button {
 	margin: 0;
 	padding: 0;
 	display: inline-block;
@@ -1311,22 +1314,22 @@ div.rd-sharing-buttons .email a.sd-button {
 	padding-left: 2px;
 }
 
-div.rd-sharing-buttons .email a,
-div.rd-sharing-buttons .email a:link,
-div.rd-sharing-buttons .email a:visited {
+div.rd-sharing-buttons #email a,
+div.rd-sharing-buttons #email a:link,
+div.rd-sharing-buttons #email a:visited {
 	font-style: normal;
 }
-div.rd-sharing-buttons .email a.sd-button {
+div.rd-sharing-buttons #email a.sd-button {
 	color: #000 !important;
 }
 
-div.rd-sharing-buttons .email a.sd-button > span {
+div.rd-sharing-buttons #email a.sd-button > span {
 	background-image: url('inc/images/email.png');
 	padding: 1px 5px 1px 23px !important;
 	background-position; 2px center;
 	background-repeat: no-repeat;
 }
-div.rd-sharing-buttons .email a.sd-button > span {
+div.rd-sharing-buttons #email a.sd-button > span {
 	padding: 0px 25px;
 	display: block;
 	opacity: .8;
