@@ -132,7 +132,7 @@ add_action( 'publish_credits', 'publish_footer_credits' );
 function publish_get_footer_credits( $credits = '' ) {
 	return sprintf(
 		'%1$s',
-		sprintf( __( '%1$s %2$s by %3$s', 'publish' ), 'Publish theme', '<a href="https://github.com/raamdev/publish/tree/raamdev">forked</a>', '<a href="http://raamdev.com/" rel="designer">Raam Dev</a>' )
+		sprintf( __( '%1$s %2$s by %3$s', 'publish' ), 'Publish theme', '<a href="https://github.com/raamdev/publish">forked</a>', '<a href="http://raamdev.com/" rel="designer">Raam Dev</a>' )
 	);
 }
 add_filter( 'infinite_scroll_credit', 'publish_get_footer_credits' );
