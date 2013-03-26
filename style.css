@@ -1091,6 +1091,9 @@ body { color: black; }
 	content: "";
 }
 
+.trackback cite { font-style: normal; }
+.trackback span { font-family: sans-serif; font-size: 11px; color: #AAAAAA; }
+
 .format-aside p {
 	font-size: 25px;
 	line-height: 40px;
