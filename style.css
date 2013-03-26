@@ -1289,7 +1289,7 @@ div.rd-sharing-buttons #twitter,
 div.rd-sharing-buttons #facebook,
 div.rd-sharing-buttons #googleplus { margin-right: 35px; float: left; }
 
-#twitter, #facebook, #googleplus, #email { opacity: .5; }
+#twitter, #facebook, #googleplus, #email { opacity: .3; }
 #twitter:hover, #facebook:hover, #googleplus:hover, #email:hover { opacity: 1; }
 
 div.rd-sharing-buttons #facebook { margin-top: 1px; }
