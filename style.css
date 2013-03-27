@@ -320,15 +320,15 @@ textarea {
 
 /* Links */
 a {
-	color: #26ADE4;
+	color: rgb(0, 120, 168);
 }
 a:visited {
-	color: #26ADE4;
+	color: rgb(0, 120, 168);
 }
 a:hover,
 a:focus,
 a:active {
-	color: #1E8AB6;
+	color: #26ADE4;
 }
 
 /* Alignment */
