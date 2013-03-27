@@ -88,7 +88,7 @@ if ( post_password_required() )
 	<?php if ( have_comments() ) : ?>
 	<?php if ( count($wp_query->comments_by_type['pings'])) { ?>
 	<br />
-	<h3 class="comments-title"><?php// echo count($wp_query->comments_by_type['pings']); ?>Readers who shared <em><?php the_title(); ?></em></h3>
+	<h3 id="pings" class="comments-title"><?php// echo count($wp_query->comments_by_type['pings']); ?>Readers who shared <em><?php the_title(); ?></em></h3>
 	        <ul class="pinglist">
 	                <?php wp_list_comments('type=pings&callback=publish_theme_pings'); ?>
 	        </ul>
