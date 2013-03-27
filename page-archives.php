@@ -8,35 +8,14 @@ get_header(); ?>
 		<div id="primary" class="content-area">
 			<div id="content" class="site-content" role="main">
 
-				<?php the_post(); ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-				
-				<h2>Search the Archives</h2>
-				<?php get_search_form(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-				<h2>Yearly Archives</h2>
-				<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
-				  <option value=""><?php echo esc_attr( __( 'Select Year' ) ); ?></option> 
-				  <?php wp_get_archives( array( 'type' => 'yearly', 'format' => 'option' ) ); ?>
-				</select>
+					<?php // Disabled because we control the output of the archive page in this template ?>
+					<?php get_template_part( 'content', 'page-archive' ); ?>
 
-				<h2>Monthly Archives</h2>
-				<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
-				  <option value=""><?php echo esc_attr( __( 'Select Month' ) ); ?></option> 
-				  <?php wp_get_archives( array( 'type' => 'monthly', 'format' => 'option' ) ); ?>
-				</select>
+					<?php comments_template( '', true ); ?>
 
-				<h2>Category Archives</h2>
-				<ul>
-					 <?php wp_list_categories('title_li='); ?>
-				</ul>
-				
-				<?php if ( function_exists('wp_tag_cloud') ) : ?>
-					<div class="commonly-used-tags">
-					<h2>Commonly Used Tags</h2>
-					<?php wp_tag_cloud('smallest=10&largest=22'); ?>
-					</div>
-				<?php endif; ?>
+				<?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content .site-content -->
 		</div><!-- #primary .content-area -->

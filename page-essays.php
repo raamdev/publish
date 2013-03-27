@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Footer Tag Cloud 
+ * Template Name: Essays Page
  */
 
 get_header(); ?>
@@ -10,14 +10,7 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'page' ); ?>
-					
-					<?php if ( function_exists('wp_tag_cloud') ) : ?>
-						<div class="commonly-used-tags">
-						<h2>Commonly Used Tags</h2>
-						<?php wp_tag_cloud('smallest=10&largest=22'); ?>
-						</div>
-					<?php endif; ?>
+					<?php get_template_part( 'content', 'page-essays' ); ?>
 
 					<?php comments_template( '', true ); ?>
 
