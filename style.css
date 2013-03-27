@@ -923,7 +923,7 @@ h6 {
 	float: left;
 	margin-top: 34px;
 	margin-bottom: 40px;
-	width: 19%;
+	width: 20%;
 }
 
 .site-content,
@@ -934,7 +934,7 @@ h6 {
 
 .widget-area {
 	float: left;
-	width: 19%; /* Sidebar 1 */
+	width: 20%; /* Sidebar 1 */
 	clear: left;
 }
 
