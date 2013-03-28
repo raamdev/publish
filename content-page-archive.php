@@ -45,7 +45,7 @@
 		
 		<?php if ( class_exists('SnazzyArchives') ) : ?> 
 			<hr>
-			<h2>Full Archive Overview</h2>
+			<h2>Explore the Full Archives (click month headers to see posts)</h2>
 			<?php echo do_shortcode("[snazzy-archive]"); ?>
 		<?php endif; ?>
 		
