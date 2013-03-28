@@ -1095,6 +1095,7 @@ body { color: black; }
 .sz_excerpt { display: none; }
 .sz_title { font-weight: normal !important; font-size: 12px !important; }
 .snazzy a:visited { color: #444 !important; }
+.snazzy a:hover { color: #26ADE4 !important; }
 .sz_img { height: inherit !important; line-height: 18px !important; }
 .sz_clr { padding-top: 10px !important; }
 
