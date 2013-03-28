@@ -743,10 +743,6 @@ ul.children .comment-author {
 	-o-transform: rotate(-45deg);
 }
 
-.form-allowed-tags {
-	display: none;
-}
-
 .bypostauthor {}
 
 /* =Widgets
@@ -1090,6 +1086,8 @@ body { color: black; }
 .comment-meta a:before {
 	content: "";
 }
+
+.form-allowed-tags code { font-size: 10px; }
 
 /* Custom styles for the Snazzy Archives plugin */
 .sz_excerpt { display: none; }
