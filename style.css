@@ -1110,6 +1110,8 @@ body { color: black; }
 	font-style: italic;
 }
 
+.format-image .entry-header { display: none; }
+
 .commonly-used-tags { font-family: Georgia,Cambria,serif !important; margin-bottom: 40px; }
 
 #respond { padding: 30px; background: #eee; margin-bottom: 40px; padding-top: 5px; }
