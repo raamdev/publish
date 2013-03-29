@@ -1089,6 +1089,8 @@ body { color: black; }
 
 .form-allowed-tags code { font-size: 10px; }
 
+.comments-area input, .comments-area select, .comments-area textarea { font-family: serif !important; }
+
 /* Custom styles for the Snazzy Archives plugin */
 .sz_excerpt { display: none; }
 .sz_title { font-weight: normal !important; font-size: 12px !important; }
