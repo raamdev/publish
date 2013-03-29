@@ -1090,6 +1090,7 @@ body { color: black; }
 .form-allowed-tags code { font-size: 10px; }
 
 .comments-area input, .comments-area select, .comments-area textarea { font-family: serif !important; }
+.comments-area textarea { padding: 10px; }
 
 /* Custom styles for the Snazzy Archives plugin */
 .sz_excerpt { display: none; }
