@@ -79,7 +79,7 @@ if ( post_password_required() )
 
 	<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
 		
-		<?php comment_form(); ?>
+		<?php comment_form( array( 'comment_notes_after' => '<p class="form-allowed-tags"></p>' ) ); ?>
 		
 	<?php endif; // !in_category('journal') ?>
 	

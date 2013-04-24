@@ -624,3 +624,60 @@ function comment_count( $count ) {
 
  }
 }
+
+/**
+ * Add TinyMCE Editor to Comments form
+ * Thanks to http://www.revood.com/blog/adding-visual-editor-to-wordpress-comments-box-part-2/
+ */
+add_filter( 'comment_form_defaults', 'custom_comment_form_defaults' );
+function custom_comment_form_defaults( $args ) {
+    if ( is_user_logged_in() ) {
+        $mce_plugins = 'inlinepopups, fullscreen, wordpress, wplink, wpdialogs';
+    } else {
+        $mce_plugins = 'fullscreen, wordpress';
+    }
+    ob_start();
+    wp_editor( '', 'comment', array(
+        'media_buttons' => false,
+        'teeny' => true,
+				'editor_class' => 'myclass',
+				'editor_css' => '<style type="text/css">body { background: white !important; }</style>',
+        'textarea_rows' => '7',
+        'tinymce' => array( 'plugins' => $mce_plugins,
+														'theme_advanced_buttons1' => 'bold, italic, underline, strikethrough, forecolor, separator, bullist, numlist, separator, link, unlink',
+														'theme_advanced_buttons2' => '', 
+														'theme_advanced_statusbar_location' => 'none' )
+    ) );
+    $args['comment_field'] = ob_get_clean();
+    return $args;
+}
+
+/**
+ * Fix problem with TinyMCE Editor not reloading properly when replying to comments
+ * See http://www.revood.com/blog/adding-visual-editor-to-wordpress-comments-box-part-2/
+ */
+add_action( 'wp_enqueue_scripts', '__THEME_PREFIX__scripts' );
+function __THEME_PREFIX__scripts() {
+    wp_enqueue_script('jquery');
+}
+add_filter( 'comment_reply_link', '__THEME_PREFIX__comment_reply_link' );
+function __THEME_PREFIX__comment_reply_link($link) {
+    return str_replace( 'onclick=', 'data-onclick=', $link );
+}
+add_action( 'wp_head', '__THEME_PREFIX__wp_head' );
+function __THEME_PREFIX__wp_head() {
+?>
+<script type="text/javascript">
+    jQuery(function($){
+        $('.comment-reply-link').click(function(e){
+            e.preventDefault();
+            var args = $(this).data('onclick');
+            args = args.replace(/.*\(|\)/gi, '').replace(/\"|\s+/g, '');
+            args = args.split(',');
+            tinymce.EditorManager.execCommand('mceRemoveControl', true, 'comment');
+            addComment.moveForm.apply( addComment, args );
+            tinymce.EditorManager.execCommand('mceAddControl', true, 'comment');
+        });
+    });
+</script><?
+}

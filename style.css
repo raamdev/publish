@@ -1406,3 +1406,8 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .say-hello-email-img {
 	margin-bottom: 18px;
 }
+
+/************ TINYMCE EDITOR FOR COMMENTS ***************/
+.mceIframeContainer iframe {
+    background: white !important;
+}
