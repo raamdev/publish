@@ -646,7 +646,7 @@ ol.commentlist ul.children {
 }
 
 ul.children {
-	margin-left: 44px;
+	margin-left: 15px;
 }
 
 ol.commentlist .avatar {
@@ -659,7 +659,7 @@ ol.commentlist .avatar {
 }
 
 ul.children .avatar {
-	margin-left: -44px;
+	margin-left: 0;
 	width: 32px;
 	height: 32px;
 }
@@ -1207,6 +1207,10 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 	#pageslide hr { margin-bottom: 0px !important; }
 	#pageslide { line-height: 20px !important; }
 	.cell { vertical-align: top !important; }
+
+	/* Tighten up comments formatting for mobile browsers to make comment threads more readable. */
+	ol.commentlist .avatar, ul.children .avatar, ol.commentlist { margin-left: 0; }
+	ul.children { margin-left: 15px; }
 }
 
 /****************************************
