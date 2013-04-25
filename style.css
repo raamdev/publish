@@ -1415,3 +1415,6 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .mceIframeContainer iframe {
     background: white !important;
 }
+
+/************ SNAZZY ARCHIVES STYLES ***************/
+.sz_year { font-size: 15px !important; }
