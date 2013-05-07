@@ -910,9 +910,11 @@ h6 {
 
 .site {
 	background-color: #ffffff;
-	margin: 60px auto;
-	padding: 0 40px;
-	width: 850px;
+	margin: 60px;
+	margin-top: 30px;
+	padding: 0;
+	width: 90%;
+	max-width: 850px;
 }
 
 .site-header {
@@ -982,7 +984,7 @@ table th {
 }
 
 /* iPads (landscape) ----------- */
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 800px) {
 /* Styles */
 
 	.site {
@@ -1184,7 +1186,7 @@ ul.children .comment-author { margin-bottom: 0px !important; }
  **************************************/
 
 /* iPads (landscape) ----------- */
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 800px) {
 /* Styles */
 
 	.site { padding: 1em; max-width: 600px; }
