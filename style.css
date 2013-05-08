@@ -98,11 +98,7 @@ button,
 input,
 select,
 textarea {
-	color: #404040;
-	font-size: 16px;
-	font-size: 1.6rem;
-	font-family: sans-serif;
-	line-height: 1.5;
+	color: #000;
 }
 
 /* Headings */
@@ -374,6 +370,9 @@ img.aligncenter {
 	float: left;
 	clear: both;
 	width: 100%;
+	font-size: 90%;
+	font-weight: 300;
+	line-height: 1.6em;
 }
 .main-navigation ul {
 	margin: 0;
@@ -629,7 +628,8 @@ object {
 #comments {
 	margin-top: 40px;
 	margin-bottom: 30px;
-	font-size: 14px;
+	font-size: 90%;
+	line-height: 1.563em;
 }
 
 #comments-template div.navigation {
@@ -771,10 +771,9 @@ ul.children .comment-author {
 ----------------------------------------------- */
 
 body {
-	color: #222;
-	font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: 300;
-	line-height: 1.6;
+	color: #000;
+	font: 1.7em Georgia, "Times New Roman", Times, serif;
+	line-height: 1.6em;
 }
 
 .site-logo img {
@@ -867,11 +866,11 @@ h1 {
 }
 
 h2 {
-	font-size: 20px;
+	font-size: 24px;
 }
 
 h3 {
-	font-size: 18px;
+	font-size: 19px;
 }
 
 h4,
@@ -902,6 +901,9 @@ h6 {
 .entry-meta a {
 	color: #999;
 	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	line-height: 1.6em;
 }
 
 .entry-meta a:hover {
@@ -913,8 +915,8 @@ h6 {
 	margin: 60px;
 	margin-top: 30px;
 	padding: 0;
-	width: 90%;
-	max-width: 850px;
+	width: 85%;
+	max-width: 51em;
 }
 
 .site-header {
@@ -922,6 +924,7 @@ h6 {
 	margin-top: 34px;
 	margin-bottom: 40px;
 	width: 20%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .site-content,
@@ -934,6 +937,8 @@ h6 {
 	float: left;
 	width: 20%; /* Sidebar 1 */
 	clear: left;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
 }
 
 .site-header,
@@ -961,6 +966,8 @@ h6 {
 .site-footer a {
 	color: #999;
 	font-size: 13px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
 }
 
 .site-footer a:hover {
@@ -989,7 +996,7 @@ table th {
 
 	.site {
 		position: relative;
-		margin: 0 auto;
+		margin: 0;
 		padding: 40px;
 		width: auto;
 	}
@@ -1075,13 +1082,12 @@ table th {
 	#masthead {
 		margin-top: 40px;
 	}
+	.site { padding: 1em !important; }
 }
 
 /******************************************************************************
  * Styles added by Raam Dev
  */
-
-body { color: black; }
 
 .byline { display: none !important; }
 
@@ -1106,52 +1112,36 @@ body { color: black; }
 .trackback span { font-family: sans-serif; font-size: 11px; color: #AAAAAA; }
 
 .format-aside p {
-	font-size: 25px;
-	line-height: 40px;
-	font-family: Georgia,Cambria,serif;
+	font-size: 1.6em;
+	line-height: 1.5em;
 	font-style: italic;
 }
 
 .format-image .entry-header { display: none; }
 
-.commonly-used-tags { font-family: Georgia,Cambria,serif !important; margin-bottom: 40px; }
+.commonly-used-tags { margin-bottom: 40px; }
 
 #respond { padding: 30px; background: #eee; margin-bottom: 40px; padding-top: 5px; }
 
 /* Leave a Reply link at the top of the comment list */
 .leave-a-reply { float: right; margin-top: -30px; }
-.leave-a-reply a { text-decoration: none; }
+.leave-a-reply a { text-decoration: none; font-size: 90%; }
 
 .entry-title a { color: black; }
 
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
 
-/* Use a different font for some things */
-.entry-header h1,
-.comments-area,
-.format-standard .entry-content,
-.page .entry-content,
-.site-content h1,
-.site-content h2,
-.site-content h3,
-.site-content h4,
-.site-content h5,
-.site-content h6,
-.comment-author .fn,
-.comment-content { font-family: Georgia,Cambria,serif !important; }
-
-.page .entry-content { font-size: 15px !important; line-height: 1.618em; }
+.page .entry-content { line-height: 1.618em; }
 
 /* Clean up the comments section a bit  */
 .comment-meta { margin-bottom: 10px !important; margin-top: 0px !important;}
 .comment-author, ul.children .comment-author { line-height: 30px !important; }
 ul.children .comment-author { margin-bottom: 0px !important; }
-.comment-content { font-size: 1.1em; }
+
 .comment-author .fn, .comment-author .fn a { color: black; font-size: 110%; font-weight: normal; }
 
-.format-standard .entry-content { font-size: 17px; line-height: 1.618em; }
-.entry-header h1 { font-size: 25px !important; }
+.entry-header h1 { font-size: 2em; line-height: 1.2em; }
 .entry-header h1,
 .site-content h1,
 .site-content h2,
@@ -1189,7 +1179,7 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 @media only screen and (max-width : 800px) {
 /* Styles */
 
-	.site { padding: 1em; max-width: 600px; }
+	.site { padding: 2em; max-width: 600px; }
 	.format-aside p { font-size: 150%; line-height: 30px; }
 	body { font-size: 16px; }
 
@@ -1420,3 +1410,6 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 /************ SNAZZY ARCHIVES STYLES ***************/
 .sz_year { font-size: 15px !important; }
+
+/********* SPECIAL ENTRY CONTENT FONT SIZE ON CERTAIN PAGES ************/
+.page-template-page-essays-php .entry-content, .page-id-14441 .entry-content, .interviews-press-links { font-size: 90%; }
