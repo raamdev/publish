@@ -167,6 +167,7 @@ pre {
 }
 code, kbd, tt, var {
 	font: 14px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	background: #eee;
 }
 abbr, acronym {
 	border-bottom: 1px dotted #666;
@@ -372,7 +373,7 @@ img.aligncenter {
 	width: 100%;
 	font-size: 90%;
 	font-weight: 300;
-	line-height: 1.6em;
+	line-height: 1.6;
 }
 .main-navigation ul {
 	margin: 0;
@@ -773,7 +774,7 @@ ul.children .comment-author {
 body {
 	color: #000;
 	font: 1.7em Georgia, "Times New Roman", Times, serif;
-	line-height: 1.6em;
+	line-height: 1.6;
 }
 
 .site-logo img {
@@ -903,7 +904,7 @@ h6 {
 	font-size: 12px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 300;
-	line-height: 1.6em;
+	line-height: 1.6;
 }
 
 .entry-meta a:hover {
@@ -1113,7 +1114,7 @@ table th {
 
 .format-aside p {
 	font-size: 1.6em;
-	line-height: 1.5em;
+	line-height: 1.5;
 	font-style: italic;
 }
 
