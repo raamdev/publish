@@ -773,7 +773,7 @@ ul.children .comment-author {
 
 body {
 	color: #000;
-	font: 1.7em Georgia, "Times New Roman", Times, serif;
+	font: 1.9em Georgia, "Times New Roman", Times, serif;
 	line-height: 1.6;
 }
 
@@ -992,7 +992,7 @@ table th {
 }
 
 /* iPads (landscape) ----------- */
-@media only screen and (max-width : 800px) {
+@media only screen and (max-width : 1500px) {
 /* Styles */
 
 	.site {
@@ -1000,6 +1000,8 @@ table th {
 		margin: 0;
 		padding: 40px;
 		width: auto;
+		margin: 0 auto;
+		max-width: 38em;
 	}
 
 	.site-header,
@@ -1029,7 +1031,7 @@ table th {
 	.main-navigation {
 		clear: none;
 		margin-left: -10px;
-		padding-top: 20px;
+		/*padding-top: 20px;*/
 		width: auto;
 	}
 
@@ -1142,7 +1144,7 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 
 .comment-author .fn, .comment-author .fn a { color: black; font-size: 110%; font-weight: normal; }
 
-.entry-header h1 { font-size: 2em; line-height: 1.2em; }
+.entry-header h1 { font-size: 2.5em; line-height: 1.2em; }
 .entry-header h1,
 .site-content h1,
 .site-content h2,
