@@ -63,11 +63,13 @@
 			
 		<?php endif; // End if 'post' == get_post_type() ?>
 
-		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
+		<div class="entry-meta-links">
+			<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
 			
-		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'publish' ), __( '1 Comment', 'publish' ), __( '% Comments', 'publish' ) ); ?></span>
-		<?php endif; ?>
+			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'publish' ), __( '1 Comment', 'publish' ), __( '% Comments', 'publish' ) ); ?></span>
+			<?php endif; ?>
 
-		<?php edit_post_link( __( 'Edit', 'publish' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
+			<?php edit_post_link( __( 'Edit', 'publish' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
+		</div>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

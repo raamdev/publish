@@ -42,7 +42,7 @@ if ( ! function_exists( 'raamdev_post_meta' ) ) :
 function raamdev_post_meta() {
 	
 		// Get location information using Nomad Current Location plugin
-		$location_html = get_ncl_location( $prefix = "from ");
+		$location_html = get_ncl_location( $prefix = " from ");
 	
 		/* translators: used between list items, there is a space after the comma */
 		$category_list = get_the_category_list( __( ', ', 'publish' ) );
@@ -61,9 +61,9 @@ function raamdev_post_meta() {
 		} else {
 			// But this blog has loads of categories so we should probably display them here
 			if ( '' != $tag_list) {
-				$meta_text = __( '<div class="meta-data">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span> <br/> Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a> %9$s. <br/> Filed in %1$s and tagged %2$s.</div>', 'publish' );
+				$meta_text = __( '<div class="meta-data"><span class="meta-data-created">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span>.</span> <span class="meta-data-published">Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.</span> <span class="meta-data-filed">Filed in %1$s and tagged %2$s.</span></div>', 'publish' );
 			} else {
-				$meta_text = __( '<div class="meta-data">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span> <br/> Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a> %9$s. <br/> Filed in %1$s.</div>', 'publish' );
+				$meta_text = __( '<div class="meta-data"><span class="meta-data-created">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span>.</span> <span class="meta-data-published">Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.</span> <span class="meta-data-filed">Filed in %1$s.</span></div>', 'publish' );
 			}
 
 		} // end check for categories on this blog

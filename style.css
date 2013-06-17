@@ -374,8 +374,9 @@ img.aligncenter {
 	float: left;
 	clear: none;
 	margin-left: -20px;
+	margin-top: 5px;
 	width: 95%;
-	background: #eee;
+	border-bottom: 1px solid #eee;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	moz-border-bottom-right-radius: 5px;
@@ -390,6 +391,9 @@ img.aligncenter {
 .site-footer .site-navigation { 
 	position: absolute;
 	bottom: 0px;
+	border-top: 1px solid #eee;
+	border-bottom: 0;
+	margin-bottom:20px;
 }
 
 .site-footer .site-navigation a { color: rgb(0, 120, 168); }
@@ -402,7 +406,7 @@ img.aligncenter {
 .main-navigation li {
 	position: relative;
 	display: inline-block;
-	padding: 5px 10px;
+	padding: 0px 10px;
 	width: auto;	
 }
 .main-navigation a {
@@ -711,6 +715,7 @@ ul.children .avatar {
 .comment .reply a {
 	display: block;
 	margin-top: -10px;
+	font-size: 80%;
 }
 
 .comment-body:hover .reply {
@@ -905,6 +910,10 @@ h6 {
 	padding: 10px 0 40px 0;
 }
 
+.blog .site-main article {
+	border-bottom: 1px solid #eee;
+}
+
 .site-main article.comment {
 	border-bottom: none;
 }
@@ -918,9 +927,27 @@ h6 {
 	color: #26ADE4;
 }
 
-.meta-data,
-.meta-data a,
-.edit-link a {
+.entry-meta,
+.entry-meta a {
+	color: #999;
+	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	line-height: 2;
+}
+
+.single .entry-meta,
+.single .entry-meta a {
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+
+.single .meta-data,
+.single .meta-data a,
+.single .edit-link a {
 	color: #999;
 	font-size: 12px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -930,9 +957,16 @@ h6 {
 	margin-top: 40px;
 }
 
-.edit-link { float: right; }
+.single .meta-data-created,
+.single .meta-data-published,
+.single .meta-data-filed {
+	display: block;
+}
 
-footer.entry-meta {
+.entry-meta-links { float: right; }
+.single .edit-link { position: absolute; top: 65px; right: 20px; }
+
+.single footer.entry-meta {
 	border-bottom: 5px solid #eee;
 	border-top: 5px solid #eee;
 	margin-top: 20px;
@@ -1321,7 +1355,7 @@ div.rd-sharing-buttons #share-twitter,
 div.rd-sharing-buttons #share-facebook,
 div.rd-sharing-buttons #share-googleplus { margin-right: 70px; float: left; }
 
-#share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: .3; }
+#share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: 1; }
 #share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-email:hover { opacity: 1; }
 
 div.rd-sharing-buttons #share-facebook { margin-top: 1px; }
