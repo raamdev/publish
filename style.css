@@ -368,13 +368,32 @@ img.aligncenter {
 
 .main-navigation {
 	display: block;
-	float: left;
-	clear: both;
-	width: 100%;
-	font-size: 90%;
+	font-size: 70%;
 	font-weight: 300;
 	line-height: 1.6;
+	float: left;
+	clear: none;
+	margin-left: -20px;
+	width: 95%;
+	background: #eee;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	moz-border-bottom-right-radius: 5px;
+	moz-border-bottom-left-radius: 5px;		
 }
+
+.site-header .site-navigation { 
+	position: absolute;
+	top: 0px;
+}
+
+.site-footer .site-navigation { 
+	position: absolute;
+	bottom: 0px;
+}
+
+.site-footer .site-navigation a { color: rgb(0, 120, 168); }
+
 .main-navigation ul {
 	margin: 0;
 	padding-left: 0;
@@ -382,6 +401,9 @@ img.aligncenter {
 }
 .main-navigation li {
 	position: relative;
+	display: inline-block;
+	padding: 5px 10px;
+	width: auto;	
 }
 .main-navigation a {
 	display: block;
@@ -788,8 +810,13 @@ body {
 
 .site-title {
 	margin: 0;
-	font-size: 18px;
+	font-size: 100px;
 	line-height: 1.2;
+	margin-top: 70px;
+	font-family: Georgia, serif;
+	font-weight: normal;
+	border-bottom: 5px solid rgb(73, 72, 72);
+	padding-bottom: 40px;	
 }
 
 .site-description {
@@ -797,6 +824,7 @@ body {
 	color: #999;
 	font-weight: 300;
 	font-size: 13px;
+	display: none;
 }
 
 .main-navigation ul,
@@ -805,13 +833,6 @@ body {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
-
-.main-navigation li,
-.widget-area li {
-	display: block;
-	margin: 0;
-	padding: 0;
 }
 
 .main-navigation a,
@@ -826,7 +847,7 @@ body {
 
 .site-navigation,
 .post-navigation {
-	margin-top: 20px;
+/*	margin-top: 10px;*/
 }
 
 .infinite-scroll .site-navigation {
@@ -863,15 +884,15 @@ h6 {
 }
 
 h1 {
-	font-size: 22px;
+	font-size: 1.9em;
 }
 
 h2 {
-	font-size: 24px;
+	font-size: 1.6em;
 }
 
 h3 {
-	font-size: 19px;
+	font-size: 1.3em;
 }
 
 h4,
@@ -882,7 +903,6 @@ h6 {
 
 .site-main article {
 	padding: 10px 0 40px 0;
-	border-bottom: solid 1px #ddd;
 }
 
 .site-main article.comment {
@@ -898,13 +918,24 @@ h6 {
 	color: #26ADE4;
 }
 
-.entry-meta,
-.entry-meta a {
+.meta-data,
+.meta-data a,
+.edit-link a {
 	color: #999;
 	font-size: 12px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 300;
-	line-height: 1.6;
+	line-height: 2;
+	text-align: center;
+	margin-top: 40px;
+}
+
+.edit-link { float: right; }
+
+footer.entry-meta {
+	border-bottom: 5px solid #eee;
+	border-top: 5px solid #eee;
+	margin-top: 20px;
 }
 
 .entry-meta a:hover {
@@ -913,11 +944,13 @@ h6 {
 
 .site {
 	background-color: #ffffff;
-	margin: 60px;
-	margin-top: 30px;
-	padding: 0;
-	width: 85%;
-	max-width: 51em;
+	position: relative;
+	margin: 0;
+	padding: 40px;
+	width: auto;
+	margin: 0 auto;
+	max-width: 35em;
+	padding-top: 20px;
 }
 
 .site-header {
@@ -995,15 +1028,6 @@ table th {
 @media only screen and (max-width : 1500px) {
 /* Styles */
 
-	.site {
-		position: relative;
-		margin: 0;
-		padding: 40px;
-		width: auto;
-		margin: 0 auto;
-		max-width: 38em;
-	}
-
 	.site-header,
 	.site-content,
 	.site-footer,
@@ -1018,29 +1042,27 @@ table th {
 	.site-title,
 	.site-description {
 		clear: none;
-		margin-left: 70px;
 	}
 
 	.site-logo,
 	.site-logo img {
-		float: left;
-		width: 50px;
+		float: right;
+		width: 100px;
 		height: auto;
+		margin-right: 10px;
+		margin-top:40px;
 	}
 
-	.main-navigation {
-		clear: none;
-		margin-left: -10px;
-		/*padding-top: 20px;*/
-		width: auto;
-	}
+}
 
-	.main-navigation li {
-		display: inline-block;
-		padding: 5px 10px;
-		width: auto;
-	}
-
+@media only screen and (max-width : 600px) {
+	.site { padding: 1em !important; }
+	.home-nav-separator { display: none; }
+	.my-account-menu-item, .logout-menu-item, .login-menu-item, .subscribe-menu-item { float: none !important;}
+	.site-title { font-size: 70px; margin-top: 75px !important; }
+	.site-logo img { width: 80px !important; }
+	.footer-navigation { display: none; }
+	
 	/* Small Navigation */
 	.main-small-navigation {
 		position: absolute;
@@ -1079,13 +1101,7 @@ table th {
 	.main-small-navigation .menu-toggle.toggled-on {
 		background: white;
 	}
-}
-
-@media only screen and (max-width : 600px) {
-	#masthead {
-		margin-top: 40px;
-	}
-	.site { padding: 1em !important; }
+	
 }
 
 /******************************************************************************
@@ -1144,7 +1160,7 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 
 .comment-author .fn, .comment-author .fn a { color: black; font-size: 110%; font-weight: normal; }
 
-.entry-header h1 { font-size: 2.5em; line-height: 1.2em; }
+.entry-header h1 { font-size: 2.5em; line-height: 1em; letter-spacing: -2px; }
 .entry-header h1,
 .site-content h1,
 .site-content h2,
@@ -1175,29 +1191,19 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 1.6em;
+	display: none;
 }
 /* End styles for Current Location information
  **************************************/
-
-/* iPads (landscape) ----------- */
-@media only screen and (max-width : 800px) {
-/* Styles */
-
-	.site { padding: 2em; max-width: 600px; }
-	.format-aside p { font-size: 150%; line-height: 30px; }
-	body { font-size: 16px; }
-
-	.site-description-location {
-		clear: none;
-		margin-left: 70px;
-	}
-}
 
 
 /* iPhones ----------- */
 @media only screen and (max-width : 480px) {
 /* Styles */
-
+	div.rd-sharing-buttons-inner { width: 260px !important; }
+	.site-title { font-size: 40px; margin-top: 85px !important; }
+	.site-logo img { width: 60px !important; }
+	
 	/* Pageslide styles for improved iPhone display */
 	#signup form { margin-top: 20px !important; }
 	#pageslide hr { margin-bottom: 0px !important; }
@@ -1299,12 +1305,21 @@ padding: 0;
 /****************************************
  * CSS styles for sharing buttons
  */
-
-div.rd-sharing-buttons { margin-bottom: 90px; margin-top: 40px; }
+div.rd-sharing-message {
+	font-size: 80%;
+    font-style: italic;
+    margin-bottom: 30px;
+    text-align: center;
+}
+div.rd-sharing-buttons-inner {
+    margin: 0 auto;
+    width: 445px;
+}
+div.rd-sharing-buttons { margin-bottom: 40px; margin-top: 40px; }
 
 div.rd-sharing-buttons #share-twitter,
 div.rd-sharing-buttons #share-facebook,
-div.rd-sharing-buttons #share-googleplus { margin-right: 35px; float: left; }
+div.rd-sharing-buttons #share-googleplus { margin-right: 70px; float: left; }
 
 #share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: .3; }
 #share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-email:hover { opacity: 1; }
@@ -1417,3 +1432,6 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 /********* SPECIAL ENTRY CONTENT FONT SIZE ON CERTAIN PAGES ************/
 .page-template-page-essays-php .entry-content, .page-id-14441 .entry-content, .interviews-press-links { font-size: 90%; }
+
+
+.my-account-menu-item, .logout-menu-item, .login-menu-item, .subscribe-menu-item { float: right; }

@@ -20,6 +20,10 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 
+<?php if ( !is_home() ) { // Hide the site title and site logo when not showing home page ?>
+	<style type="text/css">.site-title, .site-logo { display: none; }</style>
+<?php } ?>
+
 <?php wp_head(); ?>
 </head>
 
@@ -27,12 +31,12 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<?php if ( get_header_image() ) : ?>
-			<a class="site-logo" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<a class="site-logo" href="/about/" title="About <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="author">
 				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 			</a>
 		<?php endif; ?>
 		<hgroup>
-			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<h1 class="site-title"><a href="/about/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="author"><?php bloginfo( 'name' ); ?></a></h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			<?php if ( function_exists('ncl_show_location') && is_home() ) : ?>
 				<h2 class="site-description-location">Last seen <?php echo do_shortcode("[ncl-current-location display='date']"); ?> ago in <span class="mapThis" place="<?php echo do_shortcode("[ncl-current-location wikify='false']"); ?>" zoom="2"><?php echo do_shortcode("[ncl-current-location wikify='false']"); ?></span>.</h2>

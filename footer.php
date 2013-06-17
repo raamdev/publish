@@ -15,6 +15,11 @@
 		<div class="site-info">
 			<?php do_action( 'publish_credits' ); ?>
 		</div><!-- .site-info -->
+		
+		<nav role="navigation" class="site-navigation main-navigation footer-navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'depth' => 1 ) ); ?>
+		</nav>
+		
 	</footer><!-- #colophon .site-footer -->
 </div><!-- #page .hfeed .site -->
 

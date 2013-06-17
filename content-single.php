@@ -17,8 +17,6 @@
 				
 				<?php the_raamdev_journal_released_message(); ?>
 				<?php the_content(); ?>
-				<?php rd_sharing_buttons(); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
 			
 			<?php else : // Show message about why Journal is not viewable ?>
 
@@ -28,15 +26,14 @@
 		<?php else: // Not a journal entry ?>
 			
 			<?php the_content(); ?>
-			<?php rd_sharing_buttons(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
 		
 		<?php endif; ?>				
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
-		
+		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
 		<?php raamdev_post_meta(); ?>
+		<?php rd_sharing_buttons(); ?>
 		
 		<?php edit_post_link( __( 'Edit', 'publish' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->

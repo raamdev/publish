@@ -42,7 +42,7 @@ if ( ! function_exists( 'raamdev_post_meta' ) ) :
 function raamdev_post_meta() {
 	
 		// Get location information using Nomad Current Location plugin
-		$location_html = get_ncl_location( $prefix = " from ");
+		$location_html = get_ncl_location( $prefix = "from ");
 	
 		/* translators: used between list items, there is a space after the comma */
 		$category_list = get_the_category_list( __( ', ', 'publish' ) );
@@ -61,16 +61,16 @@ function raamdev_post_meta() {
 		} else {
 			// But this blog has loads of categories so we should probably display them here
 			if ( '' != $tag_list) {
-				$meta_text = __( '<span class="meta-data">Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s. Tagged %2$s.</span>', 'publish' );
+				$meta_text = __( '<div class="meta-data">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span> <br/> Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a> %9$s. <br/> Filed in %1$s and tagged %2$s.</div>', 'publish' );
 			} else {
-				$meta_text = __( '<span class="meta-data">Published in %1$s on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a>%9$s.</span>', 'publish' );
+				$meta_text = __( '<div class="meta-data">Created by <span class="author vcard"><a class="url fn n" href="/about/" title="About '. get_the_author() .'" rel="author">' . get_the_author() . '</a></span> <br/> Published on <a href="%5$s" title="%6$s" rel="bookmark"><time class="entry-date" datetime="%7$s" pubdate>%8$s</time></a> %9$s. <br/> Filed in %1$s.</div>', 'publish' );
 			}
 
 		} // end check for categories on this blog
 
 		// Add Authorship information to improve SEO
-		$author_info = '<span class="byline"> Created by <span class="author vcard"><a class="url fn n" href="'. get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" title="'. sprintf( __( 'View all posts by %s', 'publish' ), get_the_author() ) .'" rel="author">' . get_the_author() . '</a></span> <span><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
-		$meta_text = $meta_text . $author_info;
+		$author_info = '<span style="display: none;"><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
+		$meta_text = $author_info . $meta_text;
 
 		printf(
 			$meta_text,
@@ -142,18 +142,23 @@ function rd_sharing_buttons() {
 ?>
 <!-- START SHARING BUTTONS -->
 <div class="rd-sharing-buttons">
-	<!-- Google Plus One Button -->
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-	<!-- Google Plus One Button -->
-	<div id="share-twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
-	<div id="share-facebook"><a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
-	<div id="share-googleplus"><g:plus action="share" width="57" size="medium" annotation="none"></g:plusone></div>
-	<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
-	<?php if( function_exists('wp_email') ) : ?>
-		<div id="share-email">
-			<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
-		</div>
-	<?php endif; ?>
+	
+	<div class="rd-sharing-message">Sharing amplifies our potential to change the world.</div>
+	<div class="rd-sharing-buttons-inner">
+		<!-- Google Plus One Button -->
+		<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+		<!-- Google Plus One Button -->
+		<div id="share-twitter"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=RT%20@RaamDev%20<?php echo $clean_title; ?>" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+		<div id="share-facebook"><a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
+		<div id="share-googleplus"><g:plus action="share" width="57" size="medium" annotation="none"></g:plusone></div>
+		<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
+		<?php if( function_exists('wp_email') ) : ?>
+			<div id="share-email">
+				<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
+			</div>
+		<?php endif; ?>
+	</div>
+	<div style="clear: both;"></div>
 </div>
 
 <!-- END SHARING BUTTONS -->
@@ -354,15 +359,15 @@ if ( ! function_exists( 'rd_new_nav_menu_items' ) ) :
 function rd_new_nav_menu_items($items) {
 	
 	if ( !is_user_logged_in() ) {
-		$subscribe_link = '<li class="menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
+		$subscribe_link = '<li class="menu-item subscribe-menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
 		$items = $items . $subscribe_link;
-		$loginlink = '<li>&nbsp;</li><li class="menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
+		$loginlink = '<li class="menu-item login-menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
 		$items = $items . $loginlink;
 	}
 	if ( is_user_logged_in() ) {
-		$my_account_link = '<li>&nbsp;</li><li class="menu-item"><a href="/account/">My Account</a></li>';
+		$my_account_link = '<li class="menu-item my-account-menu-item"><a href="/account/">My Account</a></li>';
 		$items = $items . $my_account_link;
-		$logout_link = '<li class="menu-item"><a href="' . wp_logout_url() . '">Logout</a></li>';
+		$logout_link = '<li class="menu-item logout-menu-item"><a href="' . wp_logout_url() . '">Logout</a></li>';
 		$items = $items . $logout_link;
 	}
     return $items;
@@ -681,3 +686,19 @@ function __THEME_PREFIX__wp_head() {
     });
 </script><?
 }
+
+// Filter wp_nav_menu() to add additional links and other output
+function new_nav_menu_items($items) {
+    $homelink = '<li class="home-nav"><a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name') . '</a></li><li class="home-nav-separator"><span>»</span></li>';
+    $items = $homelink . $items;
+
+    return $items;
+}
+add_filter( 'wp_nav_menu_items', 'new_nav_menu_items' );
+
+/*
+ * Add support for the footer nav
+ */
+register_nav_menus( array(
+	'footer' => __( 'Footer Menu', 'publish' ),
+) );
