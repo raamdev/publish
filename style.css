@@ -368,6 +368,7 @@ img.aligncenter {
 
 .main-navigation {
 	display: block;
+	width: 95%;
 	font-size: 70%;
 	font-weight: 300;
 	line-height: 1.6;
@@ -375,16 +376,15 @@ img.aligncenter {
 	clear: none;
 	margin-left: -20px;
 	padding-top: 5px;
-	width: 95%;
+	padding-bottom: 5px;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
 }
 
 .site-header .site-navigation { 
 	position: absolute;
 	top: 0px;
-	padding-bottom: 5px;
 	border-bottom: 1px solid #eee;
-	border-left: 1px solid #eee;
-	border-right: 1px solid #eee;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	moz-border-bottom-right-radius: 5px;
@@ -395,12 +395,7 @@ img.aligncenter {
 	position: absolute;
 	bottom: 0px;
 	border-top: 1px solid #eee;
-	border-left: 1px solid #eee;
-	border-right: 1px solid #eee;
 	border-bottom: 0;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	padding-bottom: 0;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	moz-border-top-right-radius: 5px;
