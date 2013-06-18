@@ -25,8 +25,8 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 	
 	<?php if ( have_comments() ) : ?>
-			<div class="leave-a-reply"><a href="#respond">Write a Comment ↓</a></div>
 		<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
+			<div class="leave-a-reply"><a href="#respond">Share a Comment ↓</a></div>
 			<!-- <h2 class="comments-title">
 				<?php
 				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'publish' ),

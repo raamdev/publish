@@ -386,6 +386,7 @@ img.aligncenter {
 .site-header .site-navigation { 
 	position: absolute;
 	top: 0px;
+	padding-bottom: 5px;
 }
 
 .site-footer .site-navigation { 
@@ -393,10 +394,14 @@ img.aligncenter {
 	bottom: 0px;
 	border-top: 1px solid #eee;
 	border-bottom: 0;
-	margin-bottom:20px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 0;
 }
 
 .site-footer .site-navigation a { color: rgb(0, 120, 168); }
+
+.paging-navigation { margin-top: 40px; }
 
 .main-navigation ul {
 	margin: 0;
@@ -910,7 +915,9 @@ h6 {
 	padding: 10px 0 40px 0;
 }
 
-.blog .site-main article {
+.blog .site-main article,
+.archive .site-main article,
+.search .site-main article {
 	border-bottom: 1px solid #eee;
 }
 
@@ -1469,3 +1476,5 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 
 .my-account-menu-item, .logout-menu-item, .login-menu-item, .subscribe-menu-item { float: right; }
+
+#journal-notice-comments { margin-bottom: 60px; text-align: center; }
