@@ -26,7 +26,15 @@
 			
 		<?php else : // Not a journal entry ?>
 			
-			<?php the_excerpt(); ?>
+			<?php if ('aside' === get_post_format()) : // Do something special for Asides ?>
+				
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_content(); ?></a>
+				
+			<?php else: ?>
+				
+				<?php the_excerpt(); ?>
+			
+			<?php endif; ?>
 			
 		<?php endif; ?>
 		
@@ -34,7 +42,7 @@
 	
 	<?php else : // Not Search ?>
 	<div class="entry-content">
-		<?php if ( in_category('journal') ) : ?>
+		<?php if ( in_category('journal') ) : // Journal entry ?>
 			<?php if ( is_raamdev_journal_viewable() ) : // Only show content if Journal is viewable ?>
 				
 				<?php the_raamdev_journal_released_message(); ?>		
@@ -48,9 +56,16 @@
 			<?php endif; ?>
 			
 		<?php else: // Not a journal entry ?>
-			
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'publish' ) ); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
+			<?php if ('aside' === get_post_format()) : // Do something special for Asides ?>
+				
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_content(); ?></a>
+				
+			<?php else: ?>
+				
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'publish' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
+				
+			<?php endif; ?>
 
 		<?php endif; ?>				
 	</div><!-- .entry-content -->

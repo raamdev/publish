@@ -377,18 +377,12 @@ img.aligncenter {
 	margin-left: -20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border-left: 1px solid #eee;
-	border-right: 1px solid #eee;
 }
 
 .site-header .site-navigation { 
 	position: absolute;
 	top: 0px;
 	border-bottom: 1px solid #eee;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	moz-border-bottom-right-radius: 5px;
-	moz-border-bottom-left-radius: 5px;
 }
 
 .site-footer .site-navigation { 
@@ -396,10 +390,6 @@ img.aligncenter {
 	bottom: 0px;
 	border-top: 1px solid #eee;
 	border-bottom: 0;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
-	moz-border-top-right-radius: 5px;
-	moz-border-top-left-radius: 5px;
 }
 
 .site-footer .site-navigation a { color: rgb(0, 120, 168); }
@@ -1481,3 +1471,6 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .my-account-menu-item, .logout-menu-item, .login-menu-item, .subscribe-menu-item { float: right; }
 
 #journal-notice-comments { margin-bottom: 60px; text-align: center; }
+
+.single-format-aside .entry-content { margin-bottom: 50px; }
+.format-aside .entry-content a, .format-aside .entry-summary a { color: #000; text-decoration: none; }
