@@ -33,8 +33,7 @@
 	<footer class="entry-meta">
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
 		<?php raamdev_post_meta(); ?>
+		<?php edit_post_link( __( 'Edit', 'publish' ), '<div class="edit-link">', '</div>' ); ?>
 		<?php rd_sharing_buttons(); ?>
-		
-		<?php edit_post_link( __( 'Edit', 'publish' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

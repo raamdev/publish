@@ -964,7 +964,7 @@ h6 {
 }
 
 .entry-meta-links { float: right; }
-.single .edit-link { position: absolute; top: 65px; right: 20px; }
+.single .edit-link { width: 0px; margin: 0 auto; margin-bottom: -30px; }
 
 .single footer.entry-meta {
 	border-bottom: 5px solid #eee;
