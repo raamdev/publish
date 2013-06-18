@@ -1474,3 +1474,5 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 .single-format-aside .entry-content { margin-bottom: 50px; }
 .format-aside .entry-content a, .format-aside .entry-summary a { color: #000; text-decoration: none; }
+
+.archive h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
