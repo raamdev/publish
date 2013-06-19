@@ -165,6 +165,8 @@ function rd_sharing_buttons() {
 					<?php if (class_exists('Bitcointips') ) : ?>
 
 						<div class="bitcointips-widget">
+							<!-- Uses the Bitcoin Tips WordPress Plugin -->
+							<!-- See https://github.com/raamdev/bitcoin-tips -->
 							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
 							<div class="contents">
 								<h1>Tip Raam for '<em><?php echo get_the_title(); ?></em>'</h1>
