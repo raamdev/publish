@@ -173,7 +173,7 @@ function rd_sharing_buttons() {
 								<h2>Tip with Bitcoin (<small><a href="http://www.weusecoins.com" target="_new">?</a></small>):</h2>
 								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
 								<br/>
-								<h2>Tip with:</h2>
+								<h2>Or tip with:</h2>
 								<?php $_POST['amount'] = "0.25"; ?>
 								<p class="bitcointips-other"><a href="/tip/?amount=0.25&page_title=<?php echo get_the_title(); ?>"><img src="http://i.imgur.com/OeuprGO.png" /></a></p>
 								<h1>Your tips help support my writing. Thank you.</h1>
