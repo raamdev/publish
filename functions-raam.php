@@ -170,7 +170,7 @@ function rd_sharing_buttons() {
 							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
 							<div class="contents">
 								<h1>Tip Raam for '<em><?php echo get_the_title(); ?></em>'</h1>
-								<h2>Tip with Bitcoin (<small><a href="http://www.weusecoins.com">?</a></small>):</h2>
+								<h2>Tip with Bitcoin (<small><a href="http://www.weusecoins.com" target="_new">?</a></small>):</h2>
 								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
 								<br/>
 								<h2>Tip with:</h2>
