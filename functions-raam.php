@@ -158,7 +158,7 @@ function rd_sharing_buttons() {
 			</div>
 		<?php endif; ?>
 
-		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="http://i.imgur.com/V9RNasM.png"></div>			
+		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png"></div>			
 	</div>
 	<div style="clear: both;"></div>
 				<div id="share-tip-info" style="display: none;">
