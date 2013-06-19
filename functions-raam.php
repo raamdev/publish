@@ -157,7 +157,28 @@ function rd_sharing_buttons() {
 				<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
 			</div>
 		<?php endif; ?>
+
+		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="http://i.imgur.com/V9RNasM.png"></div>			
 	</div>
+	<div style="clear: both;"></div>
+				<div id="share-tip-info" style="display: none;">
+					<?php if (class_exists('Bitcointips') ) : ?>
+
+						<div class="bitcointips-widget">
+							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
+							<div class="contents">
+								<h1>Tip Raam for '<em><?php echo get_the_title(); ?></em>'</h1>
+								<h2>Tip with Bitcoin (<small><a href="http://www.weusecoins.com">?</a></small>):</h2>
+								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
+								<br/>
+								<h2>Tip with:</h2>
+								<?php $_POST['amount'] = "0.25"; ?>
+								<p class="bitcointips-other"><a href="/tip/?amount=0.25&page_title=<?php echo get_the_title(); ?>"><img src="http://i.imgur.com/OeuprGO.png" /></a></p>
+								<h1>Your tips help support my writing. Thank you.</h1>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
 	<div style="clear: both;"></div>
 </div>
 

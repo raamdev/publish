@@ -1347,21 +1347,24 @@ div.rd-sharing-message {
 }
 div.rd-sharing-buttons-inner {
     margin: 0 auto;
-    width: 445px;
+    width: 585px;
 }
 div.rd-sharing-buttons { margin-bottom: 40px; margin-top: 40px; }
 
 div.rd-sharing-buttons #share-twitter,
 div.rd-sharing-buttons #share-facebook,
-div.rd-sharing-buttons #share-googleplus { margin-right: 70px; float: left; }
+div.rd-sharing-buttons #share-googleplus,
+div.rd-sharing-buttons #share-email { margin-right: 70px; float: left; }
 
 #share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: 1; }
 #share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-email:hover { opacity: 1; }
 
 div.rd-sharing-buttons #share-facebook { margin-top: 1px; }
 
+div.rd-sharing-buttons #share-tip { margin-top: 3px; float: left; opacity: .7; }
+div.rd-sharing-buttons #share-email { margin-top: -3px; }
+
 /* Email sharing button, requires  */
-div.rd-sharing-buttons #share-email { margin-top: -3px; float: left; }
 div.rd-sharing-buttons #share-email a.sd-button {
 	margin: 0;
 	padding: 0;
@@ -1476,3 +1479,10 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .format-aside .entry-content a, .format-aside .entry-summary a { color: #000; text-decoration: none; }
 
 .archive h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
+
+.bitcointips-widget .contents h2 { font-size: 18px; }
+.bitcointips-widget .contents h1 { font-size: 24px; }
+
+.bitcointips-widget .qrcode { margin-top: 10px; }
+.bitcointips-widget p.bitcointips-other,
+.bitcointips-widget p.bitcointips-address { margin-left: 20px; }
