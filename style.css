@@ -1488,9 +1488,27 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .bitcointips-widget p.bitcointips-other,
 .bitcointips-widget p.bitcointips-address { margin-left: 20px; }
 .bitcointips-widget p.bitcointips-address { font-size: 18px; }
-.bitcointips-widget { border: none; border-top: 1px solid #eee; margin-top: 60px; padding-bottom: 0; padding-top: 30px; }
+.bitcointips-widget {
+	display: none;
+	border: none;
+	border-top: 1px solid #eee;
+	margin-top: 60px;
+	padding-bottom: 0;
+	padding-top: 30px;
+}
+
+.tip-amount {
+	width: 50px;
+	font-size:15px;
+	font-family: Georgia, 'Times New Roman', serif;
+}
+.prefer-bitcoins {
+	float: right;
+	cursor: pointer;
+}
 
 #share-tip-info { 
+	display: none;
 	text-align: center;
 	padding: 20px;
 	width: 450px;

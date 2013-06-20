@@ -161,15 +161,15 @@ function rd_sharing_buttons() {
 		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png"></div>			
 	</div>
 	<div style="clear: both;"></div>
-				<div id="share-tip-info" style="display: none; text-align: center;">
+				<div id="share-tip-info">
 					<form name="custom-amount" method="post" action="/tip/?page_title=<?php the_title_attribute(); ?>">
-					Tip Raam $<input type="text" maxlength="10" name="amount" value="0.25" style="width:50px; font-size:15px; font-family: Georgia, 'Times New Roman', serif;"> for '<em><?php the_title_attribute(); ?></em>'
+					Tip Raam $<input class="tip-amount" type="text" maxlength="10" name="amount" value="0.25"> for '<em><?php the_title_attribute(); ?></em>'
 					&nbsp;<input type="submit" value="Give &rarr;">
 					</form>
 					<br/>
-					<small><span style="float: right; cursor: pointer;" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Prefer Bitcoins?</span></small>
+					<small><span class="prefer-bitcoins" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Prefer Bitcoins?</span></small>
 					<?php if (class_exists('Bitcointips') ) : ?>
-						<div id="bitcointips-widget" class="bitcointips-widget" style="display: none;">
+						<div id="bitcointips-widget" class="bitcointips-widget">
 							<!-- Uses the Bitcoin Tips WordPress Plugin -->
 							<!-- See https://github.com/raamdev/bitcoin-tips -->
 							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
