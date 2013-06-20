@@ -174,8 +174,10 @@ function rd_sharing_buttons() {
 								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
 								<br/>
 								<h2>Or tip with:</h2>
-								<?php $_POST['amount'] = "0.25"; ?>
-								<p class="bitcointips-other"><a href="/tip/?amount=0.25&page_title=<?php echo get_the_title(); ?>"><img src="http://i.imgur.com/OeuprGO.png" /></a></p>
+								<p class="bitcointips-other">
+									<a href="/tip/?amount=0.25&page_title=<?php the_title_attribute(); ?>">
+									<img src="http://i.imgur.com/OeuprGO.png" /></a>
+								</p>
 								<h1>Your tips help support my writing. Thank you.</h1>
 							</div>
 						</div>

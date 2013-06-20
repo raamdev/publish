@@ -1486,3 +1486,4 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .bitcointips-widget .qrcode { margin-top: 10px; }
 .bitcointips-widget p.bitcointips-other,
 .bitcointips-widget p.bitcointips-address { margin-left: 20px; }
+.bitcointips-widget p.bitcointips-address { font-size: 18px; }
