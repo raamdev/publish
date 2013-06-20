@@ -162,7 +162,7 @@ function rd_sharing_buttons() {
 	</div>
 	<div style="clear: both;"></div>
 				<div id="share-tip-info">
-					<form name="custom-amount" method="post" action="/tip/?page_title=<?php the_title_attribute(); ?>">
+					<form name="custom-amount" method="post" action="<?php echo home_url('/tip/', 'https'); ?>?page_title=<?php the_title_attribute(); ?>">
 					Tip Raam $<input class="tip-amount" type="text" maxlength="10" name="amount" value="0.25"> for '<em><?php the_title_attribute(); ?></em>'
 					&nbsp;<input type="submit" value="Give &rarr;">
 					</form>
