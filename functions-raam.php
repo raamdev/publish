@@ -161,25 +161,22 @@ function rd_sharing_buttons() {
 		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png"></div>			
 	</div>
 	<div style="clear: both;"></div>
-				<div id="share-tip-info" style="display: none;">
+				<div id="share-tip-info" style="display: none; text-align: center;">
+					<form name="custom-amount" method="post" action="/tip/?page_title=<?php the_title_attribute(); ?>">
+					Tip Raam $<input type="text" maxlength="10" name="amount" value="0.25" style="width:50px; font-size:15px; font-family: Georgia, 'Times New Roman', serif;"> for '<em><?php the_title_attribute(); ?></em>'
+					&nbsp;<input type="submit" value="Give &rarr;">
+					</form>
+					<br/>
+					<small><span style="float: right; cursor: pointer;" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Prefer Bitcoins?</span></small>
 					<?php if (class_exists('Bitcointips') ) : ?>
-
-						<div class="bitcointips-widget">
+						<div id="bitcointips-widget" class="bitcointips-widget" style="display: none;">
 							<!-- Uses the Bitcoin Tips WordPress Plugin -->
 							<!-- See https://github.com/raamdev/bitcoin-tips -->
 							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
 							<div class="contents">
-								<h1>Tip Raam for '<em><?php echo get_the_title(); ?></em>'</h1>
-								<h2>Tip with Bitcoin (<small><a href="http://www.weusecoins.com" target="_new">?</a></small>):</h2>
 								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
-								<br/>
-								<h2>Or tip with:</h2>
-								<p class="bitcointips-other">
-									<a href="/tip/?amount=0.25&page_title=<?php the_title_attribute(); ?>">
-									<img src="http://i.imgur.com/OeuprGO.png" /></a>
-								</p>
-								<h1>Your tips help support my writing. Thank you.</h1>
 							</div>
+							<small>Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></small>
 						</div>
 					<?php endif; ?>
 				</div>
