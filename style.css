@@ -1485,7 +1485,7 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .format-aside .entry-content a, .format-aside .entry-summary a { color: #000; text-decoration: none; }
 .format-aside .entry-content .footnotes a, .format-aside .entry-summary .footnotes a,
 	.format-aside .entry-content sup a, .format-aside .entry-summary sup a { color: rgb(0, 120, 168); text-decoration: underline; }
-.blog .format-aside .entry-content #fn, .blog .format-aside .entry-content .footnotes { display: none;}
+.archive .format-aside .entry-content .footnotes, .blog .format-aside .entry-content .footnotes, .search .format-aside .entry-content .footnotes { display: none;}
 
 .archive h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
 .search h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
