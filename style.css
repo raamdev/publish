@@ -1490,6 +1490,10 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .archive h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
 .search h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
 
+.entry-content h2 {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 5px;
+}
 .bitcointips-widget .contents { margin-left: 0; }
 .bitcointips-widget .contents h2 { font-size: 18px; }
 .bitcointips-widget .contents h1 { font-size: 24px; }
