@@ -58,13 +58,21 @@
 		<?php else: // Not a journal entry ?>
 			<?php if ('aside' === get_post_format()) : // Do something special for Asides ?>
 				
-				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_content(); ?></a>
+				<?php // This creates the same output as the_content() ?>
+				<?php $content = get_the_content(); ?>
+				<?php $content = apply_filters('the_content', $content); ?>
+				<?php $content = str_replace(']]>', ']]&gt;', $content); ?>
 				
+				<?php // Asides might have footnotes, which don't display properly when linking Asides to themselves, so we strip <sup> here ?>
+				<?php $content = preg_replace('!<sup\s+id="fnref.*?">.*?</sup>!is', '', $content); ?>
+
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php echo $content; ?></a>
+
 			<?php else: ?>
-				
+
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'publish' ) ); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
-				
+
 			<?php endif; ?>
 
 		<?php endif; ?>				

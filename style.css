@@ -1170,6 +1170,12 @@ table th {
 	font-style: italic;
 }
 
+.format-aside .footnotes p {
+	font-size: inherit;
+	line-height: inherit;
+	font-style: inherit;
+}
+
 .format-image .entry-header { display: none; }
 
 .commonly-used-tags { margin-bottom: 40px; }
@@ -1477,6 +1483,9 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 .single-format-aside .entry-content { margin-bottom: 50px; }
 .format-aside .entry-content a, .format-aside .entry-summary a { color: #000; text-decoration: none; }
+.format-aside .entry-content .footnotes a, .format-aside .entry-summary .footnotes a,
+	.format-aside .entry-content sup a, .format-aside .entry-summary sup a { color: rgb(0, 120, 168); text-decoration: underline; }
+.blog .format-aside .entry-content #fn, .blog .format-aside .entry-content .footnotes { display: none;}
 
 .archive h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
 .search h1.page-title { background: #eee; padding-left: 10px; padding-right: 10px;}
