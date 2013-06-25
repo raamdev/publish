@@ -16,9 +16,8 @@
 		<?php the_content(); ?>
 		
 		<?php if ( function_exists('wp_tag_cloud') ) : ?>
-			<hr>
 			<div class="commonly-used-tags">
-			<h2>Commonly Used Tags</h2>
+			<h1>Common Tags (all topics)</h1>
 			<?php wp_tag_cloud('smallest=10&largest=22'); ?>
 			</div>
 		<?php endif; ?>

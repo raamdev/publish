@@ -1178,7 +1178,7 @@ table th {
 
 .format-image .entry-header { display: none; }
 
-.commonly-used-tags { margin-bottom: 40px; }
+.commonly-used-tags { margin-bottom: 40px; margin-top: 40px; border-top: 5px solid #eee; }
 
 #respond { padding: 30px; background: #eee; margin-bottom: 40px; padding-top: 5px; }
 
