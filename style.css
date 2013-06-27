@@ -142,8 +142,10 @@ dfn, cite, em, i {
 	font-style: italic;
 }
 blockquote {
+	font-size: 90%;
 	margin: 0 1.5em;
-	font-style: italic;
+	padding-left: 10px;
+	border-left: 5px solid #eee;
 	font-family: Georgia, "Bitstream Charter", serif;
 }
 blockquote cite {
@@ -1191,7 +1193,7 @@ table th {
 .single .format-aside h1.entry-title { display: none; }
 .search .format-aside .entry-header { display: none; }
 
-.page .entry-content { line-height: 1.618em; }
+.page .entry-content { line-height: 1.618; }
 
 /* Clean up the comments section a bit  */
 .comment-meta { margin-bottom: 10px !important; margin-top: 0px !important;}
@@ -1365,10 +1367,8 @@ div.rd-sharing-buttons #share-email { margin-right: 70px; float: left; }
 #share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: 1; }
 #share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-email:hover { opacity: 1; }
 
-div.rd-sharing-buttons #share-facebook { margin-top: 1px; }
-
-div.rd-sharing-buttons #share-tip { margin-top: 3px; float: left; opacity: .7; }
-div.rd-sharing-buttons #share-email { margin-top: -3px; }
+div.rd-sharing-buttons #share-tip { margin-top: -1px; float: left; opacity: .7; }
+div.rd-sharing-buttons #share-email { margin-top: -6px; }
 
 /* Email sharing button, requires  */
 div.rd-sharing-buttons #share-email a.sd-button {
@@ -1494,6 +1494,7 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 	border-bottom: 1px solid #eee;
 	padding-bottom: 5px;
 }
+.entry-content blockquote h1, .entry-content blockquote h2 { line-height: 1em; border-bottom: none; }
 .bitcointips-widget .contents { margin-left: 0; }
 .bitcointips-widget .contents h2 { font-size: 18px; }
 .bitcointips-widget .contents h1 { font-size: 24px; }
@@ -1506,7 +1507,18 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 	display: none;
 	border: none;
 	border-top: 1px solid #eee;
-	margin-top: 60px;
+	margin-top: 30px;
+	padding-bottom: 0;
+	padding-top: 30px;
+}
+
+.bitcointips-desc { font-style: italic; }
+
+.flattr-widget {
+	display: none;
+	border: none;
+	border-top: 1px solid #eee;
+	margin-top: 30px;
 	padding-bottom: 0;
 	padding-top: 30px;
 }
@@ -1516,16 +1528,18 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 	font-size:15px;
 	font-family: Georgia, 'Times New Roman', serif;
 }
-.prefer-bitcoins {
+.alt-tip-methods {
 	float: right;
-	cursor: pointer;
+	margin-left: 5px;
 }
+
+.alt-tip-method { cursor: pointer; border-bottom: 1px dashed black; }
 
 #share-tip-info { 
 	display: none;
 	text-align: center;
 	padding: 20px;
-	width: 80%;
+	width: 75%;
 	margin: 0 auto;
 	margin-top: 40px;
 	border: 1px solid #eee;
