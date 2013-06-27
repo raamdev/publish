@@ -183,17 +183,11 @@ function rd_sharing_buttons() {
 						Prefer 
 						<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
 						or
-						<span class="alt-tip-method" onclick="document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
+						<span id="tip-flattr" class="alt-tip-method" onclick="document.getElementById('flattr-widget').style.display = 'block'; showflattr();">Flattr</span>
 						?
 					</small>
 					</div>
 					<div style="clear:both;"></div>
-					<div id="flattr-widget" class="flattr-widget">
-						<a href="https://flattr.com/submit/auto?user_id=raamdev&url=<?php the_permalink(); ?>&title=<?php echo $clean_title; ?>&language=en_GB&tags=<?php echo $flattr_tags; ?>&hidden=0&category=text"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/flattr-badge-large.png" /></a>
-						<br/>
-						<br/>
-						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
-					</div>
 					<?php if (class_exists('Bitcointips') ) : ?>
 						<div id="bitcointips-widget" class="bitcointips-widget">
 							<!-- Uses the Bitcoin Tips WordPress Plugin -->
@@ -205,6 +199,18 @@ function rd_sharing_buttons() {
 							<small><span class="bitcointips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
 						</div>
 					<?php endif; ?>
+					<div id="flattr-widget" class="flattr-widget">
+						
+						<script language="JavaScript" id='flattrbtn'>
+						function showflattr() {
+							(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=raamdev&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');
+						}
+						</script>
+						<br/>
+						<br/>
+						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
+					</div>
+					
 				</div>
 	<div style="clear: both;"></div>
 </div>
