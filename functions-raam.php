@@ -183,18 +183,16 @@ function rd_sharing_buttons() {
 						Prefer 
 						<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
 						or
-						<span id="tip-flattr" class="alt-tip-method" onclick="showflattr(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
+						<span id="tip-flattr" class="alt-tip-method" onclick="FlattrLoader.setup(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
 						?
 					</small>
 					</div>
 					<div style="clear:both;"></div>
 					<!-- Start Flattr Code -->
 					<div id="flattr-widget" class="flattr-widget">
-						<script language="JavaScript" id='flattrbtn'>
-						function showflattr() {
-							(function(i){if(document.getElementById('flattr-widget').style.display == 'block'){return;}var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=raamdev&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');
-						}
-						</script>
+						<a class="FlattrButton" href="<?php the_permalink(); ?>" title="<?php echo $clean_title; ?>" tags="<?php echo $flattr_tags; ?>" category="text">
+						  <?php echo $clean_title; ?>
+						</a>
 						<br/>
 						<br/>
 						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
