@@ -154,21 +154,21 @@ function rd_sharing_buttons() {
 	<div class="rd-sharing-message">Sharing amplifies our potential to change the world.</div>
 	<div class="rd-sharing-buttons-inner">
 		<div id="share-twitter">
-			<a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/twitter.png" /></a>
+			<a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/twitter.png" /></a>
 		</div>
 		<div id="share-facebook">
-			<a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
+			<a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
 		<div id="share-googleplus">
-			<a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/googleplus.png" /></a>
+			<a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/googleplus.png" /></a>
 		</div>
 		<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 		<?php if( function_exists('wp_email') ) : ?>
 			<div id="share-email">
-				<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Click to email this to a friend"><span>Email</span></a>
+				<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Share '<?php echo $clean_title; ?>' via email"><span>Email</span></a>
 			</div>
 		<?php endif; ?>
 
-		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png"></div>			
+		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
 	</div>
 	<div style="clear: both;"></div>
 				<div id="share-tip-info">
@@ -183,11 +183,24 @@ function rd_sharing_buttons() {
 						Prefer 
 						<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
 						or
-						<span id="tip-flattr" class="alt-tip-method" onclick="document.getElementById('flattr-widget').style.display = 'block'; showflattr();">Flattr</span>
+						<span id="tip-flattr" class="alt-tip-method" onclick="showflattr(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
 						?
 					</small>
 					</div>
 					<div style="clear:both;"></div>
+					<!-- Start Flattr Code -->
+					<div id="flattr-widget" class="flattr-widget">
+						<script language="JavaScript" id='flattrbtn'>
+						function showflattr() {
+							(function(i){if(document.getElementById('flattr-widget').style.display == 'block'){return;}var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=raamdev&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');
+						}
+						</script>
+						<br/>
+						<br/>
+						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
+					</div>
+					<!-- End Flattr Code -->
+					<!-- Start Bitcoin Code -->
 					<?php if (class_exists('Bitcointips') ) : ?>
 						<div id="bitcointips-widget" class="bitcointips-widget">
 							<!-- Uses the Bitcoin Tips WordPress Plugin -->
@@ -199,18 +212,7 @@ function rd_sharing_buttons() {
 							<small><span class="bitcointips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
 						</div>
 					<?php endif; ?>
-					<div id="flattr-widget" class="flattr-widget">
-						
-						<script language="JavaScript" id='flattrbtn'>
-						function showflattr() {
-							(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=raamdev&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');
-						}
-						</script>
-						<br/>
-						<br/>
-						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
-					</div>
-					
+					<!-- End Bitcoin Code -->
 				</div>
 	<div style="clear: both;"></div>
 </div>
