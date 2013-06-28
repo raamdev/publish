@@ -165,11 +165,11 @@ function rd_sharing_buttons() {
 		<?php if( function_exists('wp_email') ) : ?>
 			<div id="share-email">
 				<!-- <a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Share '<?php echo $clean_title; ?>' via email"><span>Email</span></a> -->
-				<a href="#email-widget" class="share-email sd-button"><span onclick="document.getElementById('email-widget').style.display = 'block';">Email</span></a>
+				<a href="#email-widget" id="share-email-widget" class="share-email sd-button"><span>Email</span></a>
 			</div>
 		<?php endif; ?>
 
-		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
+		<div id="share-tip"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
 	</div>
 	
 	<div style="clear: both;"></div>
@@ -189,10 +189,10 @@ function rd_sharing_buttons() {
 		<br/>
 		<div class="alt-tip-methods">
 		<small>
-			Prefer 
-			<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
+			Prefer
+			<span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span>
 			or
-			<span id="tip-flattr" class="alt-tip-method" onclick="FlattrLoader.setup(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
+			<span id="tip-flattr" class="alt-tip-method">Flattr</span>
 			?
 		</small>
 		</div>
@@ -766,3 +766,16 @@ add_filter( 'wp_nav_menu_items', 'new_nav_menu_items' );
 register_nav_menus( array(
 	'footer' => __( 'Footer Menu', 'publish' ),
 ) );
+
+/*
+ * Include JavaScript for Share Button toggling
+ */
+function share_button_toggles() {
+	wp_enqueue_script(
+		'share-buttno-toggles',
+		get_template_directory_uri() . '/js/share-button-toggles.js',
+		array( 'jquery' )
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'share_button_toggles' );
