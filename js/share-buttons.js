@@ -1,4 +1,3 @@
-// Used to toggle the display of sharing widgets when clicking share buttons
 jQuery(document).ready(function(){
 jQuery('#share-email-widget').live('click', function(event) {
 				jQuery('#email-widget').toggle();

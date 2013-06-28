@@ -154,12 +154,12 @@ function rd_sharing_buttons() {
 	<div class="rd-sharing-message">Sharing amplifies our potential to change the world.</div>
 	<div class="rd-sharing-buttons-inner">
 		<div id="share-twitter">
-			<a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/twitter.png" /></a>
+			<a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/twitter.png" /></a>
 		</div>
 		<div id="share-facebook">
-			<a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
+			<a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); return false;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/facebook_share_btn.gif" /></a></div>
 		<div id="share-googleplus">
-			<a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/googleplus.png" /></a>
+			<a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); return false;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/googleplus.png" /></a>
 		</div>
 		<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 		<?php if( function_exists('wp_email') ) : ?>
@@ -768,13 +768,13 @@ register_nav_menus( array(
 ) );
 
 /*
- * Include JavaScript for Share Button toggling
+ * Include JavaScript for Share Buttons
  */
-function share_button_toggles() {
+function share_buttons_js() {
 	wp_enqueue_script(
-		'share-buttno-toggles',
-		get_template_directory_uri() . '/js/share-button-toggles.js',
+		'share-buttons_js',
+		get_template_directory_uri() . '/js/share-buttons.js',
 		array( 'jquery' )
 	);
 }
-add_action( 'wp_enqueue_scripts', 'share_button_toggles' );
+add_action( 'wp_enqueue_scripts', 'share_buttons_js' );
