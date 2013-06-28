@@ -11,6 +11,7 @@
  * - wp-content/plugins/wp-email/email-css.css
  */
 
+body.wp-email {background: #eee;}
 .wp-email P {
 	text-align: left;
 }
