@@ -171,13 +171,11 @@ function rd_sharing_buttons() {
 
 		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
 	</div>
+	
 	<div style="clear: both;"></div>
-
 	<!-- Start Share via Email Code -->
 	<div id="email-widget" class="email-widget">
-
-		<script id='emailform'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='<?php the_permalink(); ?>emailpopup/';f.title='Email';f.height=850;f.scrolling='no';f.width='100%';f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('emailform');</script>
-
+		<iframe class="emailiframe" src="<?php the_permalink(); ?>/emailpopup/" title="Email" scrolling="no" width="100%" height="850" style="border-width: 0px;"></iframe>
 	</div>
 	<!-- End Share via Email Code -->
 
