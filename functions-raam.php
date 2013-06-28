@@ -777,5 +777,4 @@ function share_button_toggles() {
 		array( 'jquery' )
 	);
 }
-
 add_action( 'wp_enqueue_scripts', 'share_button_toggles' );

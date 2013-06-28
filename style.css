@@ -1508,6 +1508,7 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 .bitcointips-widget {
 	display: none;
 	border: none;
+	background-color: inherit;
 	border-top: 1px solid rgb(207, 207, 207);
 	margin-top: 30px;
 	padding-bottom: 0;
