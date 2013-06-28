@@ -164,54 +164,66 @@ function rd_sharing_buttons() {
 		<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 		<?php if( function_exists('wp_email') ) : ?>
 			<div id="share-email">
-				<a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Share '<?php echo $clean_title; ?>' via email"><span>Email</span></a>
+				<!-- <a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Share '<?php echo $clean_title; ?>' via email"><span>Email</span></a> -->
+				<a href="#email-widget" class="share-email sd-button"><span onclick="document.getElementById('email-widget').style.display = 'block';">Email</span></a>
 			</div>
 		<?php endif; ?>
 
 		<div id="share-tip" onclick="document.getElementById('share-tip-info').style.display = 'block';"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
 	</div>
 	<div style="clear: both;"></div>
-				<div id="share-tip-info">
-					<form name="custom-amount" method="get" action="<?php echo home_url('/tip/', 'https'); ?>">
-					<input type="hidden" name="page_title" value="<?php echo $clean_title; ?>">
-					Tip Raam $<input class="tip-amount" type="text" maxlength="10" name="amount" value="0.25"> for '<em><?php echo $clean_title; ?></em>'
-					&nbsp;<input type="submit" value="Give &rarr;">
-					</form>
-					<br/>
-					<div class="alt-tip-methods">
-					<small>
-						Prefer 
-						<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
-						or
-						<span id="tip-flattr" class="alt-tip-method" onclick="FlattrLoader.setup(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
-						?
-					</small>
-					</div>
-					<div style="clear:both;"></div>
-					<!-- Start Flattr Code -->
-					<div id="flattr-widget" class="flattr-widget">
-						<a class="FlattrButton" href="<?php the_permalink(); ?>" title="<?php echo $clean_title; ?>" tags="<?php echo $flattr_tags; ?>" category="text">
-						  <?php echo $clean_title; ?>
-						</a>
-						<br/>
-						<br/>
-						<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
-					</div>
-					<!-- End Flattr Code -->
-					<!-- Start Bitcoin Code -->
-					<?php if (class_exists('Bitcointips') ) : ?>
-						<div id="bitcointips-widget" class="bitcointips-widget">
-							<!-- Uses the Bitcoin Tips WordPress Plugin -->
-							<!-- See https://github.com/raamdev/bitcoin-tips -->
-							<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
-							<div class="contents">
-								<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
-							</div>
-							<small><span class="bitcointips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
-						</div>
-					<?php endif; ?>
-					<!-- End Bitcoin Code -->
+
+	<!-- Start Share via Email Code -->
+	<div id="email-widget" class="email-widget">
+
+		<script id='emailform'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='<?php the_permalink(); ?>emailpopup/';f.title='Email';f.height=850;f.scrolling='no';f.width='100%';f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('emailform');</script>
+
+	</div>
+	<!-- End Share via Email Code -->
+
+	<!-- START TIP BOX -->
+	<div id="share-tip-info">
+		<form name="custom-amount" method="get" action="<?php echo home_url('/tip/', 'https'); ?>">
+		<input type="hidden" name="page_title" value="<?php echo $clean_title; ?>">
+		Tip Raam $<input class="tip-amount" type="text" maxlength="10" name="amount" value="0.25"> for '<em><?php echo $clean_title; ?></em>'
+		&nbsp;<input type="submit" value="Give &rarr;">
+		</form>
+		<br/>
+		<div class="alt-tip-methods">
+		<small>
+			Prefer 
+			<span class="alt-tip-method" onclick="document.getElementById('bitcointips-widget').style.display = 'block';">Bitcoins</span>
+			or
+			<span id="tip-flattr" class="alt-tip-method" onclick="FlattrLoader.setup(); document.getElementById('flattr-widget').style.display = 'block';">Flattr</span>
+			?
+		</small>
+		</div>
+		<div style="clear:both;"></div>
+		<!-- Start Flattr Code -->
+		<div id="flattr-widget" class="flattr-widget">
+			<a class="FlattrButton" href="<?php the_permalink(); ?>" title="<?php echo $clean_title; ?>" tags="<?php echo $flattr_tags; ?>" category="text">
+			  <?php echo $clean_title; ?>
+			</a>
+			<br/>
+			<br/>
+			<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
+		</div>
+		<!-- End Flattr Code -->
+		<!-- Start Bitcoin Code -->
+		<?php if (class_exists('Bitcointips') ) : ?>
+			<div id="bitcointips-widget" class="bitcointips-widget">
+				<!-- Uses the Bitcoin Tips WordPress Plugin -->
+				<!-- See https://github.com/raamdev/bitcoin-tips -->
+				<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
+				<div class="contents">
+					<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
 				</div>
+				<small><span class="bitcointips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
+			</div>
+		<?php endif; ?>
+		<!-- End Bitcoin Code -->
+	</div>
+	<!-- END TIP BOX -->
 	<div style="clear: both;"></div>
 </div>
 
