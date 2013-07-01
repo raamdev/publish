@@ -2114,8 +2114,6 @@ div.rd-sharing-buttons #share-button span
 .email-widget
 {
 	display            : none;
-	width              : 80%;
-	margin             : 0 auto;
 	border             : 1px solid #eee;
 	margin-top         : 30px;
 	-moz-border-radius : 15px;
