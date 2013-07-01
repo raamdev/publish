@@ -204,7 +204,7 @@ if(!function_exists('rd_sharing_buttons')) :
 
 					<!-- Start Share via Email Code -->
 					<div id="email-widget" class="email-widget">
-						<iframe class="emailiframe" src="<?php the_permalink(); ?>/emailpopup/" title="Email" scrolling="no" width="100%" height="850" style="border-width: 0px;"></iframe>
+						<iframe class="emailiframe" src="<?php the_permalink(); ?>/emailpopup/" title="Email" scrolling="no" width="100%" height="860" style="border-width: 0px;"></iframe>
 					</div>
 					<!-- End Share via Email Code -->
 
