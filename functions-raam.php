@@ -163,16 +163,23 @@ function rd_sharing_buttons() {
 		</div>
 		<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 		<?php if( function_exists('wp_email') ) : ?>
-			<div id="share-email">
-				<!-- <a rel="nofollow" class="share-email sd-button" onclick="email_popup(this.href); return false;" href="<?php the_permalink(); ?>emailpopup/" title="Share '<?php echo $clean_title; ?>' via email"><span>Email</span></a> -->
-				<a href="#email-widget" id="share-email-widget" class="share-email sd-button"><span>Email</span></a>
+			<div id="share-button">
+				<a href="#email-widget" id="share-email-widget" class="email-button"><span>Email</span></a>
 			</div>
 		<?php endif; ?>
-
+		<div id="share-button">
+			<span id="subscribe-button" class="subscribe-button">Subscribe</span>
+		</div>
 		<div id="share-tip"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>			
 	</div>
 	
 	<div style="clear: both;"></div>
+	<div id="subscribe-widget">
+		<!-- BEGIN SUBSCRIBE FORM WIDGET CODE -->
+		<?php raamdev_subscribe_form_widget(); ?>
+		<!-- END SUBSCRIBE FORM WIDGET CODE -->
+	</div>
+		
 	<!-- Start Share via Email Code -->
 	<div id="email-widget" class="email-widget">
 		<iframe class="emailiframe" src="<?php the_permalink(); ?>/emailpopup/" title="Email" scrolling="no" width="100%" height="850" style="border-width: 0px;"></iframe>
@@ -189,11 +196,7 @@ function rd_sharing_buttons() {
 		<br/>
 		<div class="alt-tip-methods">
 		<small>
-			Prefer
-			<span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span>
-			or
-			<span id="tip-flattr" class="alt-tip-method">Flattr</span>
-			?
+			Prefer <span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span> or <span id="tip-flattr" class="alt-tip-method">Flattr</span>?
 		</small>
 		</div>
 		<div style="clear:both;"></div>
@@ -369,24 +372,32 @@ function raamdev_pageslide_subscribe_form() {
 		<?php endif; ?>
 		
 		<div style="display:none;"> <input type="hidden" name="MERGE3" value="<?php echo 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>" id="MERGE3"> </div>
-		<div style="display:none;"> <input type="hidden" name="group[1873]" value="32" id="group[1873]"> </div>
-		<div class="mc-field-group">
-			<label for="mce-group[1129]">How often would you like to receive new updates? </label>
-			<select name="group[1129]" class="REQ_CSS" id="mce-group[1129]" tabindex="502">
-			<option value="1" selected="selected">Immediately</option>
-		<option value="2">Weekly</option>
-		<option value="4">Monthly</option>
-			</select>
-		<div class="subscribe-home-essay-topics">
-		Essay topics:&nbsp;&nbsp;
-		<input type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label style="font-style: italic;">Personal Reflections</label>&nbsp;&nbsp;
-		<input type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label style="font-style: italic;">Technology</label>&nbsp;&nbsp;
-		<input type="checkbox" id="group_256" name="group[1989][256]" value="1" <?php echo $writing; ?>>&nbsp;<label style="font-style: italic;">Writing</label><br>
-		</div>
-		</div>
 	<input type="text" placeholder="First Name..." id="mce-FNAME" name="FNAME">
 	<input type="text" placeholder="Email Address..." id="mce-EMAIL" name="EMAIL">
 	<input type="submit" value="Subscribe »" tabindex="503" >
+
+	<div class="mc-field-group">
+		<label for="mce-group[1129]">When new essays are published, email me:</label>
+		<select name="group[1129]" class="REQ_CSS" id="mce-group[1129]" tabindex="502">
+			<option value="1" selected="selected">immediately</option>
+			<option value="2">a weekly digest</option>
+			<option value="4">a monthly digest</option>
+		</select>
+		<br/>
+		<label for="mce-group[1873]">When new thoughts are published, email me: </label>
+		<select name="group[1873]" class="REQ_CSS" id="mce-group[1873]" tabindex="508">
+			<option value="8">immediately</option>
+			<option value="16">a weekly digest</option>
+			<option value="32" selected="selected">a monthly digest</option>
+		</select>
+		<div class="subscribe-home-essay-topics">
+			Essay topics:&nbsp;&nbsp;
+			<input type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label style="font-style: italic;">Personal Reflections</label>&nbsp;&nbsp;
+			<input type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label style="font-style: italic;">Technology</label>&nbsp;&nbsp;
+			<input type="checkbox" id="group_256" name="group[1989][256]" value="1" <?php echo $writing; ?>>&nbsp;<label style="font-style: italic;">Writing</label><br>
+		</div>
+	</div>
+
 	</form>
 	<hr>
 	<small>
@@ -411,6 +422,80 @@ function raamdev_pageslide_subscribe_form() {
 	</script>
 
 	<!-- END PAGESLIDE SUBSCRIBE FORM CODE -->
+	
+<?php }
+endif;
+
+
+if ( ! function_exists( 'raamdev_subscribe_form_widget' ) ) :
+/**
+ * Returns subscribe form widget
+ */
+function raamdev_subscribe_form_widget() {
+
+	$post_categories = wp_get_post_categories( get_the_ID() );
+	$cats = array();
+
+	foreach($post_categories as $c){
+		$cat = get_category( $c );
+		$cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+	}
+	$cats[0]['name'] != "Personal Reflections" ? $extra_subscribe_text = " essays" : $extra_subscribe_text = "";
+	
+		?>
+	<div class="subscribe-form-widget">
+	<section>
+	<p class="subscribe-message"><strong>Subscribe</strong> to receive new <em><?php echo $cats[0]['name']; ?></em><?php echo $extra_subscribe_text; ?></p>
+	<form action="http://raamdev.us1.list-manage.com/subscribe/post?u=5daf0f6609de2506882857a28&id=dc1b1538af" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+		<?php if ( is_single() && !in_category('journal') ) : ?>
+			<?php $reflections = ""; $technology = ""; $writing = ""; ?>
+			<?php if( in_category('20') ) { $reflections = "checked"; } ?>
+			<?php if( in_category('5') ) { $technology = "checked"; } ?>
+			<?php if( in_category('859') ) { $writing = "checked"; } ?>
+		<?php else : ?>
+			<?php $reflections = "checked"; $technology = "checked"; $writing = "checked"; ?>
+		<?php endif; ?>
+		<div style="display:none;"> <input type="hidden" name="MERGE3" value="<?php echo 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>" id="MERGE3"> </div>
+		<input type="text" placeholder="First Name..." id="mce-FNAME" name="FNAME" tabindex="503">
+		<input type="text" placeholder="Email Address..." id="mce-EMAIL" name="EMAIL" tabindex="504">
+		<input type="submit" value="Subscribe »" tabindex="505" >
+		<div class="mc-field-group" id="subscribe-form-widget-subscription-options" style="display: none;">
+			<label for="mce-group[1129]">When new essays are published, email me: </label>
+			<select name="group[1129]" class="REQ_CSS" id="mce-group[1129]" tabindex="507">
+				<option value="1" selected="selected">immediately</option>
+				<option value="2">a weekly digest</option>
+				<option value="4">a monthly digest</option>
+			</select>
+			<br/>
+			<label for="mce-group[1873]">When new thoughts are published, email me: </label>
+			<select name="group[1873]" class="REQ_CSS" id="mce-group[1873]" tabindex="508">
+				<option value="8">immediately</option>
+				<option value="16">a weekly digest</option>
+				<option value="32" selected="selected">a monthly digest</option>
+			</select>
+			<div class="subscribe-home-essay-topics">
+				<p>Send me thoughts and essays on the following topics:</p>
+				<div class="groups">
+					<p><input tabindex="509"type="checkbox" id="group_64" name="group[1989][64]" value="1" <?php echo $reflections; ?>>&nbsp;<label for="group_64" style="font-style: italic;">Personal Reflections</label></p>
+					<p><input tabindex="510" type="checkbox" id="group_128" name="group[1989][128]" value="1" <?php echo $technology; ?>>&nbsp;<label for="group_128" style="font-style: italic;">Technology</label></p>
+					<p><input tabindex="511" type="checkbox" id="group_256" name="group[1989][256]" value="1" <?php echo $writing; ?>>&nbsp;<label for="group_256" style="font-style: italic;">Writing & Publishing</label></p>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="never-sell-your-email">
+		<p>I promise to never sell or give away your email address. You can unsubscribe at any time.</p>
+	</div>
+	<div class="subscription-options-button"><span id="subscription-options-button" tabindex="506">Subscription Options</span></div>
+	<div class="rss-feeds" id="rss-feeds">
+		RSS Feeds:&nbsp;
+		<a href="http://feeds.feedburner.com/RaamDevAllTopics">All Topics</a> ·
+		<a href="http://feeds.feedburner.com/RaamDevsWeblog">Personal Reflections</a> ·
+		<a href="http://feeds.feedburner.com/RaamDevWriting">Writing & Publishing</a> ·
+		<a href="http://feeds.feedburner.com/RaamDevTechnology">Technology</a>
+	</div>
+	</section>
+	</div>
 	
 <?php }
 endif;

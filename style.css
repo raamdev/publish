@@ -381,13 +381,13 @@ img.aligncenter {
 	padding-bottom: 5px;
 }
 
-.site-header .site-navigation { 
+.site-header .site-navigation {
 	position: absolute;
 	top: 0px;
 	border-bottom: 1px solid #eee;
 }
 
-.site-footer .site-navigation { 
+.site-footer .site-navigation {
 	position: absolute;
 	bottom: 0px;
 	border-top: 1px solid #eee;
@@ -407,7 +407,7 @@ img.aligncenter {
 	position: relative;
 	display: inline-block;
 	padding: 0px 10px;
-	width: auto;	
+	width: auto;
 }
 .main-navigation a {
 	display: block;
@@ -821,7 +821,7 @@ body {
 	font-family: Georgia, serif;
 	font-weight: normal;
 	border-bottom: 5px solid rgb(73, 72, 72);
-	padding-bottom: 40px;	
+	padding-bottom: 40px;
 }
 
 .site-description {
@@ -1098,7 +1098,7 @@ table th {
 	.site-title { font-size: 70px; margin-top: 75px !important; }
 	.site-logo img { width: 80px !important; }
 	.footer-navigation { display: none; }
-	
+
 	/* Small Navigation */
 	.main-small-navigation {
 		position: absolute;
@@ -1137,7 +1137,7 @@ table th {
 	.main-small-navigation .menu-toggle.toggled-on {
 		background: white;
 	}
-	
+
 }
 
 /******************************************************************************
@@ -1212,14 +1212,14 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 .site-content h6,
 .comments-area h2 { font-weight: normal !important;  }
 
-.blog .format-aside .entry-meta .meta-data, 
-.archive .format-aside .entry-meta .meta-data, 
-.search .format-aside .entry-meta .meta-data 
+.blog .format-aside .entry-meta .meta-data,
+.archive .format-aside .entry-meta .meta-data,
+.search .format-aside .entry-meta .meta-data
 	{ display: none; }
-	
-.blog .format-aside .entry-meta, 
-.archive .format-aside .entry-meta, 
-.search .format-aside .entry-meta 
+
+.blog .format-aside .entry-meta,
+.archive .format-aside .entry-meta,
+.search .format-aside .entry-meta
 	{ float: right; }
 
 /****************************************
@@ -1245,7 +1245,7 @@ ul.children .comment-author { margin-bottom: 0px !important; }
 	div.rd-sharing-buttons-inner { width: 260px !important; }
 	.site-title { font-size: 40px; margin-top: 85px !important; }
 	.site-logo img { width: 60px !important; }
-	
+
 	/* Pageslide styles for improved iPhone display */
 	#signup form { margin-top: 20px !important; }
 	#pageslide hr { margin-bottom: 0px !important; }
@@ -1290,6 +1290,24 @@ border-radius: 3px;
 }
 #mce-FNAME {width:15%;}
 #mce-EMAIL {width:30%;}
+
+.subscribe-form-widget #mce-FNAME {width: auto;}
+.subscribe-form-widget #mce-EMAIL {width: auto;}
+
+.subscribe-form-widget p.subscribe-message {
+    margin-bottom: 1em;
+    padding-bottom: 10px;
+	font-size: inherit;
+}
+.subscription-options-button span {
+	font-size: 12px;
+	cursor: pointer;
+	border-bottom: 1px dashed rgb(0, 0, 0);
+}
+.subscription-options-button {
+	text-align: right;
+}
+
 #signup input[type=submit] {
 background: rgba(73, 124, 255, 1);
 width: auto;
@@ -1339,7 +1357,38 @@ padding: 0;
 	margin-top:5px;
 	margin-bottom:10px;
 }
-.mc-field-group { margin-left: 2px; font-size: 13px;}
+.subscribe-form-widget .subscribe-home-essay-topics {
+	max-width: 365px;
+	text-align: left;
+	margin-top: 20px;
+}
+.subscribe-form-widget .subscribe-home-essay-topics p {
+	margin-bottom: 0;
+}
+.mc-field-group { margin-left: 2px; font-size: 13px; margin-top: 30px; }
+
+#subscribe-widget .mc-field-group {
+   margin: 0 auto;
+	font-size: 15px;
+	border: 1px solid rgb(218, 213, 213);
+	margin-bottom: 30px;
+   text-align: left;
+   max-width: 440px;
+	padding: 20px;
+	margin-top: 30px;
+}
+#subscribe-widget .groups {
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+.subscribe-form-widget .never-sell-your-email p {
+    margin-bottom: 0;
+    font-size: 75%;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 /* End styles for displaying pageslide subscribe form
  **************************************/
@@ -1348,7 +1397,7 @@ padding: 0;
  * CSS styles for sharing buttons
  */
 div.rd-sharing-message {
-	font-size: 80%;
+	font-size: 90%;
     font-style: italic;
     margin-bottom: 30px;
     text-align: center;
@@ -1362,19 +1411,16 @@ div.rd-sharing-buttons { margin-bottom: 40px; margin-top: 40px; }
 div.rd-sharing-buttons #share-twitter,
 div.rd-sharing-buttons #share-facebook,
 div.rd-sharing-buttons #share-googleplus,
-div.rd-sharing-buttons #share-email { margin-right: 70px; float: left; }
+div.rd-sharing-buttons #share-button { margin-right: 40px; float: left; }
 
-#share-twitter, #share-facebook, #share-googleplus, #share-email { opacity: .5; }
-#share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-email:hover { opacity: 1; }
+#share-twitter, #share-facebook, #share-googleplus, #share-button { opacity: .5; }
+#share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-button:hover { opacity: 1; cursor: pointer; }
 
 div.rd-sharing-buttons #share-tip { margin-top: -1px; float: left; opacity: .5; }
 div.rd-sharing-buttons #share-tip:hover { opacity: 1; cursor: pointer; }
 
-div.rd-sharing-buttons #share-email { margin-top: -6px; }
-
-/* Email sharing button, requires  */
-div.rd-sharing-buttons #share-email a.sd-button {
-	margin: 0;
+/*************** Sharing button *************/
+div.rd-sharing-buttons #share-button {
 	padding: 0;
 	display: inline-block;
 	background: -webkit-linear-gradient(top, #f7f7f7 0%,#efefef 100%);
@@ -1391,29 +1437,37 @@ div.rd-sharing-buttons #share-email a.sd-button {
 	padding-left: 2px;
 }
 
-div.rd-sharing-buttons #share-email a,
-div.rd-sharing-buttons #share-email a:link,
-div.rd-sharing-buttons #share-email a:visited {
+div.rd-sharing-buttons #share-button a,
+div.rd-sharing-buttons #share-button a:link,
+div.rd-sharing-buttons #share-button a:visited {
 	font-style: normal;
+	text-decoration: none;
 }
-div.rd-sharing-buttons #share-email a.sd-button {
+div.rd-sharing-buttons #share-button a {
 	color: #000 !important;
 }
 
-div.rd-sharing-buttons #share-email a.sd-button > span {
+div.rd-sharing-buttons #share-button span.subscribe-button {
+	background-image: url('inc/images/subscribe.png');
+}
+
+div.rd-sharing-buttons #share-button a.email-button > span {
 	background-image: url('inc/images/forward.png');
+}
+
+div.rd-sharing-buttons #share-button span {
 	padding: 1px 5px 1px 23px !important;
 	background-position; 2px center;
 	background-repeat: no-repeat;
 }
-div.rd-sharing-buttons #share-email a.sd-button > span {
+div.rd-sharing-buttons #share-button span {
 	padding: 0px 25px;
 	display: block;
 	opacity: .8;
 	line-height: 1.3em;
 	text-shadow: none;
 }
-/**********************************/
+/*********************************************/
 
 
 /************ CONTACT ICONS ***************/
@@ -1537,6 +1591,29 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 	padding: 10px;
 	background: #eee;
 }
+
+#subscribe-widget {
+	display: none;
+}
+.subscribe-form-widget {
+    margin-top: 30px;
+    border: 1px solid #eee;
+    background: #eee;
+    border-radius: 15px;
+    padding: 30px;
+	text-align: center;
+}
+
+.subscribe-form-widget .rss-feeds {
+	color: #999;
+	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	line-height: 2;
+	margin-top: 20px;
+	display: none;
+}
+
 .tip-amount {
 	width: 50px;
 	font-size:15px;
@@ -1549,12 +1626,10 @@ div.rd-sharing-buttons #share-email a.sd-button > span {
 
 .alt-tip-method { cursor: pointer; border-bottom: 1px dashed black; }
 
-#share-tip-info { 
+#share-tip-info {
 	display: none;
 	text-align: center;
 	padding: 20px;
-	width: 75%;
-	margin: 0 auto;
 	margin-top: 40px;
 	border: 1px solid #eee;
 	-moz-border-radius: 15px;
