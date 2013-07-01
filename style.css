@@ -1291,12 +1291,15 @@ border-radius: 3px;
 #mce-FNAME {width:15%;}
 #mce-EMAIL {width:30%;}
 
-.subscribe-form-widget #mce-FNAME {width: auto;}
-.subscribe-form-widget #mce-EMAIL {width: auto;}
+.subscribe-form-widget #mce-FNAME {width: 130px;}
+.subscribe-form-widget #mce-EMAIL {width: 240px;}
 
+.subscribe-form-widget p {
+	font-style: inherit;
+	font-size: inherit;
+}
 .subscribe-form-widget p.subscribe-message {
     margin-bottom: 1em;
-    padding-bottom: 10px;
 	font-size: inherit;
 }
 .subscription-options-button span {
@@ -1365,8 +1368,25 @@ padding: 0;
 .subscribe-form-widget .subscribe-home-essay-topics p {
 	margin-bottom: 0;
 	font-size: inherit;
+	font-style: inherit;
 }
 .mc-field-group { margin-left: 2px; font-size: 13px; margin-top: 30px; }
+#mc-embedded-subscribe-form input[type=submit] {
+	background: rgba(73, 124, 255, 1);
+	width: auto;
+	padding: 6px 30px 6px 30px;
+	color: rgba(255,255,255,1);
+	-o-transition: background .4s;
+	-ms-transition: background .4s;
+	-webkit-transition: background .4s;
+	transition: background .4s;
+	box-shadow: none !important;
+	text-shadow: none !important;
+	font-weight: 100;
+}
+#mc-embedded-subscribe-form input[type=submit]:hover {
+	background: rgba(94, 131, 226, 1);
+}
 
 #subscribe-widget .mc-field-group {
    margin: 0 auto;
