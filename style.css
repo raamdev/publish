@@ -1364,6 +1364,7 @@ padding: 0;
 }
 .subscribe-form-widget .subscribe-home-essay-topics p {
 	margin-bottom: 0;
+	font-size: inherit;
 }
 .mc-field-group { margin-left: 2px; font-size: 13px; margin-top: 30px; }
 
@@ -1457,7 +1458,7 @@ div.rd-sharing-buttons #share-button a.email-button > span {
 
 div.rd-sharing-buttons #share-button span {
 	padding: 1px 5px 1px 23px !important;
-	background-position; 2px center;
+	background-position: 2px center;
 	background-repeat: no-repeat;
 }
 div.rd-sharing-buttons #share-button span {
