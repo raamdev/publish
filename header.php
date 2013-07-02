@@ -24,22 +24,24 @@
 	<style type="text/css">.site-title, .site-logo { display: none; }</style>
 <?php } ?>
 
-<!-- Start Flattr Code -->
-<script type="text/javascript">
-/* <![CDATA[ */
-(function() {
-    var s = document.createElement('script');
-    var t = document.getElementsByTagName('script')[0];
+<?php if ( is_page() || is_single() ) : ?>
+	<!-- Start Flattr Code -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	(function() {
+	    var s = document.createElement('script');
+	    var t = document.getElementsByTagName('script')[0];
 
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//api.flattr.com/js/0.6/load.js?mode=manual&uid=raamdev&button=compact&popout=0&language=en_GB';
+	    s.type = 'text/javascript';
+	    s.async = true;
+	    s.src = '//api.flattr.com/js/0.6/load.js?mode=manual&uid=raamdev&button=compact&popout=0&language=en_GB';
 
-    t.parentNode.insertBefore(s, t);
- })();
-/* ]]> */
-</script>
-<!-- End Flattr Code -->
+	    t.parentNode.insertBefore(s, t);
+	 })();
+	/* ]]> */
+	</script>
+	<!-- End Flattr Code -->
+<?php endif; ?>
 
 <?php wp_head(); ?>
 </head>
