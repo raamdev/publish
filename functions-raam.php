@@ -976,5 +976,10 @@ function share_buttons_js()
 			array('jquery')
 		);
 	}
-
 add_action('wp_enqueue_scripts', 'share_buttons_js');
+
+/*
+ * Show Subscribe to Comments Reloaded options after comment form fields
+ */
+add_action( 'comment_form_logged_in_after', 'subscribe_reloaded_show' );
+add_action( 'comment_form_after_fields', 'subscribe_reloaded_show' );
