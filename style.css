@@ -1390,6 +1390,10 @@ table th
 {
 	font-family : serif !important;
 }
+.comments-area #author, .comments-area #email, .comments-area #url {
+	width: 100%;
+	max-width: 300px;
+}
 .comments-area textarea
 {
 	padding : 10px;
@@ -1583,7 +1587,7 @@ ul.children .comment-author
 	}
 	.site-title
 	{
-		font-size  : 40px;
+		font-size  : 35px;
 		margin-top : 85px !important;
 	}
 	.site-logo img
