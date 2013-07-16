@@ -989,6 +989,6 @@ add_action( 'comment_form_after_fields', 'subscribe_reloaded_show' );
  * with Twitter Mentions as Comment Plugin
  */
 function tmac_hide_twitter_handle() {
-	return FALSE;
+	return TRUE;
 }
 add_filter('tmac_hide_twitter_handle', 'tmac_hide_twitter_handle');
