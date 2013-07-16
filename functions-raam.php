@@ -983,3 +983,12 @@ add_action('wp_enqueue_scripts', 'share_buttons_js');
  */
 add_action( 'comment_form_logged_in_after', 'subscribe_reloaded_show' );
 add_action( 'comment_form_after_fields', 'subscribe_reloaded_show' );
+
+/*
+ * Hide the Twitter handle when adding mentions to posts
+ * with Twitter Mentions as Comment Plugin
+ */
+function tmac_hide_twitter_handle() {
+	return FALSE;
+}
+add_filter('tmac_hide_twitter_handle', 'tmac_hide_twitter_handle');
