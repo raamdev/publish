@@ -1581,10 +1581,6 @@ ul.children .comment-author
 @media only screen and (max-width : 480px)
 {
 	/* Styles */
-	div.rd-sharing-buttons-inner
-	{
-		width : 260px !important;
-	}
 	.site-title
 	{
 		font-size  : 35px;
@@ -1831,11 +1827,6 @@ div.rd-sharing-message
 	margin-bottom : 30px;
 	text-align    : center;
 }
-div.rd-sharing-buttons-inner
-{
-	margin : 0 auto;
-	width  : 585px;
-}
 div.rd-sharing-buttons
 {
 	margin-bottom : 40px;
@@ -1847,13 +1838,17 @@ div.rd-sharing-buttons #share-facebook,
 div.rd-sharing-buttons #share-googleplus,
 div.rd-sharing-buttons #share-button
 {
-	margin-right : 40px;
+	margin-right : 44px;
 	float        : left;
+}
+div.rd-sharing-buttons .right-button
+{
+	margin-right: 0px !important;
 }
 
 #share-twitter, #share-facebook, #share-googleplus, #share-button
 {
-	opacity : .5;
+	opacity : .7;
 }
 #share-twitter:hover, #share-facebook:hover, #share-googleplus:hover, #share-button:hover
 {
@@ -1861,9 +1856,15 @@ div.rd-sharing-buttons #share-button
 	cursor  : pointer;
 }
 
+div.rd-sharing-buttons #share-facebook
+{
+	margin-top: -1px;
+}
 div.rd-sharing-buttons #share-tip
 {
-	margin-top : -1px;
+	padding-left: 5px !important;
+	padding-bottom: 1px !important;
+	padding-top: 1px !important;
 	float      : left;
 	opacity    : .5;
 }
@@ -1906,23 +1907,24 @@ div.rd-sharing-buttons #share-button a
 
 div.rd-sharing-buttons #share-button span.subscribe-button
 {
+	padding             : 1px 5px 1px 23px !important;
 	background-image : url('inc/images/subscribe.png');
 }
 
 div.rd-sharing-buttons #share-button a.email-button > span
 {
+	padding             : 1px 5px 1px 23px !important;
 	background-image : url('inc/images/forward.png');
 }
 
 div.rd-sharing-buttons #share-button span
 {
-	padding             : 1px 5px 1px 23px !important;
 	background-position : 2px center;
 	background-repeat   : no-repeat;
 }
 div.rd-sharing-buttons #share-button span
 {
-	padding     : 0px 25px;
+	padding     : 0px 5px;
 	display     : block;
 	opacity     : .8;
 	line-height : 1.3em;
@@ -2100,12 +2102,21 @@ div.rd-sharing-buttons #share-button span
 	padding-top      : 30px;
 }
 
-.bitcointips-desc
+.alt-tips-desc
 {
 	font-style : italic;
 }
 
 .flattr-widget
+{
+	display        : none;
+	border         : none;
+	border-top     : 1px solid rgb(207, 207, 207);
+	margin-top     : 30px;
+	padding-bottom : 0;
+	padding-top    : 30px;
+}
+.gittip-widget
 {
 	display        : none;
 	border         : none;

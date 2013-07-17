@@ -36,6 +36,9 @@ jQuery(document).ready(function(){
 				FlattrLoader.setup();
 				jQuery('#flattr-widget').toggle('show');
 	});
+	jQuery('#tip-gittip').live('click', function(event) {
+				jQuery('#gittip-widget').toggle('show');
+	});
 
 	/* Get rid of this? */
 	jQuery('#alt-tip-method').live('click', function(event) {

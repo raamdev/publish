@@ -173,8 +173,7 @@ if(!function_exists('rd_sharing_buttons')) :
 				<!-- START SHARING BUTTONS -->
 				<div class="rd-sharing-buttons">
 
-					<div class="rd-sharing-message">Sharing amplifies our potential to change the world.</div>
-					<div class="rd-sharing-buttons-inner">
+					<div class="rd-sharing-message">Sharing amplifies our potential to change the world. Thank you for sharing.</div>
 						<div id="share-twitter">
 							<a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/twitter.png" /></a>
 						</div>
@@ -186,15 +185,15 @@ if(!function_exists('rd_sharing_buttons')) :
 						<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 						<?php if(function_exists('wp_email')) : ?>
 							<div id="share-button">
-								<a href="#email-widget" id="share-email-widget" class="email-button"><span>Email</span></a>
+								<a href="#email-widget" id="share-email-widget" class="email-button"><span>Share via Email</span></a>
 							</div>
 						<?php endif; ?>
 						<div id="share-button">
 							<span id="subscribe-button" class="subscribe-button">Subscribe</span>
 						</div>
-						<div id="share-tip"><img src="<?php echo get_stylesheet_directory_uri(); ?>/inc/images/tip-button.png" title="Tip <?php echo get_the_author(); ?> for '<?php echo $clean_title; ?>'"></div>
-					</div>
-
+						<div id="share-button" class="right-button">
+							<span id="share-tip" class="share-tip">Leave a Tip</span>
+						</div>
 					<div style="clear: both;"></div>
 					<div id="subscribe-widget">
 						<!-- BEGIN SUBSCRIBE FORM WIDGET CODE -->
@@ -218,10 +217,20 @@ if(!function_exists('rd_sharing_buttons')) :
 						<br />
 						<div class="alt-tip-methods">
 							<small>
-								Prefer <span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span> or <span id="tip-flattr" class="alt-tip-method">Flattr</span>?
+								Prefer <span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span>, <span id="tip-flattr" class="alt-tip-method">Flattr</span>, or <span id="tip-gittip" class="alt-tip-method">Gittip</span>?
 							</small>
 						</div>
 						<div style="clear:both;"></div>
+						<!-- Start Gittip Code -->
+						<div id="gittip-widget" class="gittip-widget">
+							<iframe style="border: 0; margin: 0; padding: 0;"
+							        src="https://www.gittip.com/RaamDev/widget.html"
+							        width="48pt" height="22pt"></iframe>
+							<br />
+							<br />
+							<small><span class="alt-tips-desc">Gittip is a way to give small weekly cash gifts to people you love. <a href="https://www.gittip.com/about/" target="_new">Learn more.</a></small>
+						</div>
+						<!-- End Gittip Code -->
 						<!-- Start Flattr Code -->
 						<div id="flattr-widget" class="flattr-widget">
 							<a class="FlattrButton" href="<?php the_permalink(); ?>" title="<?php echo $clean_title; ?>" tags="<?php echo $flattr_tags; ?>" category="text">
@@ -229,7 +238,7 @@ if(!function_exists('rd_sharing_buttons')) :
 							</a>
 							<br />
 							<br />
-							<small><span class="bitcointips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
+							<small><span class="alt-tips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
 						</div>
 						<!-- End Flattr Code -->
 						<!-- Start Bitcoin Code -->
@@ -241,7 +250,7 @@ if(!function_exists('rd_sharing_buttons')) :
 								<div class="contents">
 									<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
 								</div>
-								<small><span class="bitcointips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
+								<small><span class="alt-tips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
 							</div>
 						<?php endif; ?>
 						<!-- End Bitcoin Code -->
