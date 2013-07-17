@@ -1154,8 +1154,11 @@ h6
 	border-bottom : 5px solid #eee;
 	border-top    : 5px solid #eee;
 	margin-top    : 20px;
+	opacity: .5;
 }
-
+.single footer.entry-meta:hover {
+	opacity: 1;
+}
 .entry-meta a:hover
 {
 	color : #26ADE4;
@@ -1477,11 +1480,11 @@ table th
 {
 	float      : right;
 	margin-top : -30px;
+	font-size: 90%;
 }
 .leave-a-reply a
 {
 	text-decoration : none;
-	font-size       : 90%;
 }
 
 .entry-title a
