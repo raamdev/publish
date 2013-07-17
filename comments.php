@@ -26,14 +26,13 @@ if ( post_password_required() )
 	
 	<?php if ( have_comments() ) : ?>
 		<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
-			<div class="leave-a-reply">
-				<?php
-				printf( _n( '1 Comment', '%1$s Comments', get_comments_number(), 'publish' ), number_format_i18n( get_comments_number() ) );
-				?>
-				| <a href="#respond">Share a Comment ↓</a></div>
-			<!-- <h2 class="comments-title">
 
-			</h2> -->
+			<?php if(get_comments_number() > 0) : ?>
+				<div class="leave-a-reply">
+					<?php printf( _n( '1 Comment | ', '%1$s Comments | ', get_comments_number(), 'publish' ), number_format_i18n( get_comments_number() ) ); ?>
+					<a href="#respond">Share a Comment ↓</a>
+				</div>
+			<?php endif; ?>
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 			<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
