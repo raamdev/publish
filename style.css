@@ -1116,7 +1116,12 @@ h6
 	font-weight : inherit;
 	line-height : inherit;
 	color       : inherit;
+	font-style: italic;
+	text-align: right;
 }
+.single .entry-meta a { color: rgb(0, 120, 168);}
+.single .authorship { font-size: 80%;}
+.single .entry-meta .mapThis a { color: black;}
 
 .single .meta-data,
 .single .meta-data a,
@@ -1153,7 +1158,7 @@ h6
 {
 	border-bottom : 5px solid #eee;
 	border-top    : 5px solid #eee;
-	margin-top    : 20px;
+	margin-top    : 40px;
 	opacity: .5;
 }
 .single footer.entry-meta:hover {
@@ -1832,8 +1837,8 @@ div.rd-sharing-message
 }
 div.rd-sharing-buttons
 {
-	margin-bottom : 40px;
-	margin-top    : 40px;
+	margin-bottom : 20px;
+	margin-top    : 20px;
 }
 
 div.rd-sharing-buttons #share-twitter,

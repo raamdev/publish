@@ -22,17 +22,19 @@
 
 				<?php the_raamdev_journal_not_released_message(); ?>
 				
-			<?php endif; ?>				
+			<?php endif; ?>
 		<?php else: // Not a journal entry ?>
 			
 			<?php the_content(); ?>
 		
-		<?php endif; ?>				
+		<?php endif; ?>	
+		<?php raamdev_post_authorship(); ?>
+
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
-		<?php raamdev_post_meta(); ?>
+		<?php //raamdev_post_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'publish' ), '<div class="edit-link">', '</div>' ); ?>
 		<?php rd_sharing_buttons(); ?>
 	</footer><!-- .entry-meta -->

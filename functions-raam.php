@@ -98,6 +98,36 @@ if(!function_exists('raamdev_post_meta')) :
 			}
 endif;
 
+
+if(!function_exists('raamdev_post_authorship')) :
+	/**
+	 * Returns post meta
+	 */
+		function raamdev_post_authorship()
+			{
+
+				// Get location information using Nomad Current Location plugin
+				$location_html = get_ncl_location($prefix = "");
+				
+				$meta_text = __('<div class="entry-meta authorship">
+				<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span>
+				<span class="meta-data-published"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span>
+				%3$s
+				</div>', 'publish');
+
+				// Add Authorship information to improve SEO
+				$author_info = '<span style="display: none;"><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
+				$meta_text   = $author_info.$meta_text;
+
+				printf(
+					$meta_text,
+					esc_attr(get_the_date('c')),
+					esc_html(get_the_date()),
+					$location_html
+				);
+			}
+endif;
+
 if(!function_exists('raamdev_post_header_meta')) :
 	/**
 	 * Returns post header metadata
@@ -109,7 +139,7 @@ if(!function_exists('raamdev_post_header_meta')) :
 
 				<div>
 					<div class="entry-meta">
-
+						
 						<?php $audio = get_post_meta(get_the_ID(), 'audio_reading_url', TRUE); ?>
 						<?php if(trim($audio) != "")
 							{ ?>

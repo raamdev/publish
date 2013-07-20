@@ -53,7 +53,8 @@ if ( function_exists( 'yoast_analytics' ) ) {
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-	<header id="masthead" class="site-header" role="banner">
+	<?php if(!is_single()) : ?>
+<header id="masthead" class="site-header" role="banner">
 		<?php if ( get_header_image() ) : ?>
 			<a class="site-logo" href="/about/" title="About <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="author">
 				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
@@ -72,9 +73,9 @@ if ( function_exists( 'yoast_analytics' ) ) {
 			<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'publish' ); ?>"><?php _e( 'Skip to content', 'publish' ); ?></a></div>
 
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'depth' => 1 ) ); ?>
-		</nav><!-- .site-navigation .main-navigation -->
+		</nav> <!-- .site-navigation .main-navigation -->
 
 		<?php do_action( 'publish_header_after' ); ?>
-	</header><!-- #masthead .site-header -->
-
+	</header> <!-- #masthead .site-header -->
+	<?php endif; ?>
 	<div id="main" class="site-main">
