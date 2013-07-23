@@ -53,7 +53,7 @@ if ( function_exists( 'yoast_analytics' ) ) {
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-	<?php if(!is_single()) : ?>
+	<?php //if(!is_single()) : ?>
 <header id="masthead" class="site-header" role="banner">
 		<?php if ( get_header_image() ) : ?>
 			<a class="site-logo" href="/about/" title="About <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="author">
@@ -77,5 +77,5 @@ if ( function_exists( 'yoast_analytics' ) ) {
 
 		<?php do_action( 'publish_header_after' ); ?>
 	</header> <!-- #masthead .site-header -->
-	<?php endif; ?>
+	<?php //endif; ?>
 	<div id="main" class="site-main">

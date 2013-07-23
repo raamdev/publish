@@ -8,6 +8,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<!--<div style="text-align: center; font-size: 80%; font-style: italic;">by <a href="/">Raam Dev</a></div> -->
 		<?php raamdev_post_header_meta(); ?>
 	</header><!-- .entry-header -->
 

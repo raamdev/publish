@@ -484,7 +484,7 @@ img.aligncenter
 }
 .main-navigation a
 {
-	display         : block;
+	display         : inline-block;
 	text-decoration : none;
 }
 .main-navigation ul ul
@@ -1535,10 +1535,11 @@ ul.children .comment-author
 
 .entry-header h1
 {
-	font-size      : 2.5em;
+	font-size      : 3em;
 	line-height    : 1em;
 	letter-spacing : -2px;
 }
+
 .entry-header h1,
 .site-content h1,
 .site-content h2,
@@ -2022,7 +2023,17 @@ div.rd-sharing-buttons #share-button span
 {
 	float : right;
 }
-
+.home-nav { 
+	float: left;
+}
+.my-account-menu-item-single, .logout-menu-item-single
+{
+	float: right;
+}
+.home-nav-single {
+	float: left;
+	font-style: italic;
+}
 #journal-notice-comments
 {
 	margin-bottom : 60px;

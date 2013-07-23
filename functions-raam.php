@@ -110,7 +110,7 @@ if(!function_exists('raamdev_post_authorship')) :
 				$location_html = get_ncl_location($prefix = "");
 				
 				$meta_text = __('<div class="entry-meta authorship">
-				<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span>
+				<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span> 
 				<span class="meta-data-published"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span>
 				%3$s
 				</div>', 'publish');
@@ -611,24 +611,46 @@ endif;
 if(!function_exists('rd_new_nav_menu_items')) :
 	/**
 	 * Filter wp_nav_menu() to add additional custom links
+	if single
+		delete all nav items
+		add homelink + an essay by (float right)
+		if logged in
+			add logout/myaccount link (float left)
+	if !single
+		add 
 	 */
 		function rd_new_nav_menu_items($items)
 			{
-
-				if(!is_user_logged_in())
+				if(is_single()) {
+					echo '<style type="text/css">.site-header .site-navigation {border-bottom: none;}</style>';
+					if ('aside' === get_post_format()) { $type = 'A Thought'; }
+					if (!get_post_format()) { $type = 'An Essay'; }
+					
+					$items = ''; // hide clutter on single pages
+					$homelink = '<li class="home-nav-single">' . $type . ' by <a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li>	';
+					$items    = $homelink;
+				}
+				else {
+					$homelink = '<li class="home-nav"><a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li><li class="home-nav-separator"><span>»</span></li>';
+					$items    = $homelink . $items;
+				}
+				
+				if(!is_user_logged_in() && !is_single())
 					{
 						$subscribe_link = '<li class="menu-item subscribe-menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
-						$items          = $items.$subscribe_link;
+						$items          = $items . $subscribe_link;
 						//		$loginlink = '<li class="menu-item login-menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
-						$items = $items;
 					}
 				if(is_user_logged_in())
 					{
-						$my_account_link = '<li class="menu-item my-account-menu-item"><a href="/account/">My Account</a></li>';
+						if(is_single()) { $my_account_class = "my-account-menu-item-single"; } else { $my_account_class = "my-account-menu-item"; }
+						if(is_single()) { $logout_class = "logout-menu-item-single"; } else { $logout_class = "logout-menu-item"; }
+						$my_account_link = '<li class="menu-item ' . $my_account_class . '"><a href="/account/">My Account</a></li>';
 						$items           = $items.$my_account_link;
-						$logout_link     = '<li class="menu-item logout-menu-item"><a href="'.wp_logout_url().'">Logout</a></li>';
+						$logout_link     = '<li class="menu-item ' . $logout_class . '"><a href="'.wp_logout_url().'">Logout</a></li>';
 						$items           = $items.$logout_link;
 					}
+
 				return $items;
 			}
 
@@ -986,17 +1008,6 @@ function __THEME_PREFIX__wp_head()
 		</script><?
 	}
 
-// Filter wp_nav_menu() to add additional links and other output
-function new_nav_menu_items($items)
-	{
-		$homelink = '<li class="home-nav"><a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li><li class="home-nav-separator"><span>»</span></li>';
-		$items    = $homelink.$items;
-
-		return $items;
-	}
-
-add_filter('wp_nav_menu_items', 'new_nav_menu_items');
-
 /*
  * Add support for the footer nav
  */
@@ -1031,3 +1042,40 @@ function tmac_hide_twitter_handle() {
 	return TRUE;
 }
 add_filter('tmac_hide_twitter_handle', 'tmac_hide_twitter_handle');
+
+//add_filter( 'wp_head', 'rd_dynamic_post_title_size');
+function rd_dynamic_post_title_size () {
+	if (is_single()) :
+		$title = get_the_title();
+		
+		// See http://wordpress.stackexchange.com/questions/11085/truncating-custom-fields#11089
+		$title = strip_tags( $title );
+    $title = html_entity_decode( $title, ENT_QUOTES, 'utf-8' );
+    // \xC2\xA0 is the no-break space
+    $title = trim( $title, "\n\r\t .-;–,—\xC2\xA0" );
+    $len = strlen( utf8_decode( $title ) );
+
+		if ($len <= 19) {
+			$css = '.entry-header h1 { font-size: 4em; }';
+		}
+		if ($len < 29 && $len > 19) {
+			$css = '.entry-header h1 { font-size: 3em; }';
+		}
+		if ($len == 29) {
+			$css = '.entry-header h1 { font-size: 2.9em; }';
+		}
+		if ($len == 30) {
+			$css = '.entry-header h1 { font-size: 2.8em; letter-spacing: -4px;}';
+		}
+		if ($len == 31) {
+			$css = '.entry-header h1 { font-size: 2.7em; }';
+		}
+		if ($len == 32) {
+			$css = '.entry-header h1 { font-size: 2.6em; }';
+		}
+		if ($len >= 32) {
+			$css = '.entry-header h1 { font-size: 2.5em; letter-spacing: -4px;}';
+		}
+			echo '<style type="text/css">' . $css . '</style>';
+	endif;
+}
