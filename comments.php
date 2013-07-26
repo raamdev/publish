@@ -39,6 +39,8 @@ if ( post_password_required() )
 		<?php comment_form( $comment_form_args ); ?>
 		<?php //comment_form( ); ?>
 
+		<div style="clear: both;"></div>
+
 		<?php rd_sharing_buttons_text(); ?>
 
 	<?php endif; // !in_category('journal') ?>

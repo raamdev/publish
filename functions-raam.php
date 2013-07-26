@@ -321,14 +321,12 @@ if(!function_exists('rd_sharing_buttons_text')) :
 					}
 				?>
 				<!-- START SHARING BUTTONS -->
+				<?php // Email This function uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 				<div class="rd-sharing-buttons">
 					<div class="rd-sharing-message" style="font-size: 100%">Sharing amplifies our potential to change the world.</div>
-					<div class="rd-sharing-message">If you enjoyed this, plase share it via <a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;">Twitter</a>, <a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); return false;">Facebook</a>, <?php if(!function_exists('wp_email')) : ?>or <?php endif; ?><a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); return false;">Google+</a><?php if(function_exists('wp_email')) : ?>, or
-					<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
-					<a href="#email-widget" id="share-email-widget"><span>email it to a friend</span></a>.
-					<?php endif; ?>
+					<div class="rd-sharing-message">Did you enjoy this? Please <?php if(function_exists('wp_email')) : ?><a href="#email-widget" id="share-email-widget"><span>email it</span></a> to a friend or <?php endif; ?> share it via <a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;">Twitter</a>, <a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); return false;">Facebook</a>, or <a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); return false;">Google+</a>.
 						<br>
-						You can also <a href="#subscribe-button" id="subscribe-button" class="subscribe-button">subscribe</a> to receive future Personal Reflections or <a href="#share-tip" id="share-tip">leave me a tip</a> for this essay.
+						You can also <a href="#share-tip" id="share-tip">buy me a banana</a> or <a href="#subscribe-button" id="subscribe-button" class="subscribe-button">subscribe</a> to receive my future work.
 					</div>
 					<br>
 					<div class="rd-sharing-message">Thank you for sharing. :)</div>
@@ -749,12 +747,9 @@ if(!function_exists('rd_new_nav_menu_items')) :
 					{
 						$subscribe_link = '<li class="menu-item subscribe-menu-item"><a href="#signup" class="signup">Subscribe</a></li>';
 						$items          = $items . $subscribe_link;
-						//		$loginlink = '<li class="menu-item login-menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
 					}
-				if(is_user_logged_in()  && !is_single())
+				if(is_user_logged_in()  && !is_single() || $args->theme_location == 'footer')
 					{
-						if(is_single()) { $my_account_class = "my-account-menu-item-single"; } else { $my_account_class = "my-account-menu-item"; }
-						if(is_single()) { $logout_class = "logout-menu-item-single"; } else { $logout_class = "logout-menu-item"; }
 						$my_account_link = '<li class="menu-item ' . $my_account_class . '"><a href="/account/">My Account</a></li>';
 						$items           = $my_account_link.$items;
 						$logout_link     = '<li class="menu-item ' . $logout_class . '"><a href="'.wp_logout_url().'">Logout</a></li>';

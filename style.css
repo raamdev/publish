@@ -2051,22 +2051,14 @@ div.rd-sharing-buttons #share-button span
 .home-nav { 
 	float: left;
 }
-.my-account-menu-item-single, .logout-menu-item-single
-{
-	float: right;
-}
 .home-nav-single, .nav-date-single, .home-nav-date-separator {
 	float: right;
 }
 .home-nav-single a,
-.main-navigation li.home-nav-date-separator,
-.main-navigation li.my-account-menu-item-single a,
-.main-navigation li.logout-menu-item-single a { padding: 0; }
+.main-navigation li.home-nav-date-separator { padding: 0; }
 
 .main-navigation li.home-nav-single,
-.main-navigation li.nav-date-single,
-.main-navigation li.my-account-menu-item-single,
-.main-navigation li.logout-menu-item-single { padding-left: 5px; padding-right: 5px; }
+.main-navigation li.nav-date-single{ padding-left: 5px; padding-right: 5px; }
 
 #journal-notice-comments
 {
