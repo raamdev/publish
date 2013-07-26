@@ -750,9 +750,9 @@ if(!function_exists('rd_new_nav_menu_items')) :
 					}
 				if(is_user_logged_in()  && !is_single() || $args->theme_location == 'footer')
 					{
-						$my_account_link = '<li class="menu-item ' . $my_account_class . '"><a href="/account/">My Account</a></li>';
+						$my_account_link = '<li class="menu-item my-account-menu-item"><a href="/account/">My Account</a></li>';
 						$items           = $my_account_link.$items;
-						$logout_link     = '<li class="menu-item ' . $logout_class . '"><a href="'.wp_logout_url().'">Logout</a></li>';
+						$logout_link     = '<li class="menu-item logout-menu-item"><a href="'.wp_logout_url().'">Logout</a></li>';
 						$items           = $logout_link.$items;
 					}
 
