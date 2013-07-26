@@ -52,6 +52,27 @@ jQuery(document).ready(function(){
 
 	});
 
+	/* jQuery for Comment Form Enhancements */
+		jQuery('#comment-form-fields').hide();
+		jQuery('#submit').hide();
+	jQuery('#comment-form-field').live('click', function(event) {
+
+		jQuery('#comment-form-fields').show('fast');
+		jQuery('#submit').show('fast');
+	});
+	jQuery('.comment-reply-link').live('click', function(event) {
+		/*jQuery('#reply-title').html($('#reply-title')
+			                    .html()
+			                    .replace('Your thoughts? Please leave a reply:', ''));*/
+		//jQuery('#reply-title').css('float', 'right');
+		jQuery('#comment-form-fields').show('fast');
+		jQuery('#submit').show('fast');
+		jQuery('#main-reply-title').hide();
+		jQuery('#comment').attr('placeholder', 'Type your reply here');
+	});
+	jQuery('#cancel-comment-reply-link').live('click', function(event) {
+		jQuery('#main-reply-title').show();
+	});
 });
 
 // Used to load sharing services in a popup window

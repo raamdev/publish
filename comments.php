@@ -23,14 +23,34 @@ if ( post_password_required() )
 	<div id="comments" class="comments-area">
 
 	<?php // You can start editing here -- including this comment! ?>
-	
+
+	<!-- START COMMENT REPLY FORM -->
+
+	<?php
+	// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+			?>
+			<p class="nocomments"><?php _e( 'Comments are closed.', 'publish' ); ?></p>
+		<?php endif; ?>
+
+	<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
+		<?php //comment_form( array( 'comment_notes_after' => '<p class="form-allowed-tags"></p>' ) ); ?>
+		<?php $comment_form_args = rd_comment_form_args(); ?>
+		<?php comment_form( $comment_form_args ); ?>
+		<?php //comment_form( ); ?>
+
+		<?php rd_sharing_buttons_text(); ?>
+
+	<?php endif; // !in_category('journal') ?>
+
+	<!-- END COMMENT REPLY FORM -->
+
 	<?php if ( have_comments() ) : ?>
 		<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
 
 			<?php if(get_comments_number() > 0) : ?>
 				<div class="leave-a-reply">
-					<?php printf( _n( '1 Comment | ', '%1$s Comments | ', get_comments_number(), 'publish' ), number_format_i18n( get_comments_number() ) ); ?>
-					<a href="#respond">Share a Comment ↓</a>
+					<?php printf( _n( '1 Comment', '%1$s Comments ', get_comments_number(), 'publish' ), number_format_i18n( get_comments_number() ) ); ?>
 				</div>
 			<?php endif; ?>
 
@@ -70,19 +90,10 @@ if ( post_password_required() )
 
 	<?php endif; // have_comments() ?>
 
-	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
-		<p class="nocomments"><?php _e( 'Comments are closed.', 'publish' ); ?></p>
-	<?php endif; ?>
-
-	<?php if ( !in_category('journal') || is_raamdev_journal_viewable() ) : ?>
-		
-		<?php comment_form( array( 'comment_notes_after' => '<p class="form-allowed-tags"></p>' ) ); ?>
-		
-	<?php endif; // !in_category('journal') ?>
-	
+		<?php if (comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' )) : ?>
+		<div><a href="#respond">Your thoughts? Please click here to leave a reply</a></div>
+		<?php endif; ?>
+		<br><br>
 	<!-- START PING/TRACKBACKS LIST -->
 
 	<?php if ( have_comments() ) : ?>

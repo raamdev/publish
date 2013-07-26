@@ -37,6 +37,6 @@
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'publish' ), 'after' => '</div>' ) ); ?>
 		<?php //raamdev_post_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'publish' ), '<div class="edit-link">', '</div>' ); ?>
-		<?php rd_sharing_buttons(); ?>
+		<?php// rd_sharing_buttons(); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->

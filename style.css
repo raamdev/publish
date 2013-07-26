@@ -269,7 +269,7 @@ input[type="reset"],
 input[type="submit"]
 {
 	padding            : 0.25em 0.5em;
-	border             : 1px solid #ccc;
+	border             : 2px solid #ccc;
 	border-color       : #ccc #ccc #bbb #ccc;
 	border-radius      : 3px;
 	background         : #fafafa; /* Old browsers */
@@ -772,10 +772,10 @@ object
 
 #comments
 {
-	margin-top    : 40px;
 	margin-bottom : 30px;
 	font-size     : 90%;
 	line-height   : 1.563em;
+	margin-top: 100px;
 }
 
 #comments-template div.navigation
@@ -1117,7 +1117,7 @@ h6
 	line-height : inherit;
 	color       : inherit;
 	font-style: italic;
-	text-align: right;
+
 }
 .single .entry-meta a { color: rgb(0, 120, 168);}
 .single .authorship { font-size: 80%;}
@@ -1156,13 +1156,8 @@ h6
 
 .single footer.entry-meta
 {
-	border-bottom : 5px solid #eee;
-	border-top    : 5px solid #eee;
-	margin-top    : 40px;
-	opacity: .5;
-}
-.single footer.entry-meta:hover {
-	opacity: 1;
+	/*border-top    : 1px solid #eee;
+	margin-top    : 50px;*/
 }
 .entry-meta a:hover
 {
@@ -1189,6 +1184,7 @@ h6
 	width         : 20%;
 	font-family   : "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.single .site-header { margin-bottom: 0; }
 
 .site-content,
 .site-footer
@@ -1396,11 +1392,32 @@ table th
 
 .comments-area input, .comments-area select, .comments-area textarea
 {
-	font-family : serif !important;
+	font-family : serif;
 }
 .comments-area #author, .comments-area #email, .comments-area #url {
-	width: 100%;
-	max-width: 300px;
+	width: 90%;
+	font-size:130%;
+}
+.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-subscriptions, .form-submit { max-width: 265px; float: left; width:100%;}
+.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-subscriptions {
+	color: #000;
+	font-size:80%;
+	font-weight: 300;
+	margin-bottom: 1em;
+}
+.comment-form-comment {
+	margin-bottom: 1em;
+}
+/*#comment-form-fields, .form-submit #submit { display: none; }*/
+
+#subscribe-reloaded {width:95%; font-family: serif !important;}
+.form-submit {max-width: none; margin-top: 10px; float: none; margin-bottom: 0;}
+.form-submit #submit
+{
+	width:100%;
+	font-weight: 300;
+	font-size: 110%;
+	margin-top: 10px;
 }
 .comments-area textarea
 {
@@ -1474,10 +1491,11 @@ table th
 
 #respond
 {
-	padding       : 30px;
-	background    : #eee;
-	margin-bottom : 40px;
-	padding-top   : 5px;
+	max-width: 530px;
+	padding-bottom : 40px;
+	padding-left:0px;
+	padding-right: 0px;
+	margin: 0 auto;
 }
 
 /* Leave a Reply link at the top of the comment list */
@@ -1491,7 +1509,12 @@ table th
 {
 	text-decoration : none;
 }
-
+h3#reply-title {
+	float: right;
+	font-size: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .entry-title a
 {
 	color : black;
@@ -1535,7 +1558,7 @@ ul.children .comment-author
 
 .entry-header h1
 {
-	font-size      : 3em;
+	font-size      : 2.5em;
 	line-height    : 1em;
 	letter-spacing : -2px;
 }
@@ -1838,8 +1861,10 @@ div.rd-sharing-message
 }
 div.rd-sharing-buttons
 {
-	margin-bottom : 20px;
-	margin-top    : 20px;
+	padding-bottom: 80px;
+	margin-bottom : 50px;
+	margin-top    : 40px;
+	border-bottom: 1px solid #eee;
 }
 
 div.rd-sharing-buttons #share-twitter,
@@ -1869,7 +1894,7 @@ div.rd-sharing-buttons #share-facebook
 {
 	margin-top: -1px;
 }
-div.rd-sharing-buttons #share-tip
+div.rd-sharing-buttons .share-tip
 {
 	padding-left: 5px !important;
 	padding-bottom: 1px !important;
@@ -1877,7 +1902,7 @@ div.rd-sharing-buttons #share-tip
 	float      : left;
 	opacity    : .5;
 }
-div.rd-sharing-buttons #share-tip:hover
+div.rd-sharing-buttons .share-tip:hover
 {
 	opacity : 1;
 	cursor  : pointer;
@@ -2030,10 +2055,19 @@ div.rd-sharing-buttons #share-button span
 {
 	float: right;
 }
-.home-nav-single {
-	float: left;
-	font-style: italic;
+.home-nav-single, .nav-date-single, .home-nav-date-separator {
+	float: right;
 }
+.home-nav-single a,
+.main-navigation li.home-nav-date-separator,
+.main-navigation li.my-account-menu-item-single a,
+.main-navigation li.logout-menu-item-single a { padding: 0; }
+
+.main-navigation li.home-nav-single,
+.main-navigation li.nav-date-single,
+.main-navigation li.my-account-menu-item-single,
+.main-navigation li.logout-menu-item-single { padding-left: 5px; padding-right: 5px; }
+
 #journal-notice-comments
 {
 	margin-bottom : 60px;
@@ -2210,3 +2244,5 @@ div.rd-sharing-buttons #share-button span
 	border-radius      : 15px;
 	background         : #eee;
 }
+
+p.logged-in-as { margin-bottom: 0.5em; float: right; font-size: 80%}

@@ -105,26 +105,28 @@ if(!function_exists('raamdev_post_authorship')) :
 	 */
 		function raamdev_post_authorship()
 			{
+				if(!in_category('journal') || is_raamdev_journal_viewable()) {
 
-				// Get location information using Nomad Current Location plugin
-				$location_html = get_ncl_location($prefix = "");
-				
-				$meta_text = __('<div class="entry-meta authorship">
-				<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span> 
-				<span class="meta-data-published"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span>
-				%3$s
-				</div>', 'publish');
+					// Get location information using Nomad Current Location plugin
+					$location_html = get_ncl_location($prefix = "");
 
-				// Add Authorship information to improve SEO
-				$author_info = '<span style="display: none;"><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
-				$meta_text   = $author_info.$meta_text;
+					$meta_text = __('<div class="entry-meta authorship">
+					<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span>
+					<span class="meta-data-published"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span>
+					%3$s
+					</div>', 'publish');
 
-				printf(
-					$meta_text,
-					esc_attr(get_the_date('c')),
-					esc_html(get_the_date()),
-					$location_html
-				);
+					// Add Authorship information to improve SEO
+					$author_info = '<span style="display: none;"><a href="https://plus.google.com/103678870073436346171?rel=author">Google+</a></span></span>';
+					$meta_text   = $author_info.$meta_text;
+
+					printf(
+						$meta_text,
+						esc_attr(get_the_date('c')),
+						esc_html(get_the_date()),
+						$location_html
+					);
+				}
 			}
 endif;
 
@@ -224,6 +226,112 @@ if(!function_exists('rd_sharing_buttons')) :
 						<div id="share-button" class="right-button">
 							<span id="share-tip" class="share-tip">Leave a Tip</span>
 						</div>
+					<div style="clear: both;"></div>
+					<div id="subscribe-widget">
+						<!-- BEGIN SUBSCRIBE FORM WIDGET CODE -->
+						<?php raamdev_subscribe_form_widget(); ?>
+						<!-- END SUBSCRIBE FORM WIDGET CODE -->
+					</div>
+
+					<!-- Start Share via Email Code -->
+					<div id="email-widget" class="email-widget">
+						<iframe class="emailiframe" src="<?php the_permalink(); ?>/emailpopup/" title="Email" scrolling="no" width="100%" height="875" style="border-width: 0px;"></iframe>
+					</div>
+					<!-- End Share via Email Code -->
+
+					<!-- START TIP BOX -->
+					<div id="share-tip-info">
+						<form name="custom-amount" method="get" action="<?php echo home_url('/tip/', 'https'); ?>">
+							<input type="hidden" name="page_title" value="<?php echo $clean_title; ?>">
+							Tip Raam $<input class="tip-amount" type="text" maxlength="10" name="amount" value="0.25"> for '<em><?php echo $clean_title; ?></em>'
+							&nbsp;<input type="submit" value="Give &rarr;">
+						</form>
+						<br />
+						<div class="alt-tip-methods">
+							<small>
+								Prefer <span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span>, <span id="tip-flattr" class="alt-tip-method">Flattr</span>, or <span id="tip-gittip" class="alt-tip-method">Gittip</span>?
+							</small>
+						</div>
+						<div style="clear:both;"></div>
+						<!-- Start Gittip Code -->
+						<div id="gittip-widget" class="gittip-widget">
+							<iframe style="border: 0; margin: 0; padding: 0;"
+							        src="https://www.gittip.com/RaamDev/widget.html"
+							        width="48pt" height="22pt"></iframe>
+							<br />
+							<br />
+							<small><span class="alt-tips-desc">Gittip is a way to give small weekly cash gifts to people you love. <a href="https://www.gittip.com/about/" target="_new">Learn more.</a></small>
+						</div>
+						<!-- End Gittip Code -->
+						<!-- Start Flattr Code -->
+						<div id="flattr-widget" class="flattr-widget">
+							<a class="FlattrButton" href="<?php the_permalink(); ?>" title="<?php echo $clean_title; ?>" tags="<?php echo $flattr_tags; ?>" category="text">
+								<?php echo $clean_title; ?>
+							</a>
+							<br />
+							<br />
+							<small><span class="alt-tips-desc">Flattr is a social micropayment service. <a href="http://www.flattr.com" target="_new">Learn more.</a></small>
+						</div>
+						<!-- End Flattr Code -->
+						<!-- Start Bitcoin Code -->
+						<?php if(class_exists('Bitcointips')) : ?>
+							<div id="bitcointips-widget" class="bitcointips-widget">
+								<!-- Uses the Bitcoin Tips WordPress Plugin -->
+								<!-- See https://github.com/raamdev/bitcoin-tips -->
+								<div class="qrcode"><?php echo do_shortcode('[bitcointips output="qrcode"]'); ?></div>
+								<div class="contents">
+									<p class="bitcointips-address"><?php echo do_shortcode('[bitcointips output="address"]'); ?></p>
+								</div>
+								<small><span class="alt-tips-desc">Bitcoin is a decentralized digital currency. <a href="http://www.weusecoins.com" target="_new">Learn more.</a></a></small>
+							</div>
+						<?php endif; ?>
+						<!-- End Bitcoin Code -->
+					</div>
+					<!-- END TIP BOX -->
+					<div style="clear: both;"></div>
+				</div>
+
+				<!-- END SHARING BUTTONS -->
+
+			<?php
+			}
+endif;
+
+if(!function_exists('rd_sharing_buttons_text')) :
+	/**
+	 * Displays sharing buttons in a text version
+	 */
+		function rd_sharing_buttons_text()
+			{
+
+				// the_title_attribute() returns title with "Aside: " prepended.
+				// This removes that so social shares only include the title.
+				$dirty_title = the_title_attribute('echo=0');
+				$clean_title = str_replace('Aside: ', '', $dirty_title);
+
+				// Used for including tags in Flattr link
+				$posttags    = get_the_tags();
+				$flattr_tags = '';
+				if($posttags)
+					{
+						foreach($posttags as $tag)
+							{
+								$flattr_tags .= $tag->name.',';
+							}
+					}
+				?>
+				<!-- START SHARING BUTTONS -->
+				<div class="rd-sharing-buttons">
+					<div class="rd-sharing-message" style="font-size: 100%">Sharing amplifies our potential to change the world.</div>
+					<div class="rd-sharing-message">If you enjoyed this, plase share it via <a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;">Twitter</a>, <a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); return false;">Facebook</a>, <?php if(!function_exists('wp_email')) : ?>or <?php endif; ?><a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); return false;">Google+</a><?php if(function_exists('wp_email')) : ?>, or
+					<?php // Uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
+					<a href="#email-widget" id="share-email-widget"><span>email it to a friend</span></a>.
+					<?php endif; ?>
+						<br>
+						You can also <a href="#subscribe-button" id="subscribe-button" class="subscribe-button">subscribe</a> to receive future Personal Reflections or <a href="#share-tip" id="share-tip">leave me a tip</a> for this essay.
+					</div>
+					<br>
+					<div class="rd-sharing-message">Thank you for sharing. :)</div>
 					<div style="clear: both;"></div>
 					<div id="subscribe-widget">
 						<!-- BEGIN SUBSCRIBE FORM WIDGET CODE -->
@@ -619,15 +727,17 @@ if(!function_exists('rd_new_nav_menu_items')) :
 	if !single
 		add 
 	 */
-		function rd_new_nav_menu_items($items)
+		function rd_new_nav_menu_items($items, $args)
 			{
-				if(is_single()) {
+				if(is_single() && $args->theme_location != 'footer') { // keep the nav bar simple on single pages
 					echo '<style type="text/css">.site-header .site-navigation {border-bottom: none;}</style>';
 					if ('aside' === get_post_format()) { $type = 'A Thought'; }
 					if (!get_post_format()) { $type = 'An Essay'; }
-					
-					$items = ''; // hide clutter on single pages
-					$homelink = '<li class="home-nav-single">' . $type . ' by <a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li>	';
+
+					//$homelink = '<li class="home-nav-single">' . $type . ' by <a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li>	';
+					$homelink = '<li class="nav-date-single">' . get_the_date('Y-m-d') . '</li>';
+					$homelink .= '<li class="home-nav-date-separator"><span>⋅</span></li>';
+					$homelink .= '<li class="home-nav-single"><a href="'.home_url('/').'" rel="home">'.get_bloginfo('name').'</a></li>';
 					$items    = $homelink;
 				}
 				else {
@@ -641,20 +751,20 @@ if(!function_exists('rd_new_nav_menu_items')) :
 						$items          = $items . $subscribe_link;
 						//		$loginlink = '<li class="menu-item login-menu-item"><a href="' . wp_login_url() . '">Login</a></li>';
 					}
-				if(is_user_logged_in())
+				if(is_user_logged_in()  && !is_single())
 					{
 						if(is_single()) { $my_account_class = "my-account-menu-item-single"; } else { $my_account_class = "my-account-menu-item"; }
 						if(is_single()) { $logout_class = "logout-menu-item-single"; } else { $logout_class = "logout-menu-item"; }
 						$my_account_link = '<li class="menu-item ' . $my_account_class . '"><a href="/account/">My Account</a></li>';
-						$items           = $items.$my_account_link;
+						$items           = $my_account_link.$items;
 						$logout_link     = '<li class="menu-item ' . $logout_class . '"><a href="'.wp_logout_url().'">Logout</a></li>';
-						$items           = $items.$logout_link;
+						$items           = $logout_link.$items;
 					}
 
 				return $items;
 			}
 
-		add_filter('wp_nav_menu_items', 'rd_new_nav_menu_items');
+		add_filter('wp_nav_menu_items', 'rd_new_nav_menu_items', 10, 2);
 endif;
 
 if(!function_exists('rd_rss_filter_post_formats')) :
@@ -944,7 +1054,7 @@ function comment_count($count)
  * Add TinyMCE Editor to Comments form
  * Thanks to http://www.revood.com/blog/adding-visual-editor-to-wordpress-comments-box-part-2/
  */
-add_filter('comment_form_defaults', 'custom_comment_form_defaults');
+//add_filter('comment_form_defaults', 'custom_comment_form_defaults');
 function custom_comment_form_defaults($args)
 	{
 		if(is_user_logged_in())
@@ -971,23 +1081,106 @@ function custom_comment_form_defaults($args)
 		return $args;
 	}
 
+
+add_filter( 'comment_form_defaults', 'remove_textarea' );
+add_action( 'comment_form_top', 'add_textarea' );
+
+function remove_textarea($defaults)
+	{
+		$defaults['comment_field'] = '';
+		return $defaults;
+	}
+
+function add_textarea()
+	{
+		echo '<div id="main-reply-title"><h3>Your thoughts? Please leave a reply:</h3></div>';
+		echo '<p class="comment-form-comment" id="comment-form-field"><textarea id="comment" name="comment" cols="60" rows="6" placeholder="Type your thoughts here" aria-required="true"></textarea></p>';
+	}
+
+
+
+function rd_comment_form_args() {
+
+	if(!is_user_logged_in()) {
+		$comment_notes_before = '<div id="comment-form-fields">';
+		$comment_notes_after = '</div>';
+	} else {
+		$comment_notes_before = '';
+		$comment_notes_after = '';
+	}
+	$user = wp_get_current_user();
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
+
+	$args = array(
+		'id_form'           => 'commentform',
+		'id_submit'         => 'submit',
+		'title_reply'       => __( '' ),
+		'title_reply_to'    => __( 'Leave a Reply to %s' ),
+		'cancel_reply_link' => __( 'Cancel Reply' ),
+		'label_submit'      => __( 'Submit Comment' ),
+
+		'must_log_in' => '<p class="must-log-in">' .
+		                 sprintf(
+			                 __( 'You must be <a href="%s">logged in</a> to post a comment.' ),
+			                 wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+		                 ) . '</p>',
+
+		'logged_in_as' => '<p class="logged-in-as">' .
+		                  sprintf(
+			                  __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ),
+			                  admin_url( 'profile.php' ),
+			                  $user->display_name,
+			                  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
+		                  ) . '</p>',
+
+		'comment_notes_before' => $comment_notes_before,
+
+		'comment_notes_after' => $comment_notes_after,
+
+		'fields' => apply_filters( 'comment_form_default_fields', array(
+
+		                                                               'author' =>
+		                                                               '<p class="comment-form-author">' .
+		                                                               '<label for="author">' . __( 'Your Name', 'domainreference' ) . '</label><br />' .
+		                                                               '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+		                                                               '" size="25"' . $aria_req . ' /></p>',
+
+		                                                               'email' =>
+		                                                               '<p class="comment-form-email"><label for="email">' . __( 'Your Email', 'domainreference' ) . ' <small>(always kept private)</small></label><br />' .
+		                                                               '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+		                                                               '" size="25"' . $aria_req . ' /></p>',
+
+		                                                               'url' =>
+		                                                               '<p class="comment-form-url"><label for="url">' .
+		                                                               __( 'Your Website', 'domainreference' ) . ' <small>(optional)</small></label><br />' .
+		                                                               '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+		                                                               '" size="25" /></p>'
+		                                                          )
+		),
+	);
+
+	return $args;
+}
+
 /**
  * Fix problem with TinyMCE Editor not reloading properly when replying to comments
  * See http://www.revood.com/blog/adding-visual-editor-to-wordpress-comments-box-part-2/
  */
-add_action('wp_enqueue_scripts', '__THEME_PREFIX__scripts');
+//add_action('wp_enqueue_scripts', '__THEME_PREFIX__scripts');
 function __THEME_PREFIX__scripts()
 	{
 		wp_enqueue_script('jquery');
 	}
 
-add_filter('comment_reply_link', '__THEME_PREFIX__comment_reply_link');
+//add_filter('comment_reply_link', '__THEME_PREFIX__comment_reply_link');
 function __THEME_PREFIX__comment_reply_link($link)
 	{
 		return str_replace('onclick=', 'data-onclick=', $link);
 	}
 
-add_action('wp_head', '__THEME_PREFIX__wp_head');
+//add_action('wp_head', '__THEME_PREFIX__wp_head');
 function __THEME_PREFIX__wp_head()
 	{
 		?>
@@ -1079,3 +1272,35 @@ function rd_dynamic_post_title_size () {
 			echo '<style type="text/css">' . $css . '</style>';
 	endif;
 }
+
+/*
+ * Change the comment reply link to use 'Reply to <Author First Name>'
+ */
+function add_comment_author_to_reply_link($link, $args, $comment){
+
+	$comment = get_comment( $comment );
+
+	// If no comment author is blank, use 'Anonymous'
+	if ( empty($comment->comment_author) ) {
+		if (!empty($comment->user_id)){
+			$user=get_userdata($comment->user_id);
+			$author=$user->user_login;
+		} else {
+			$author = __('Anonymous');
+		}
+	} else {
+		$author = $comment->comment_author;
+	}
+
+	// If the user provided more than a first name, use only first name
+	if(strpos($author, ' ')){
+		$author = substr($author, 0, strpos($author, ' '));
+	}
+
+	// Replace Reply Link with "Reply to <Author First Name>"
+	$reply_link_text = $args['reply_text'];
+	$link = str_replace($reply_link_text, 'Reply to ' . $author, $link);
+
+	return $link;
+}
+add_filter('comment_reply_link', 'add_comment_author_to_reply_link', 420, 4);
