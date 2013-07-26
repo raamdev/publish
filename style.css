@@ -1456,7 +1456,7 @@ table th
 {
 	font-style : normal;
 }
-.trackback span
+.trackback span, .pingback span
 {
 	font-family : sans-serif;
 	font-size   : 11px;
