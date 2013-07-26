@@ -1119,7 +1119,7 @@ h6
 	font-style: italic;
 
 }
-.single .entry-meta a { color: rgb(0, 120, 168);}
+.single .entry-meta a { color: #000; text-decoration: none;}
 .single .authorship { font-size: 80%;}
 .single .entry-meta .mapThis a { color: black;}
 

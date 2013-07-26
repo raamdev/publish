@@ -110,7 +110,7 @@ if(!function_exists('raamdev_post_authorship')) :
 					// Get location information using Nomad Current Location plugin
 					$location_html = get_ncl_location($prefix = "");
 
-					$meta_text = __('<div class="entry-meta authorship">
+					$meta_text = __('<div class="entry-meta authorship">-- <br/>
 					<span class="author vcard"><a class="url fn n" href="/about/" title="About '.get_the_author().'" rel="author">'.get_the_author().'</a></span>
 					<span class="meta-data-published"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span>
 					%3$s
