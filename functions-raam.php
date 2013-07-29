@@ -323,10 +323,10 @@ if(!function_exists('rd_sharing_buttons_text')) :
 				<!-- START SHARING BUTTONS -->
 				<?php // Email This function uses WP-Email plugin; see http://wordpress.org/extend/plugins/wp-email/ ?>
 				<div class="rd-sharing-buttons">
-					<div class="rd-sharing-message" style="font-size: 100%">Sharing amplifies our potential to change the world.</div>
-					<div class="rd-sharing-message">Did you enjoy this? Please <?php if(function_exists('wp_email')) : ?><a href="#email-widget" id="share-email-widget"><span>email it</span></a> to a friend or <?php endif; ?> share it via <a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); return false;">Twitter</a>, <a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); return false;">Facebook</a>, or <a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); return false;">Google+</a>.
+					<div class="rd-sharing-message" style="font-size: 100%;">Sharing amplifies our potential to change the world.</div>
+					<div class="rd-sharing-message">Did you enjoy this? Please <?php if(function_exists('wp_email')) : ?><a href="#email-widget" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Email', 'Email it to a friend']);" id="share-email-widget"><span>email it</span></a> to a friend or <?php endif; ?> share it via <a target="_new" href="https://twitter.com/share?text=<?php echo $clean_title; ?>%20via%20@RaamDev&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Twitter" onclick="share_button_popup(this.href); _gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Twitter', 'Share via Twitter']); return false;">Twitter</a>, <a target="_new" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Facebook" onclick="share_button_popup(this.href); _gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Facebook', 'Share via Facebook']); return false;">Facebook</a>, or <a target="_new" href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php the_permalink(); ?>" title="Share '<?php echo $clean_title; ?>' on Google+" onclick="share_button_popup(this.href); _gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Google+', 'Share via Google+']); return false;">Google+</a>.
 						<br>
-						You can also <a href="#share-tip" id="share-tip">buy me a banana</a> or <a href="#subscribe-button" id="subscribe-button" class="subscribe-button">subscribe</a> to receive my future work.
+						You can also <a href="#share-tip" id="share-tip" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Tip', 'Buy me a banana']);">buy me a banana</a> or <a href="#subscribe-button" id="subscribe-button" class="subscribe-button" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Subscribe', 'Subscribe to future work']);">subscribe</a> to receive my future work.
 					</div>
 					<br>
 					<div class="rd-sharing-message">Thank you for sharing. :)</div>
@@ -353,7 +353,7 @@ if(!function_exists('rd_sharing_buttons_text')) :
 						<br />
 						<div class="alt-tip-methods">
 							<small>
-								Prefer <span id="tip-bitcoin" class="alt-tip-method">Bitcoins</span>, <span id="tip-flattr" class="alt-tip-method">Flattr</span>, or <span id="tip-gittip" class="alt-tip-method">Gittip</span>?
+								Prefer <span id="tip-bitcoin" class="alt-tip-method" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Tip Bitcoins', 'Tip via Bitcoins']);">Bitcoins</span>, <span id="tip-flattr" class="alt-tip-method" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Tip Flattr', 'Tip via Flattr']);">Flattr</span>, or <span id="tip-gittip" class="alt-tip-method" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Tip Gittip', 'Tip via Gittip']);">Gittip</span>?
 							</small>
 						</div>
 						<div style="clear:both;"></div>
@@ -699,7 +699,7 @@ if(!function_exists('raamdev_subscribe_form_widget')) :
 						<div class="never-sell-your-email">
 							<p>I promise to never sell or give away your email address. You can unsubscribe at any time.</p>
 						</div>
-						<div class="subscription-options-button"><span id="subscription-options-button" tabindex="506">Subscription Options</span></div>
+						<div class="subscription-options-button"><span id="subscription-options-button" tabindex="506" onClick="_gaq.push(['_trackEvent', 'Sharing Buttons Text', 'Subscribe Options', 'View Subscription Options']);">Subscription Options</span></div>
 						<div class="rss-feeds" id="rss-feeds">
 							RSS Feeds:&nbsp;
 							<a href="http://feeds.feedburner.com/RaamDevAllTopics">All Topics</a> ·
