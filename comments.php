@@ -84,6 +84,10 @@ if ( post_password_required() )
 			</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 			
+			<?php if (comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' )) : ?>
+			<div><a href="#respond">Your thoughts? Please click here to leave a reply</a></div>
+			<?php endif; ?>
+			
 		<?php else : ?>
 			
 			<?php the_raamdev_journal_not_released_comments_message(); ?>
@@ -92,9 +96,6 @@ if ( post_password_required() )
 
 	<?php endif; // have_comments() ?>
 
-		<?php if (comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' )) : ?>
-		<div><a href="#respond">Your thoughts? Please click here to leave a reply</a></div>
-		<?php endif; ?>
 		<br><br>
 	<!-- START PING/TRACKBACKS LIST -->
 
