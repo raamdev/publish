@@ -2086,6 +2086,9 @@ div.rd-sharing-buttons #share-button span
 	display : none;
 }
 
+.footnotes p { margin-bottom: 0; }
+.footnotes { font-size: 80%; }
+
 .archive h1.page-title
 {
 	background    : #eee;
