@@ -154,7 +154,7 @@ if(!function_exists('raamdev_post_header_meta')) :
 										{
 											?>
 
-											<div id="audio-player"><a class="wpaudio" href="<?php echo $audio; ?>">Listen to Raam Dev reading this entry</a></div>
+											<div id="audio-player"><a class="wpaudio" href="<?php echo $audio; ?>">Spoken Essay: Listen to Raam Dev reading this essay</a></div>
 
 										<?php }
 									else
