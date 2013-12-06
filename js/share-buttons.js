@@ -28,6 +28,16 @@ jQuery(document).ready(function(){
 
 	});
 
+	jQuery('#share-tip-alt').live('click', function(event) {
+
+		jQuery('#share-tip-info').toggle('show');
+
+		jQuery('#email-widget').hide();
+		jQuery('#subscribe-widget').hide();
+		jQuery('#subscribe-form-widget-subscription-options').hide();
+
+	});
+
 	jQuery('#tip-bitcoin').live('click', function(event) {
 		jQuery('#bitcointips-widget').toggle('show');
 	});
